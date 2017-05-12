@@ -1,0 +1,21 @@
+language: node_js
+
+node_js:
+  - '5'
+  - '6'
+  - '7'
+
+# fail asap when there is a failure
+matrix:
+  fast_finish: true
+
+# cache node modules
+cache: yarn
+
+before_install:
+  # faster yarn install
+  - yarn config set no-progress
+
+script: yarn test-with-coverage
+
+after_success: yarn coverage

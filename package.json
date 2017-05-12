@@ -1,0 +1,135 @@
+{
+  "name": "remark-generic-extensions",
+  "version": "0.1.0",
+  "description": "!Extension\\[Content\\]\\(Argument\\)\\{Properties\\} -> :tada: — [commonmark generic directive extension](https://github.com/jgm/CommonMark/wiki/Generic-Directive-Extension-List) for remark",
+  "keywords": [
+    "commonmark",
+    "generic",
+    "extensions",
+    "markdown",
+    "remark"
+  ],
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "babel --ignore /__tests__/ -d ./lib ./src",
+    "watch": "babel -w  --ignore /__tests__/ -d ./lib ./src",
+    "prepublish": "yarn build -s",
+    "lint": "eslint --fix ./src",
+    "tests": "ava",
+    "pretest": "yarn lint -s",
+    "test": "yarn tests -s",
+    "test-with-coverage": "nyc yarn test",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "release": "npmpub"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/medfreeman/remark-generic-extensions.git"
+  },
+  "author": "Mehdi Lahlou <mehdi.lahlou@free.fr>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/medfreeman/remark-generic-extensions/issues"
+  },
+  "homepage": "https://github.com/medfreeman/remark-generic-extensions#readme",
+  "devDependencies": {
+    "ava": "^0.19.1",
+    "babel-cli": "^6.22.2",
+    "babel-eslint": "^7.1.1",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-register": "^6.22.0",
+    "coveralls": "^2.11.16",
+    "css-loader": "^0.28.1",
+    "eslint": "^3.15.0",
+    "eslint-config-i-am-meticulous": "^14.1.0",
+    "eslint-plugin-babel": "^4.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "npmpub": "^3.1.0",
+    "nyc": "^10.1.2",
+    "remark": "^7.0.1",
+    "remark-html": "^6.0.0",
+    "remark-react": "^4.0.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
+  },
+  "babel": {
+    "presets": [
+      "babel-preset-es2015"
+    ],
+    "plugins": [
+      "add-module-exports"
+    ],
+    "ignore": [
+      "node_modules/*"
+    ]
+  },
+  "ava": {
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "babel"
+    ],
+    "extends": [
+      "eslint-config-i-am-meticulous"
+    ],
+    "env": {
+      "node": true,
+      "es6": true
+    },
+    "globals": {
+      "Promise": true
+    },
+    "rules": {
+      "indent": [
+        "error",
+        2
+      ],
+      "quotes": [
+        "error",
+        "double",
+        {
+          "allowTemplateLiterals": true
+        }
+      ],
+      "semi": [
+        "error",
+        "never"
+      ],
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ]
+    },
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "extensions": [
+            ".js"
+          ],
+          "moduleDirectory": [
+            "node_modules"
+          ]
+        }
+      }
+    }
+  },
+  "nyc": {
+    "exclude": [
+      "test/**"
+    ],
+    "include": [
+      "src/**"
+    ]
+  }
+}
