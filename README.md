@@ -1,2 +1,9 @@
 # remark-generic-extensions
+
+[![Build Status](https://img.shields.io/travis/medfreeman/remark-generic-extensions.svg?label=build)](https://travis-ci.org/medfreeman/remark-generic-extensions)
+[![npm version](https://img.shields.io/npm/v/remark-generic-extensions.svg)](https://www.npmjs.com/package/remark-generic-extensions)
+[![dependencies Status](https://img.shields.io/david/medfreeman/remark-generic-extensions.svg)](https://david-dm.org/medfreeman/remark-generic-extensions)
+[![devDependencies Status](https://img.shields.io/david/peer/medfreeman/remark-generic-extensions.svg)](https://david-dm.org/medfreeman/remark-generic-extensions?type=dev)
+[![Coverage Status](https://img.shields.io/coveralls/medfreeman/remark-generic-extensions/master.svg)](https://coveralls.io/github/medfreeman/remark-generic-extensions?branch=master)
+
 !Extension\[Content\]\(Argument\)\{Properties\} -> :tada: — [commonmark generic directive extension](https://github.com/jgm/CommonMark/wiki/Generic-Directive-Extension-List) for remark
