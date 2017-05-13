@@ -1,8 +1,3 @@
-/* eslint-disable no-unused-vars */
-
-import { readFileSync as read } from "fs"
-import { join } from "path"
-
 import test from "ava"
 import remark from "remark"
 import html from "remark-html"
@@ -17,59 +12,39 @@ const transformToHtml = (input, options) => {
   return contents
 }
 
-const base = file => read(join(__dirname, "fixtures", file), "utf-8")
-
 test(
   "should add an extension",
-  t => t.deepEqual(
-    transformToHtml("!icon"),
-    "<p><icon></icon></p>\n"
-  )
+  t => t.snapshot(transformToHtml("!icon"))
 )
 
 test(
   "should add an extension with an id",
-  t => t.deepEqual(
-    transformToHtml("!icon{ #my-id }"),
-    `<p><icon id="my-id"></icon></p>\n`
-  )
+  t => t.snapshot(transformToHtml("!icon{ #my-id }"))
 )
 
 test(
   "should add an extension with a class",
-  t => t.deepEqual(
-    transformToHtml("!icon{ .my-class }"),
-    `<p><icon class="my-class"></icon></p>\n`
-  )
+  t => t.snapshot(transformToHtml("!icon{ .my-class }"))
 )
 
 test(
   "should add an extension with an attribute",
-  t => t.deepEqual(
-    transformToHtml("!icon{ attr=my-attr }"),
-    `<p><icon attr="my-attr"></icon></p>\n`
-  )
+  t => t.snapshot(transformToHtml("!icon{ attr=my-attr }"))
 )
 
 test(
   "should add an extension with a quoted attribute",
-  t => t.deepEqual(
-    transformToHtml(`!icon{ attr="my attribute" }`),
-    `<p><icon attr="my attribute"></icon></p>\n`
-  )
+  t => t.snapshot(transformToHtml(`!icon{ attr="my attribute" }`))
 )
 
 test(
   "should add an extension with a lone attribute",
-  t => t.deepEqual(
-    transformToHtml(`!icon{ attr }`),
-    `<p><icon attr=""></icon></p>\n`
-  )
+  t => t.snapshot(transformToHtml(`!icon{ attr }`))
 )
 
 test(
   "should add an extension with a lone attribute with a default value",
-  t => t.deepEqual(
+  t => t.snapshot(
     transformToHtml(
       `!icon{ attr }`,
       {
@@ -81,14 +56,13 @@ test(
           }
         }
       }
-    ),
-    `<p><icon attr="default"></icon></p>\n`
+    )
   )
 )
 
 test(
   "should add an extension with a mapped content",
-  t => t.deepEqual(
+  t => t.snapshot(
     transformToHtml(
       "!icon[my-tooltip]",
       {
@@ -100,14 +74,13 @@ test(
           }
         }
       }
-    ),
-    `<p><icon tooltip="my-tooltip"></icon></p>\n`
+    )
   )
 )
 
 test(
   "should add an extension with a mapped argument",
-  t => t.deepEqual(
+  t => t.snapshot(
     transformToHtml(
       "!icon(my-icon)",
       {
@@ -119,7 +92,6 @@ test(
           }
         }
       }
-    ),
-    `<p><icon icon="my-icon"></icon></p>\n`
+    )
   )
 )

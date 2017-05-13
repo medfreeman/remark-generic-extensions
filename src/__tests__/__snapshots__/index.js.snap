@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should add an extension 1`] = `
+"<p><icon></icon></p>
+"
+`;
+
+exports[`should add an extension with a class 1`] = `
+"<p><icon class=\\"my-class\\"></icon></p>
+"
+`;
+
+exports[`should add an extension with a lone attribute 1`] = `
+"<p><icon attr=\\"\\"></icon></p>
+"
+`;
+
+exports[`should add an extension with a lone attribute with a default value 1`] = `
+"<p><icon attr=\\"default\\"></icon></p>
+"
+`;
+
+exports[`should add an extension with a mapped argument 1`] = `
+"<p><icon icon=\\"my-icon\\"></icon></p>
+"
+`;
+
+exports[`should add an extension with a mapped content 1`] = `
+"<p><icon tooltip=\\"my-tooltip\\"></icon></p>
+"
+`;
+
+exports[`should add an extension with a quoted attribute 1`] = `
+"<p><icon attr=\\"my attribute\\"></icon></p>
+"
+`;
+
+exports[`should add an extension with an attribute 1`] = `
+"<p><icon attr=\\"my-attr\\"></icon></p>
+"
+`;
+
+exports[`should add an extension with an id 1`] = `
+"<p><icon id=\\"my-id\\"></icon></p>
+"
+`;
