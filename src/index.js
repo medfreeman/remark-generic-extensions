@@ -1,10 +1,5 @@
 import _ from "lodash"
-
-if (!String.prototype.trim) {
-  String.prototype.trim = function () {
-    return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, "")
-  }
-}
+import trim from "core-js/library/fn/string/virtual/trim"
 
 function remarkGenericExtensions(options = {}) {
   const settings = Object.assign({}, {
@@ -30,7 +25,7 @@ function remarkGenericExtensions(options = {}) {
       const element = match[1]
       const content = match[2] ? match[2] : undefined
       const argument = match[3] ? match[3] : undefined
-      let properties = match[4] ? match[4].trim() : undefined
+      let properties = match[4] ? match[4]::trim() : undefined
 
       const classNamesArray = []
       const propertiesObject = {}
