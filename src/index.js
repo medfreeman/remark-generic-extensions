@@ -60,7 +60,9 @@ function remarkGenericExtensions(options = {}) {
 
         // Extract classnames i.e `.yeah`
         properties = properties.replace(/\s*\.([^\s]+)/g, (match, s1) => {
-          if (s1) classNamesArray.push(s1)
+          if (s1.length) {
+            classNamesArray.push(s1)
+          }
           return ""
         })
         if (classNamesArray.length) {
