@@ -95,3 +95,14 @@ test(
     )
   )
 )
+
+test(
+  "should work with other markdown",
+  t => t.snapshot(
+    transformToHtml(
+      `#heading
+
+!icon(my-icon)`
+    )
+  )
+)

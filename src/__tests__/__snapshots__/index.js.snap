@@ -44,3 +44,9 @@ exports[`should add an extension with an id 1`] = `
 "<p><icon id=\\"my-id\\"></icon></p>
 "
 `;
+
+exports[`should work with other markdown 1`] = `
+"<p>#heading</p>
+<p><icon></icon></p>
+"
+`;
