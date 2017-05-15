@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should log debug messages to console when debug is enabled 1`] = `"Element type:,icon"`;
+
+exports[`should log debug messages to console when debug is enabled 2`] = `"Full match:,!icon"`;
+
+exports[`should log debug messages to console when debug is enabled 3`] = `"Content:,undefined"`;
+
+exports[`should log debug messages to console when debug is enabled 4`] = `"The content property is not mapped to any html attribute."`;
+
+exports[`should log debug messages to console when debug is enabled 5`] = `"Argument:,undefined"`;
+
+exports[`should log debug messages to console when debug is enabled 6`] = `"The argument property is not mapped to any html attribute."`;
+
+exports[`should log debug messages to console when debug is enabled 7`] = `"Id:,undefined"`;
+
+exports[`should log debug messages to console when debug is enabled 8`] = `"Class names:,undefined"`;
+
+exports[`should log debug messages to console when debug is enabled 9`] = `"Properties:,undefined"`;
+
+exports[`should log debug messages to console when debug is enabled 10`] = `
+"
+"
+`;

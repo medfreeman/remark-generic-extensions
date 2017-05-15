@@ -1,16 +1,6 @@
 import test from "ava"
-import remark from "remark"
-import html from "remark-html"
 
-import genericExtensions from "../"
-
-const transformToHtml = (input, options) => {
-  const { contents } = remark()
-    .use(genericExtensions, options)
-    .use(html)
-    .processSync(input)
-  return contents
-}
+import { transformToHtml } from "./helpers/transform"
 
 test(
   "should add an extension",

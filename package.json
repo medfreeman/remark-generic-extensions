@@ -50,11 +50,12 @@
     "nyc": "^10.1.2",
     "remark": "^7.0.1",
     "remark-html": "^6.0.0",
-    "remark-react": "^4.0.0"
+    "remark-react": "^4.0.0",
+    "sinon": "^2.2.0"
   },
   "dependencies": {
-    "lodash": "^4.17.4",
-    "core-js": "^2.4.1"
+    "core-js": "^2.4.1",
+    "lodash": "^4.17.4"
   },
   "babel": {
     "presets": [
