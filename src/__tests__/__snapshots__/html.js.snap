@@ -35,6 +35,11 @@ exports[`should add an extension with a quoted attribute 1`] = `
 "
 `;
 
+exports[`should add an extension with all types of parameters 1`] = `
+"<p><icon id=\\"my-id\\" class=\\"my-class\\" attr=\\"default\\" attr2=\\"my-attr\\" attr3=\\"my attribute\\"></icon></p>
+"
+`;
+
 exports[`should add an extension with an attribute 1`] = `
 "<p><icon attr=\\"my-attr\\"></icon></p>
 "

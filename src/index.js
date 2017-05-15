@@ -1,6 +1,21 @@
 import _ from "lodash"
 import trim from "core-js/library/fn/string/virtual/trim"
 
+_.mixin({
+  "sortByHtmlAttrPreference": (object) => {
+    const keys = _.keys(object)
+    const sortedKeys = _.sortBy(keys, (key) => {
+      if (key === "id") return ""
+      else if (key === "className") return " "
+      else return key
+    })
+
+    return _.fromPairs(
+      _.map(sortedKeys, key => [key, object[key]])
+    )
+  }
+})
+
 function remarkGenericExtensions(options = {}) {
   const settings = Object.assign({}, {
     debug: false,
@@ -55,9 +70,7 @@ function remarkGenericExtensions(options = {}) {
 
         // Extract classnames i.e `.yeah`
         properties = properties.replace(/\s*\.([^\s]+)/g, (match, s1) => {
-          if (s1.length) {
-            classNamesArray.push(s1)
-          }
+          classNamesArray.push(s1)
           return ""
         })
         if (classNamesArray.length) {
@@ -97,7 +110,7 @@ function remarkGenericExtensions(options = {}) {
         type: "extension",
         data: {
           hName: element,
-          hProperties: propertiesObject,
+          hProperties: _.sortByHtmlAttrPreference(propertiesObject),
         }
       })
     }

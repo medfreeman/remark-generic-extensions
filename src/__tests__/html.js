@@ -51,6 +51,24 @@ test(
 )
 
 test(
+  "should add an extension with all types of parameters",
+  t => t.snapshot(
+    transformToHtml(
+      `!icon{ #my-id .my-class attr attr2=my-attr attr3="my attribute" }`,
+      {
+        elements: {
+          icon: {
+            attributeDefaultValues: {
+              attr: "default",
+            }
+          }
+        }
+      }
+    )
+  )
+)
+
+test(
   "should add an extension with a mapped content",
   t => t.snapshot(
     transformToHtml(
