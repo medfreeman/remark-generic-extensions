@@ -1,5 +1,4 @@
 import _ from "lodash"
-import trim from "core-js/library/fn/string/virtual/trim"
 
 _.mixin({
   "sortByHtmlAttrPreference": (object) => {
@@ -40,7 +39,7 @@ function remarkGenericExtensions(options = {}) {
       const element = match[1]
       const content = match[2] ? match[2] : undefined
       const argument = match[3] ? match[3] : undefined
-      let properties = match[4] ? match[4]::trim() : undefined
+      let properties = match[4] ? _.trim(match[4]) : undefined
 
       const classNamesArray = []
       const propertiesObject = {}
