@@ -34,6 +34,7 @@ function remarkGenericExtensions(options = {}) {
   function tokenizeExtension(eat, value, silent) {
     const match = /^\!(\w+)(?:\[([^\)]*)\])?(?:\(([^\)]*)\))?(?:\{([^\}]*)\})?/.exec(value)
     if (match) {
+      /* istanbul ignore if */
       if (silent) return true
 
       const element = match[1]
