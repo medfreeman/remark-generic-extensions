@@ -105,6 +105,22 @@ test(
 )
 
 test(
+  "should add an extension with a replaced tag",
+  t => t.snapshot(
+    transformToHtml(
+      "!icon",
+      {
+        elements: {
+          icon: {
+            tag: "my-icon"
+          }
+        }
+      }
+    )
+  )
+)
+
+test(
   "should work with other markdown",
   t => t.snapshot(
     transformToHtml(

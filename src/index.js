@@ -91,10 +91,12 @@ function remarkGenericExtensions(options = {}) {
         })
       }
 
+      const elementTag = _.get(settings, `elements[${element}].tag`, undefined)
+
       return eat(match[0])({
         type: "extension",
         data: {
-          hName: element,
+          hName: elementTag ? elementTag : element,
           hProperties: _.sortByHtmlAttrPreference(propertiesObject),
         }
       })
