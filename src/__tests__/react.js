@@ -128,7 +128,7 @@ test(
     transformToReact(
       `#heading
 
-!Icon(my-icon)`
+!Icon`
     )
   )
 )

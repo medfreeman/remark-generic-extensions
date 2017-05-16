@@ -15,10 +15,9 @@
     "watch": "babel -w  --ignore /__tests__/ -d ./lib ./src",
     "prepublish": "yarn build -s",
     "lint": "eslint --fix ./src",
-    "tests": "ava",
     "pretest": "yarn lint -s",
-    "test": "yarn tests -s",
-    "test-with-coverage": "nyc yarn test",
+    "test": "cross-env NODE_ENV=test ava",
+    "test-with-coverage": "cross-env NODE_ENV=test nyc ava",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "release": "npmpub"
   },
@@ -37,10 +36,12 @@
     "babel-cli": "^6.22.2",
     "babel-eslint": "^7.1.1",
     "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-istanbul": "^4.1.3",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.22.0",
     "coveralls": "^2.11.16",
+    "cross-env": "^5.0.0",
     "css-loader": "^0.28.1",
     "eslint": "^3.15.0",
     "eslint-config-i-am-meticulous": "^6.0.1",
@@ -60,12 +61,23 @@
   },
   "babel": {
     "presets": [
-      "babel-preset-es2015",
-      "babel-preset-react"
+      "babel-preset-es2015"
     ],
     "plugins": [
       "add-module-exports"
     ],
+    "env": {
+      "test": {
+        "presets": [
+          "babel-preset-es2015",
+          "babel-preset-react"
+        ],
+        "plugins": [
+          "istanbul"
+        ],
+        "sourceMaps": "inline"
+      }
+    },
     "ignore": [
       "node_modules/*"
     ]
@@ -75,6 +87,13 @@
       "babel-register"
     ],
     "babel": "inherit"
+  },
+  "nyc": {
+    "require": [
+      "babel-register"
+    ],
+    "sourceMap": false,
+    "instrument": false
   },
   "eslintConfig": {
     "parser": "babel-eslint",
@@ -128,13 +147,5 @@
         }
       }
     }
-  },
-  "nyc": {
-    "exclude": [
-      "test/**"
-    ],
-    "include": [
-      "src/**"
-    ]
   }
 }

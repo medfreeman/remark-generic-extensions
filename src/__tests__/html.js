@@ -110,7 +110,7 @@ test(
     transformToHtml(
       `#heading
 
-!icon(my-icon)`
+!icon`
     )
   )
 )
