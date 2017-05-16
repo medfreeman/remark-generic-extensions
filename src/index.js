@@ -16,7 +16,7 @@ _.mixin({
 })
 
 function remarkGenericExtensions(options = {}) {
-  const settings = Object.assign({}, {
+  const settings = _.assign({}, {
     debug: false,
     elements: {}
   }, options)
