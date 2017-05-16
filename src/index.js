@@ -91,21 +91,6 @@ function remarkGenericExtensions(options = {}) {
         })
       }
 
-      log("Element type:", element)
-      log("Full match:", match[0])
-      log("Content:", content ? content : "undefined" )
-      contentMappedAttribute ?
-        log(`The content property is mapped to '${contentMappedAttribute}' html attribute.`) :
-        log("The content property is not mapped to any html attribute.")
-      log("Argument:", argument ? argument : "undefined" )
-      argumentMappedAttribute ?
-        log(`The argument property is mapped to '${argumentMappedAttribute}' html attribute.`) :
-        log("The argument property is not mapped to any html attribute.")
-      log("Id:", propertiesObject["id"] ? propertiesObject["id"] : "undefined" )
-      log("Class names:", propertiesObject["className"] ? propertiesObject["className"] : "undefined" )
-      log("Properties:", Object.keys(propertiesObject).length !== 0 ? propertiesObject : "undefined")
-      log("\n")
-
       return eat(match[0])({
         type: "extension",
         data: {
@@ -118,12 +103,6 @@ function remarkGenericExtensions(options = {}) {
 
   function locateExtension(value, fromIndex) {
     return value.indexOf("!", fromIndex)
-  }
-
-  function log(...messages) {
-    if (settings.debug && typeof console !== "undefined") {
-      console.log(...messages)
-    }
   }
 }
 
