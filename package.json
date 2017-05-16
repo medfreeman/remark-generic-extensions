@@ -7,7 +7,9 @@
     "generic",
     "extensions",
     "markdown",
-    "remark"
+    "remark",
+    "html",
+    "react"
   ],
   "main": "lib/index.js",
   "scripts": {
