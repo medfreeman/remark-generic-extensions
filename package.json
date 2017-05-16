@@ -53,8 +53,7 @@
     "react-test-renderer": "^15.5.4",
     "remark": "^7.0.1",
     "remark-html": "^6.0.0",
-    "remark-react": "^4.0.0",
-    "sinon": "^2.2.0"
+    "remark-react": "^4.0.0"
   },
   "dependencies": {
     "lodash": "^4.17.4"
