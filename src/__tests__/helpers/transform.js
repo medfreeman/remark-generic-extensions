@@ -7,7 +7,7 @@ import genericExtensions from "../../"
 
 import Icon from "./Icon.jsx"
 
-const transformToHtml = (input, options = {}) => {
+const transformToHtml = (input, options) => {
   const { contents } = remark()
     .use(genericExtensions, options)
     .use(html)
@@ -15,7 +15,7 @@ const transformToHtml = (input, options = {}) => {
   return contents
 }
 
-const transformToReact = (input, options = {}) => {
+const transformToReact = (input, options) => {
   const { contents } = remark()
     .use(genericExtensions, options)
     .use(react, {
