@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should add an extension 1`] = `
+<div>
+  <p>
+    <icon />
+  </p>
+</div>
+`;
+
+exports[`should add an extension with a class 1`] = `
+<div>
+  <p>
+    <icon
+      className="my-class"
+    />
+  </p>
+</div>
+`;
+
+exports[`should add an extension with a lone attribute 1`] = `
+<div>
+  <p>
+    <icon
+      attr=""
+    />
+  </p>
+</div>
+`;
+
+exports[`should add an extension with a lone attribute with a default boolean value 1`] = `
+<div>
+  <p>
+    <icon
+      highlight
+    />
+  </p>
+</div>
+`;
+
+exports[`should add an extension with a lone attribute with a default value 1`] = `
+<div>
+  <p>
+    <icon
+      attr="default"
+    />
+  </p>
+</div>
+`;
+
+exports[`should add an extension with a mapped argument 1`] = `
+<div>
+  <p>
+    <icon
+      icon="my-icon"
+    />
+  </p>
+</div>
+`;
+
+exports[`should add an extension with a mapped content 1`] = `
+<div>
+  <p>
+    <icon
+      tooltip="my-tooltip"
+    />
+  </p>
+</div>
+`;
+
+exports[`should add an extension with a quoted attribute 1`] = `
+<div>
+  <p>
+    <icon
+      attr="my attribute"
+    />
+  </p>
+</div>
+`;
+
+exports[`should add an extension with all types of parameters 1`] = `
+<div>
+  <p>
+    <icon
+      attr="default"
+      attr2="my-attr"
+      attr3="my attribute"
+      className="my-class"
+      id="my-id"
+    />
+  </p>
+</div>
+`;
+
+exports[`should add an extension with an attribute 1`] = `
+<div>
+  <p>
+    <icon
+      attr="my-attr"
+    />
+  </p>
+</div>
+`;
+
+exports[`should add an extension with an id 1`] = `
+<div>
+  <p>
+    <icon
+      id="my-id"
+    />
+  </p>
+</div>
+`;
+
+exports[`should work with other markdown 1`] = `
+<div>
+  <p>
+    #heading
+  </p>
+  
+  
+  <p>
+    <icon />
+  </p>
+</div>
+`;
