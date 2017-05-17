@@ -17,7 +17,6 @@ _.mixin({
 
 function remarkGenericExtensions(options = {}) {
   const settings = _.assign({}, {
-    debug: false,
     elements: {}
   }, options)
 
