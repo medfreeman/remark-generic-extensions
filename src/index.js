@@ -1,22 +1,8 @@
 import _ from "lodash"
 
-_.mixin({
-  "sortByHtmlAttrPreference": (object) => {
-    const keys = _.keys(object)
-    const sortedKeys = _.sortBy(keys, (key) => {
-      if (key === "id") return ""
-      else if (key === "className") return " "
-      else return key
-    })
-
-    return _.fromPairs(
-      _.map(sortedKeys, key => [key, object[key]])
-    )
-  }
-})
-
 function remarkGenericExtensions(options = {}) {
   const settings = _.assign({}, {
+    placeholder: "::",
     elements: {}
   }, options)
 
@@ -36,75 +22,156 @@ function remarkGenericExtensions(options = {}) {
       /* istanbul ignore if */
       if (silent) return true
 
-      const element = match[1]
-      const content = match[2] ? match[2] : undefined
-      const argument = match[3] ? match[3] : undefined
-      let properties = match[4] ? _.trim(match[4]) : undefined
+      const element = {
+        name: match[1],
+        content: match[2] ? match[2] : undefined,
+        argument: match[3] ? match[3] : undefined,
+        properties: {
+          id: undefined,
+          className: undefined,
+        }
+      }
+
+      let propertiesString = match[4] ? _.trim(match[4]) : undefined
 
       const classNamesArray = []
-      const propertiesObject = {}
 
-      const contentMappedAttribute = _.get(settings, `elements[${element}].attributeMap.content`, undefined)
-      if (contentMappedAttribute) {
-        propertiesObject[contentMappedAttribute] = content
-      }
-
-      const argumentMappedAttribute = _.get(settings, `elements[${element}].attributeMap.argument`, undefined)
-      if (argumentMappedAttribute) {
-        propertiesObject[argumentMappedAttribute] = argument
-      }
-
-      if (properties) {
+      if (propertiesString) {
         // Extract key/value pairs surrounded by quotes i.e `foo="bar baz"`
-        properties = properties.replace(/\s*([^\t\n\f \/>"'=]+)=(?:\"([^"]+)\")/g, (match, s1, s2) => {
-          propertiesObject[s1] = s2
+        propertiesString = propertiesString.replace(/\s*([^\t\n\f \/>"'=]+)=(?:\"([^"]+)\")/g, (match, s1, s2) => {
+          element.properties[s1] = s2
           return ""
         })
 
         // Extract key/value pairs not surrounded by quotes i.e `foo=bar`
-        properties = properties.replace(/\s*([^\t\n\f \/>"'=]+)=([^\t\n\f \/>"'=]+)/g, (match, s1, s2) => {
-          propertiesObject[s1] = s2
+        propertiesString = propertiesString.replace(/\s*([^\t\n\f \/>"'=]+)=([^\t\n\f \/>"'=]+)/g, (match, s1, s2) => {
+          element.properties[s1] = s2
           return ""
         })
 
         // Extract classnames i.e `.yeah`
-        properties = properties.replace(/\s*\.([^\s]+)/g, (match, s1) => {
+        propertiesString = propertiesString.replace(/\s*\.([^\s]+)/g, (match, s1) => {
           classNamesArray.push(s1)
           return ""
         })
         if (classNamesArray.length) {
-          propertiesObject["className"] = classNamesArray.join(" ")
+          element.properties.className = classNamesArray.join(" ")
         }
 
         // Extract ids i.e `#heyy`, last one is kept if multiple are specified
-        properties = properties.replace(/\s*\#([^\s]+)/g, (match, s1) => {
-          propertiesObject["id"] = s1
+        propertiesString = propertiesString.replace(/\s*\#([^\s]+)/g, (match, s1) => {
+          element.properties.id = s1
           return ""
         })
 
         // Extract lone properties i.e `alone`
-        properties = properties.replace(/\s*([^\t\n\f \/>"'=]+)/g, (match, s1) => {
-          const attributeDefaultValue = _.get(settings, `elements[${element}].attributeDefaultValues[${s1}]`, undefined)
-          propertiesObject[s1] = attributeDefaultValue ? attributeDefaultValue : ""
+        propertiesString = propertiesString.replace(/\s*([^\t\n\f \/>"'=]+)/g, (match, s1) => {
+          element.properties[s1] = _.get(settings, `elements[${element.name}].attributeDefaultValues[${s1}]`, "")
           return ""
         })
       }
 
-      const elementTag = _.get(settings, `elements[${element}].tag`, undefined)
+      const hastInputTree = _.get(settings, `elements[${element.name}].hast`, {})
+      const { tagName, children, ...properties } = hastInputTree
 
-      return eat(match[0])({
+      const hastOutputTree = {
         type: "extension",
         data: {
-          hName: elementTag ? elementTag : element,
-          hProperties: _.sortByHtmlAttrPreference(propertiesObject),
+          hName: tagName ? tagName : element.name,
+          hChildren: []
+        }
+      }
+
+      const placeholder = _.escapeRegExp(settings.placeholder)
+
+      const foundPlaceholders = {
+        content: false,
+        argument: false,
+        properties: {
+          id: false,
+          className: false
+        }
+      }
+
+      const newProperties = replacePlaceholders(properties, element, placeholder, foundPlaceholders)
+
+      let hastInputChildrenTreeBranch = children
+      let hastChildrenTreeBranchArray = hastOutputTree.data.hChildren
+
+      while (hastInputChildrenTreeBranch) {
+        const { type, tagName, value, children, ...childProperties } = hastInputChildrenTreeBranch
+
+        const newChildProperties = replacePlaceholders(childProperties, element, placeholder, foundPlaceholders)
+
+        const hastBranch = {
+          type: type ? type : "element",
+          tagName: tagName ? tagName : undefined,
+          value: value ? value : undefined,
+          properties: {
+            ...newChildProperties
+          }
+        }
+
+        hastChildrenTreeBranchArray.push(
+          {
+            children: [],
+            ...hastBranch
+          }
+        )
+
+        hastInputChildrenTreeBranch = children
+        hastChildrenTreeBranchArray = hastChildrenTreeBranchArray[0].children
+      }
+
+      _.forOwn(element.properties, function(value, key) {
+        if (!_.get(foundPlaceholders, `properties[${key}]`, undefined)) {
+          newProperties[key] = element.properties[key]
         }
       })
+
+      hastOutputTree.data.hProperties = sortByHtmlAttrPreference(newProperties)
+
+      return eat(match[0])(hastOutputTree)
     }
+
   }
 
   function locateExtension(value, fromIndex) {
     return value.indexOf("!", fromIndex)
   }
+}
+
+const replacePlaceholders = (propertiesObject, valueObject, placeholder, foundObject) => {
+  const newPropertiesObject = {}
+  _.forOwn(propertiesObject, function(value, key) {
+    const newValue = value.replace(
+      new RegExp( placeholder + "(content|argument|prop)" + placeholder ),
+      (match, s1) => {
+        if (s1 === "prop") {
+          foundObject.properties[key] = true
+          return valueObject.properties[key]
+        } else {
+          foundObject.s1 = true
+          return valueObject[s1]
+        }
+      }
+    )
+    newPropertiesObject[key] = newValue
+  })
+  return newPropertiesObject
+}
+
+const sortByHtmlAttrPreference = (object) => {
+  const keys = _.keys(object)
+  const sortedKeys = _.sortBy(keys, (key) => {
+    if (key === "id") return ""
+    else if (key === "className") return " "
+    else return key
+  })
+
+  return _.fromPairs(
+    _.map(sortedKeys, key => [key, object[key]])
+  )
 }
 
 export default remarkGenericExtensions

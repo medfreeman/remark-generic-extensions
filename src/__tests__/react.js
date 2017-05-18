@@ -94,8 +94,8 @@ test(
       {
         elements: {
           Icon: {
-            attributeMap: {
-              content: "tooltip",
+            hast: {
+              tooltip: "::content::"
             }
           }
         }
@@ -112,8 +112,8 @@ test(
       {
         elements: {
           Icon: {
-            attributeMap: {
-              argument: "icon",
+            hast: {
+              icon: "::argument::"
             }
           }
         }

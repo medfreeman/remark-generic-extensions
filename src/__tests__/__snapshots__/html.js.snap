@@ -55,6 +55,16 @@ exports[`should add an extension with an id 1`] = `
 "
 `;
 
+exports[`should work with an element with a mapped property on a child 1`] = `
+"<p><icon><p id=\\"test\\"></p></icon></p>
+"
+`;
+
+exports[`should work with an element with multiple children 1`] = `
+"<p><icon><p>test</p></icon></p>
+"
+`;
+
 exports[`should work with other markdown 1`] = `
 "<p>#heading</p>
 <p><icon></icon></p>

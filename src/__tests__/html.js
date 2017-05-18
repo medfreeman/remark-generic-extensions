@@ -76,8 +76,8 @@ test(
       {
         elements: {
           icon: {
-            attributeMap: {
-              content: "tooltip",
+            hast: {
+              tooltip: "::content::"
             }
           }
         }
@@ -94,8 +94,8 @@ test(
       {
         elements: {
           icon: {
-            attributeMap: {
-              argument: "icon",
+            hast: {
+              icon: "::argument::"
             }
           }
         }
@@ -112,7 +112,9 @@ test(
       {
         elements: {
           icon: {
-            tag: "my-icon"
+            hast: {
+              tagName: "my-icon"
+            }
           }
         }
       }
@@ -127,6 +129,51 @@ test(
       `#heading
 
 !icon`
+    )
+  )
+)
+
+test(
+  "should work with an element with multiple children",
+  t => t.snapshot(
+    transformToHtml(
+      "!icon",
+      {
+        elements: {
+          icon: {
+            hast: {
+              children: {
+                tagName: "p",
+                children: {
+                  type: "text",
+                  value: "test"
+                }
+              }
+            }
+          }
+        }
+      }
+    )
+  )
+)
+
+test(
+  "should work with an element with a mapped property on a child",
+  t => t.snapshot(
+    transformToHtml(
+      "!icon{ #test }",
+      {
+        elements: {
+          icon: {
+            hast: {
+              children: {
+                tagName: "p",
+                id: "::prop::"
+              }
+            }
+          }
+        }
+      }
     )
   )
 )
