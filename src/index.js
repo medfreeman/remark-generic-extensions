@@ -17,7 +17,14 @@ function remarkGenericExtensions(options = {}) {
   methods.splice(methods.indexOf("text"), 0, "extension")
 
   function tokenizeExtension(eat, value, silent) {
-    const match = /^\!(\w+)(?:\[([^\)]*)\])?(?:\(([^\)]*)\))?(?:\{([^\}]*)\})?/.exec(value)
+    const inlineExtensionRegex = /^\!(\w+)(?:\[([^\)]*)\])?(?:\(([^\)]*)\))?(?:\{([^\}]*)\})?/
+    const keyValueQuotedPropertiesRegex = /\s*([^\t\n\f \/>"'=]+)=(?:\"([^"]+)\")/g
+    const keyValuePropertiesRegex = /\s*([^\t\n\f \/>"'=]+)=([^\t\n\f \/>"'=]+)/g
+    const classNameRegex = /\s*\.([^\s]+)/g
+    const idRegex = /\s*\#([^\s]+)/g
+    const lonePropertiesRegex = /\s*([^\t\n\f \/>"'=]+)/g
+
+    const match = inlineExtensionRegex.exec(value)
     if (match) {
       /* istanbul ignore if */
       if (silent) return true
@@ -58,19 +65,19 @@ function remarkGenericExtensions(options = {}) {
 
       if (propertiesString) {
         // Extract key/value pairs surrounded by quotes i.e `foo="bar baz"`
-        propertiesString = propertiesString.replace(/\s*([^\t\n\f \/>"'=]+)=(?:\"([^"]+)\")/g, (match, s1, s2) => {
+        propertiesString = propertiesString.replace(keyValueQuotedPropertiesRegex, (match, s1, s2) => {
           element.properties[s1] = s2
           return ""
         })
 
         // Extract key/value pairs not surrounded by quotes i.e `foo=bar`
-        propertiesString = propertiesString.replace(/\s*([^\t\n\f \/>"'=]+)=([^\t\n\f \/>"'=]+)/g, (match, s1, s2) => {
+        propertiesString = propertiesString.replace(keyValuePropertiesRegex, (match, s1, s2) => {
           element.properties[s1] = s2
           return ""
         })
 
         // Extract classnames i.e `.yeah`
-        propertiesString = propertiesString.replace(/\s*\.([^\s]+)/g, (match, s1) => {
+        propertiesString = propertiesString.replace(classNameRegex, (match, s1) => {
           classNamesArray.push(s1)
           return ""
         })
@@ -79,13 +86,13 @@ function remarkGenericExtensions(options = {}) {
         }
 
         // Extract ids i.e `#heyy`, last one is kept if multiple are specified
-        propertiesString = propertiesString.replace(/\s*\#([^\s]+)/g, (match, s1) => {
+        propertiesString = propertiesString.replace(idRegex, (match, s1) => {
           element.properties.id = s1
           return ""
         })
 
         // Extract lone properties i.e `alone`
-        propertiesString = propertiesString.replace(/\s*([^\t\n\f \/>"'=]+)/g, (match, s1) => {
+        propertiesString = propertiesString.replace(lonePropertiesRegex, (match, s1) => {
           element.properties[s1] = _.get(settings, `elements[${element.name}].attributeDefaultValues[${s1}]`, "")
           return ""
         })
