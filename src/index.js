@@ -20,12 +20,12 @@ function remarkGenericExtensions(options = {}) {
     const inlineExtensionRegex =
       /^\!(\w+)(?:\[([^\)]*)\])?(?:\(([^\)]*)\))?(?:\{([^\}]*)\})?/
     const keyValueQuotedPropertiesRegex =
-      /\s*([^\t\n\f \/>"'=]+)=(?:\"([^"]+)\")/g
+      /(?:\t )*([^\t \/>"'=]+)=(?:\"([^"]+)\")/g
     const keyValuePropertiesRegex =
-      /\s*([^\t\n\f \/>"'=]+)=([^\t\n\f \/>"'=]+)/g
-    const classNameRegex = /\s*\.([^\s]+)/g
-    const idRegex = /\s*\#([^\s]+)/g
-    const lonePropertiesRegex = /\s*([^\t\n\f \/>"'=]+)/g
+      /(?:\t )*([^\t \/>"'=]+)=([^\t \/>"'=]+)/g
+    const classNameRegex = /(?:\t )*\.([^\t ]+)/g
+    const idRegex = /(?:\t )*\#([^\t ]+)/g
+    const lonePropertiesRegex = /(?:\t )*([^\t \/>"'=]+)/g
 
     const match = inlineExtensionRegex.exec(value)
     if (match) {
