@@ -78,9 +78,12 @@ function remarkGenericExtensions(options = {}) {
         })
       }
 
+      // Fetch the user provided pseudo hast tree
       const hastInputTree = _.get(settings, `elements[${element.name}].hast`, {})
+      // Extract the first-level hast properties separated from structure
       const { tagName, children, ...properties } = hastInputTree
 
+      // Prepare the final hast tree
       const hastOutputTree = {
         type: "inline-extension",
         data: {
@@ -89,8 +92,15 @@ function remarkGenericExtensions(options = {}) {
         }
       }
 
+      // Escape the user provided placeholder for use in regex
       const placeholder = _.escapeRegExp(settings.placeholder)
 
+      /*
+        Prepare the found placeholders object
+        The replacements that have *NOT* been provided
+        will have their corresponding properties
+        applied to the top-level html element later
+      */
       const foundPlaceholders = {
         content: false,
         argument: false,
@@ -100,6 +110,11 @@ function remarkGenericExtensions(options = {}) {
         }
       }
 
+      /*
+        Replace the placeholders on any level
+        of the pseudo hast tree by their corresponding
+        property and populate the found placeholders object
+      */
       const replacePlaceholders = (propertiesObject) => {
         const newPropertiesObject = {}
         _.forOwn(propertiesObject, function(value, key) {
@@ -120,16 +135,23 @@ function remarkGenericExtensions(options = {}) {
         return newPropertiesObject
       }
 
+      // Replace the placeholders in the first-level of the tree
       const newProperties = replacePlaceholders(properties)
 
+      // Keep a reference to the next children branch in the input tree
       let hastInputChildrenTreeBranch = children
+      // Keep a reference to the next children branch in the output tree
       let hastChildrenTreeBranchArray = hastOutputTree.data.hChildren
 
+      // While there is children to process
       while (hastInputChildrenTreeBranch) {
+        // Extract the current level hast properties separated from structure
         const { type, tagName, value, children, ...childProperties } = hastInputChildrenTreeBranch
 
+        // Replaces the placeholders in the current level of the tree
         const newChildProperties = replacePlaceholders(childProperties)
 
+        // Prepare the current level of the hast output tree
         const hastBranch = {
           type: type ? type : "element",
           tagName: tagName ? tagName : undefined,
@@ -139,6 +161,7 @@ function remarkGenericExtensions(options = {}) {
           }
         }
 
+        // Add the current level tree branch to the output tree
         hastChildrenTreeBranchArray.push(
           {
             children: [],
@@ -146,18 +169,31 @@ function remarkGenericExtensions(options = {}) {
           }
         )
 
+        // Keep a reference to the next children branch in the input tree
         hastInputChildrenTreeBranch = children
+        // Keep a reference to the next children branch in the output tree
         hastChildrenTreeBranchArray = hastChildrenTreeBranchArray[0].children
       }
 
+      // For each property found in markdown
       _.forOwn(element.properties, function(value, key) {
+        // If the property was not referenced by a placeholder
         if (!_.get(foundPlaceholders, `properties[${key}]`, undefined)) {
+          // Set the corresponding property to the first-level html element
           newProperties[key] = element.properties[key]
         }
       })
 
+      /*
+        Assign the first-level html element properties
+        sorted in this order, `id` property, `class` property, then alphabetical,
+        since remark-html prints its output in the order by which the properties
+        have been added to the object
+        Not applicable through remark-react
+      */
       hastOutputTree.data.hProperties = sortByHtmlAttrPreference(newProperties)
 
+      // Return the output tree, while eating the original markdown
       return eat(match[0])(hastOutputTree)
     }
 
@@ -168,6 +204,10 @@ function remarkGenericExtensions(options = {}) {
   }
 }
 
+/*
+  Sort an object keys by custom order:
+  `id` property, `class` property, then alphabetical
+*/
 const sortByHtmlAttrPreference = (object) => {
   const keys = _.keys(object)
   const sortedKeys = _.sortBy(keys, (key) => {
