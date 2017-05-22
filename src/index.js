@@ -102,7 +102,7 @@ function remarkGenericExtensions(options = {}) {
       const { tagName, children, ...properties } = hastInputTree
 
       const hastOutputTree = {
-        type: "extension",
+        type: "inline-extension",
         data: {
           hName: tagName ? tagName : element.name,
           hChildren: []
