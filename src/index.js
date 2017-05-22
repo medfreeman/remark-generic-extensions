@@ -22,6 +22,26 @@ function remarkGenericExtensions(options = {}) {
       /* istanbul ignore if */
       if (silent) return true
 
+      const replacePlaceholders = (propertiesObject) => {
+        const newPropertiesObject = {}
+        _.forOwn(propertiesObject, function(value, key) {
+          const newValue = value.replace(
+            new RegExp( placeholder + "(content|argument|prop)" + placeholder ),
+            (match, s1) => {
+              if (s1 === "prop") {
+                foundPlaceholders.properties[key] = true
+                return element.properties[key]
+              } else {
+                foundPlaceholders.s1 = true
+                return element[s1]
+              }
+            }
+          )
+          newPropertiesObject[key] = newValue
+        })
+        return newPropertiesObject
+      }
+
       const element = {
         name: match[1],
         content: match[2] ? match[2] : undefined,
@@ -93,7 +113,7 @@ function remarkGenericExtensions(options = {}) {
         }
       }
 
-      const newProperties = replacePlaceholders(properties, element, placeholder, foundPlaceholders)
+      const newProperties = replacePlaceholders(properties)
 
       let hastInputChildrenTreeBranch = children
       let hastChildrenTreeBranchArray = hastOutputTree.data.hChildren
@@ -101,7 +121,7 @@ function remarkGenericExtensions(options = {}) {
       while (hastInputChildrenTreeBranch) {
         const { type, tagName, value, children, ...childProperties } = hastInputChildrenTreeBranch
 
-        const newChildProperties = replacePlaceholders(childProperties, element, placeholder, foundPlaceholders)
+        const newChildProperties = replacePlaceholders(childProperties)
 
         const hastBranch = {
           type: type ? type : "element",
@@ -139,26 +159,6 @@ function remarkGenericExtensions(options = {}) {
   function locateExtension(value, fromIndex) {
     return value.indexOf("!", fromIndex)
   }
-}
-
-const replacePlaceholders = (propertiesObject, valueObject, placeholder, foundObject) => {
-  const newPropertiesObject = {}
-  _.forOwn(propertiesObject, function(value, key) {
-    const newValue = value.replace(
-      new RegExp( placeholder + "(content|argument|prop)" + placeholder ),
-      (match, s1) => {
-        if (s1 === "prop") {
-          foundObject.properties[key] = true
-          return valueObject.properties[key]
-        } else {
-          foundObject.s1 = true
-          return valueObject[s1]
-        }
-      }
-    )
-    newPropertiesObject[key] = newValue
-  })
-  return newPropertiesObject
 }
 
 const sortByHtmlAttrPreference = (object) => {
