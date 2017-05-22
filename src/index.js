@@ -17,9 +17,12 @@ function remarkGenericExtensions(options = {}) {
   methods.splice(methods.indexOf("text"), 0, "extension")
 
   function tokenizeExtension(eat, value, silent) {
-    const inlineExtensionRegex = /^\!(\w+)(?:\[([^\)]*)\])?(?:\(([^\)]*)\))?(?:\{([^\}]*)\})?/
-    const keyValueQuotedPropertiesRegex = /\s*([^\t\n\f \/>"'=]+)=(?:\"([^"]+)\")/g
-    const keyValuePropertiesRegex = /\s*([^\t\n\f \/>"'=]+)=([^\t\n\f \/>"'=]+)/g
+    const inlineExtensionRegex =
+      /^\!(\w+)(?:\[([^\)]*)\])?(?:\(([^\)]*)\))?(?:\{([^\}]*)\})?/
+    const keyValueQuotedPropertiesRegex =
+      /\s*([^\t\n\f \/>"'=]+)=(?:\"([^"]+)\")/g
+    const keyValuePropertiesRegex =
+      /\s*([^\t\n\f \/>"'=]+)=([^\t\n\f \/>"'=]+)/g
     const classNameRegex = /\s*\.([^\s]+)/g
     const idRegex = /\s*\#([^\s]+)/g
     const lonePropertiesRegex = /\s*([^\t\n\f \/>"'=]+)/g
@@ -45,22 +48,31 @@ function remarkGenericExtensions(options = {}) {
 
       if (propertiesString) {
         // Extract key/value pairs surrounded by quotes i.e `foo="bar baz"`
-        propertiesString = propertiesString.replace(keyValueQuotedPropertiesRegex, (match, s1, s2) => {
-          element.properties[s1] = s2
-          return ""
-        })
+        propertiesString = propertiesString.replace(
+          keyValueQuotedPropertiesRegex,
+          (match, s1, s2) => {
+            element.properties[s1] = s2
+            return ""
+          }
+        )
 
         // Extract key/value pairs not surrounded by quotes i.e `foo=bar`
-        propertiesString = propertiesString.replace(keyValuePropertiesRegex, (match, s1, s2) => {
-          element.properties[s1] = s2
-          return ""
-        })
+        propertiesString = propertiesString.replace(
+          keyValuePropertiesRegex,
+          (match, s1, s2) => {
+            element.properties[s1] = s2
+            return ""
+          }
+        )
 
         // Extract classnames i.e `.yeah`
-        propertiesString = propertiesString.replace(classNameRegex, (match, s1) => {
-          classNamesArray.push(s1)
-          return ""
-        })
+        propertiesString = propertiesString.replace(
+          classNameRegex,
+          (match, s1) => {
+            classNamesArray.push(s1)
+            return ""
+          }
+        )
         if (classNamesArray.length) {
           element.properties.className = classNamesArray.join(" ")
         }
@@ -72,14 +84,26 @@ function remarkGenericExtensions(options = {}) {
         })
 
         // Extract lone properties i.e `alone`
-        propertiesString = propertiesString.replace(lonePropertiesRegex, (match, s1) => {
-          element.properties[s1] = _.get(settings, `elements[${element.name}].attributeDefaultValues[${s1}]`, "")
-          return ""
-        })
+        propertiesString = propertiesString.replace(
+          lonePropertiesRegex,
+          (match, s1) => {
+            element.properties[s1] = _.get(
+              settings,
+              `elements[${element.name}].attributeDefaultValues[${s1}]`,
+              ""
+            )
+            return ""
+          }
+        )
+
       }
 
       // Fetch the user provided pseudo hast tree
-      const hastInputTree = _.get(settings, `elements[${element.name}].hast`, {})
+      const hastInputTree = _.get(
+        settings,
+        `elements[${element.name}].hast`,
+        {}
+      )
       // Extract the first-level hast properties separated from structure
       const { tagName, children, ...properties } = hastInputTree
 
@@ -146,7 +170,8 @@ function remarkGenericExtensions(options = {}) {
       // While there is children to process
       while (hastInputChildrenTreeBranch) {
         // Extract the current level hast properties separated from structure
-        const { type, tagName, value, children, ...childProperties } = hastInputChildrenTreeBranch
+        const { type, tagName, value, children, ...childProperties } =
+          hastInputChildrenTreeBranch
 
         // Replaces the placeholders in the current level of the tree
         const newChildProperties = replacePlaceholders(childProperties)
@@ -186,10 +211,10 @@ function remarkGenericExtensions(options = {}) {
 
       /*
         Assign the first-level html element properties
-        sorted in this order, `id` property, `class` property, then alphabetical,
-        since remark-html prints its output in the order by which the properties
-        have been added to the object
-        Not applicable through remark-react
+        sorted in this order, `id` property, `class` property,
+        then alphabetical, since remark-html prints its output
+        in the order by which the properties have been added to the object
+        Does not show through remark-react
       */
       hastOutputTree.data.hProperties = sortByHtmlAttrPreference(newProperties)
 
