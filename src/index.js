@@ -162,43 +162,38 @@ function remarkGenericExtensions(options = {}) {
       // Replace the placeholders in the first-level of the tree
       const newProperties = replacePlaceholders(properties)
 
-      // Keep a reference to the next children branch in the input tree
-      let hastInputChildrenTreeBranch = children
-      // Keep a reference to the next children branch in the output tree
-      let hastChildrenTreeBranchArray = hastOutputTree.data.hChildren
+      const parseHastChildrenTreeRecursive = (inputChildrenArray) => {
+        const outputChildrenArray = []
+        _.forEach(inputChildrenArray, (childElement) => {
+          // Extract the current level hast properties separated from structure
+          const { type, tagName, value, children, ...properties } =
+            childElement
 
-      // While there is children to process
-      while (hastInputChildrenTreeBranch) {
-        // Extract the current level hast properties separated from structure
-        const { type, tagName, value, children, ...childProperties } =
-          hastInputChildrenTreeBranch
+          // Replace the placeholders in the current level of the tree
+          const newProperties = replacePlaceholders(properties)
 
-        // Replaces the placeholders in the current level of the tree
-        const newChildProperties = replacePlaceholders(childProperties)
-
-        // Prepare the current level of the hast output tree
-        const hastBranch = {
-          type: type ? type : "element",
-          tagName: tagName ? tagName : undefined,
-          value: value ? value : undefined,
-          properties: {
-            ...newChildProperties
+          // Prepare the current level of the hast output tree
+          const branch = {
+            type: type ? type : "element",
+            tagName: tagName ? tagName : undefined,
+            value: value ? value : undefined,
+            properties: {
+              ...newProperties
+            }
           }
-        }
 
-        // Add the current level tree branch to the output tree
-        hastChildrenTreeBranchArray.push(
-          {
-            children: [],
-            ...hastBranch
-          }
-        )
-
-        // Keep a reference to the next children branch in the input tree
-        hastInputChildrenTreeBranch = children
-        // Keep a reference to the next children branch in the output tree
-        hastChildrenTreeBranchArray = hastChildrenTreeBranchArray[0].children
+          // Add the current level tree branch to the output tree
+          outputChildrenArray.push(
+            {
+              children: parseHastChildrenTreeRecursive(children),
+              ...branch
+            }
+          )
+        })
+        return outputChildrenArray
       }
+
+      hastOutputTree.data.hChildren = parseHastChildrenTreeRecursive(children)
 
       // For each property found in markdown
       _.forOwn(element.properties, function(value, key) {

@@ -65,6 +65,11 @@ exports[`should work with an element with multiple children 1`] = `
 "
 `;
 
+exports[`should work with an element with multiple children on the same level 1`] = `
+"<p><icon><p>test</p><span>bla</span></icon></p>
+"
+`;
+
 exports[`should work with other markdown 1`] = `
 "<p>#heading</p>
 <p><icon></icon></p>

@@ -142,13 +142,17 @@ test(
         elements: {
           icon: {
             hast: {
-              children: {
-                tagName: "p",
-                children: {
-                  type: "text",
-                  value: "test"
+              children: [
+                {
+                  tagName: "p",
+                  children: [
+                    {
+                      type: "text",
+                      value: "test"
+                    }
+                  ]
                 }
-              }
+              ]
             }
           }
         }
@@ -166,10 +170,49 @@ test(
         elements: {
           icon: {
             hast: {
-              children: {
-                tagName: "p",
-                id: "::prop::"
-              }
+              children: [
+                {
+                  tagName: "p",
+                  id: "::prop::"
+                }
+              ]
+            }
+          }
+        }
+      }
+    )
+  )
+)
+
+test(
+  "should work with an element with multiple children on the same level",
+  t => t.snapshot(
+    transformToHtml(
+      "!icon",
+      {
+        elements: {
+          icon: {
+            hast: {
+              children: [
+                {
+                  tagName: "p",
+                  children: [
+                    {
+                      type: "text",
+                      value: "test"
+                    }
+                  ]
+                },
+                {
+                  tagName: "span",
+                  children: [
+                    {
+                      type: "text",
+                      value: "bla"
+                    }
+                  ]
+                }
+              ]
             }
           }
         }
