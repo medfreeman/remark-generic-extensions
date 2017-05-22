@@ -173,7 +173,7 @@ test(
               children: [
                 {
                   tagName: "p",
-                  id: "::prop::"
+                  id: "::prop::id::"
                 }
               ]
             }

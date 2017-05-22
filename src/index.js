@@ -143,11 +143,16 @@ function remarkGenericExtensions(options = {}) {
         const newPropertiesObject = {}
         _.forOwn(propertiesObject, function(value, key) {
           const newValue = value.replace(
-            new RegExp( placeholder + "(content|argument|prop)" + placeholder ),
-            (match, s1) => {
-              if (s1 === "prop") {
-                foundPlaceholders.properties[key] = true
-                return element.properties[key]
+            new RegExp(
+              placeholder +
+              "(content|argument|prop" + placeholder +
+              "(" + _.keys(element.properties).join("|") + "))" +
+              placeholder
+            ),
+            (match, s1, s2) => {
+              if (_.startsWith(s1, "prop")) {
+                foundPlaceholders.properties[s2] = true
+                return element.properties[s2]
               } else {
                 foundPlaceholders.s1 = true
                 return element[s1]
