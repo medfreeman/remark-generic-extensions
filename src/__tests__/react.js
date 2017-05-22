@@ -50,7 +50,7 @@ test(
   )
 )
 
-/* test(
+test.skip(
   "should add an extension with a lone attribute with a default boolean value",
   t => t.snapshot(
     transformToReact(
@@ -66,7 +66,7 @@ test(
       }
     )
   )
-) */
+)
 
 test(
   "should add an extension with all types of parameters",
