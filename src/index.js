@@ -29,26 +29,6 @@ function remarkGenericExtensions(options = {}) {
       /* istanbul ignore if */
       if (silent) return true
 
-      const replacePlaceholders = (propertiesObject) => {
-        const newPropertiesObject = {}
-        _.forOwn(propertiesObject, function(value, key) {
-          const newValue = value.replace(
-            new RegExp( placeholder + "(content|argument|prop)" + placeholder ),
-            (match, s1) => {
-              if (s1 === "prop") {
-                foundPlaceholders.properties[key] = true
-                return element.properties[key]
-              } else {
-                foundPlaceholders.s1 = true
-                return element[s1]
-              }
-            }
-          )
-          newPropertiesObject[key] = newValue
-        })
-        return newPropertiesObject
-      }
-
       const element = {
         name: match[1],
         content: match[2] ? match[2] : undefined,
@@ -118,6 +98,26 @@ function remarkGenericExtensions(options = {}) {
           id: false,
           className: false
         }
+      }
+
+      const replacePlaceholders = (propertiesObject) => {
+        const newPropertiesObject = {}
+        _.forOwn(propertiesObject, function(value, key) {
+          const newValue = value.replace(
+            new RegExp( placeholder + "(content|argument|prop)" + placeholder ),
+            (match, s1) => {
+              if (s1 === "prop") {
+                foundPlaceholders.properties[key] = true
+                return element.properties[key]
+              } else {
+                foundPlaceholders.s1 = true
+                return element[s1]
+              }
+            }
+          )
+          newPropertiesObject[key] = newValue
+        })
+        return newPropertiesObject
       }
 
       const newProperties = replacePlaceholders(properties)
