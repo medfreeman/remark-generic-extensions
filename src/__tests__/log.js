@@ -9,5 +9,5 @@ test(
 
 test(
   "should log information if debug is enabled",
-  t => t.snapshot(transformToLog("!icon", { debug:true }))
+  t => t.snapshot(transformToLog("!icon", { debug: true }))
 )
