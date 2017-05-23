@@ -105,6 +105,25 @@ test(
 )
 
 test(
+  "should work with a different placeholder",
+  t => t.snapshot(
+    transformToHtml(
+      "!icon(my-icon)",
+      {
+        placeholder: "||",
+        elements: {
+          icon: {
+            hast: {
+              icon: "||argument||"
+            }
+          }
+        }
+      }
+    )
+  )
+)
+
+test(
   "should add an extension with a replaced tag",
   t => t.snapshot(
     transformToHtml(
