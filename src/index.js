@@ -3,6 +3,7 @@ import _ from "lodash"
 function remarkGenericExtensions(options = {}) {
   const settings = _.assign({}, {
     placeholder: "::",
+    debug: false,
     elements: {}
   }, options)
 
@@ -27,6 +28,24 @@ function remarkGenericExtensions(options = {}) {
     const idRegex = /(?:\t )*\#([^\t ]+)/g
     const lonePropertiesRegex = /(?:\t )*([^\t \/>"'=]+)/g
 
+    /*
+      const fail = (message) => {
+        eat.file.fail(message , eat.now())
+      }
+    */
+
+    const warning = (message) => {
+      eat.file.message(message , eat.now())
+    }
+
+    const debug = (message) => {
+      if(settings.debug) {
+        warning(message)
+      }
+    }
+
+    const pretty = (object) => JSON.stringify(object, undefined, 2)
+
     const match = inlineExtensionRegex.exec(value)
     if (match) {
       /* istanbul ignore if */
@@ -43,6 +62,12 @@ function remarkGenericExtensions(options = {}) {
       }
 
       let propertiesString = match[4] ? _.trim(match[4]) : undefined
+
+      debug(`Inline extension \`${element.name}\` found`)
+      debug(`Full match: "${match[0]}"`)
+      debug(`Content: "${element.content || ""}"`)
+      debug(`Argument: "${element.argument || ""}"`)
+      debug(`Properties string: "${propertiesString || ""}"`)
 
       const classNamesArray = []
 
@@ -97,6 +122,10 @@ function remarkGenericExtensions(options = {}) {
         )
 
       }
+
+      debug(
+        "Computed properties: " + pretty(element.properties)
+      )
 
       // Fetch the user provided pseudo hast tree
       const hastInputTree = _.get(
@@ -217,6 +246,8 @@ function remarkGenericExtensions(options = {}) {
         Does not show through remark-react
       */
       hastOutputTree.data.hProperties = sortByHtmlAttrPreference(newProperties)
+
+      debug("Hast output tree:\n" + pretty(hastOutputTree))
 
       // Return the output tree, while eating the original markdown
       return eat(match[0])(hastOutputTree)

@@ -1,6 +1,7 @@
 import remark from "remark"
 import html from "remark-html"
 import react from "remark-react"
+import report from "vfile-reporter"
 import reactTestRenderer from "react-test-renderer"
 
 import genericExtensions from "../../"
@@ -13,6 +14,17 @@ const transformToHtml = (input, options) => {
     .use(html)
     .processSync(input)
   return contents
+}
+
+const transformToLog = (input, options) => {
+  let log = ""
+  remark()
+    .use(genericExtensions, options)
+    .use(html)
+    .process(input, function(err, file) {
+      log += report(err || file)
+    })
+  return log
 }
 
 const transformToReact = (input, options) => {
@@ -28,4 +40,4 @@ const transformToReact = (input, options) => {
   return reactTestRenderer.create(contents).toJSON()
 }
 
-export { transformToHtml, transformToReact }
+export { transformToHtml, transformToLog, transformToReact }
