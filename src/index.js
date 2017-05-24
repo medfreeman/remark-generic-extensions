@@ -1,5 +1,8 @@
 import _ from "lodash"
 
+import { prettify, sortKeysByHtmlAttrs } from "./utils/object"
+import { vfileDebug } from "./utils/eat"
+
 function remarkGenericExtensions(options = {}) {
   const settings = _.assign({}, {
     placeholder: "::",
@@ -28,28 +31,12 @@ function remarkGenericExtensions(options = {}) {
     const idRegex = /(?:\t )*\#([^\t ]+)/g
     const lonePropertiesRegex = /(?:\t )*([^\t \/>"'=]+)/g
 
-    /*
-      const fail = (message) => {
-        eat.file.fail(message , eat.now())
-      }
-    */
-
-    const warning = (message) => {
-      eat.file.message(message , eat.now())
-    }
-
-    const debug = (message) => {
-      if(settings.debug) {
-        warning(message)
-      }
-    }
-
-    const pretty = (object) => JSON.stringify(object, undefined, 2)
-
     const match = inlineExtensionRegex.exec(value)
     if (match) {
       /* istanbul ignore if */
       if (silent) return true
+
+      const debug = settings.debug ? eat::vfileDebug : () => {}
 
       const element = {
         name: match[1],
@@ -124,7 +111,7 @@ function remarkGenericExtensions(options = {}) {
       }
 
       debug(
-        "Computed properties: " + pretty(element.properties)
+        "Computed properties: " + element.properties::prettify()
       )
 
       // Fetch the user provided pseudo hast tree
@@ -245,9 +232,9 @@ function remarkGenericExtensions(options = {}) {
         in the order by which the properties have been added to the object
         Does not show through remark-react
       */
-      hastOutputTree.data.hProperties = sortByHtmlAttrPreference(newProperties)
+      hastOutputTree.data.hProperties = newProperties::sortKeysByHtmlAttrs()
 
-      debug("Hast output tree:\n" + pretty(hastOutputTree))
+      debug("Hast output tree:\n" + hastOutputTree::prettify())
 
       // Return the output tree, while eating the original markdown
       return eat(match[0])(hastOutputTree)
@@ -258,23 +245,6 @@ function remarkGenericExtensions(options = {}) {
   function locateExtension(value, fromIndex) {
     return value.indexOf("!", fromIndex)
   }
-}
-
-/*
-  Sort an object keys by custom order:
-  `id` property, `class` property, then alphabetical
-*/
-const sortByHtmlAttrPreference = (object) => {
-  const keys = _.keys(object)
-  const sortedKeys = _.sortBy(keys, (key) => {
-    if (key === "id") return ""
-    else if (key === "className") return " "
-    else return key
-  })
-
-  return _.fromPairs(
-    _.map(sortedKeys, key => [key, object[key]])
-  )
 }
 
 export default remarkGenericExtensions
