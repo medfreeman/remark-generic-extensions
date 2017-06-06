@@ -50,6 +50,7 @@ function remarkGenericExtensions(options = {}) {
 
   const settings = Object::assign({},
     {
+      debug: false,
       placeholder: "::",
       elements: {}
     },
