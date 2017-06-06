@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should log information if debug is enabled 1`] = `
-"  1:1  [33mwarning[39m  Inline extension \`icon\` found
-  1:1  [33mwarning[39m  Full match: \\"!icon\\"
-  1:1  [33mwarning[39m  Content: \\"\\"
-  1:1  [33mwarning[39m  Argument: \\"\\"
-  1:1  [33mwarning[39m  Properties string: \\"\\"
-  1:1  [33mwarning[39m  Computed properties: {}
+"  1:1  [33mwarning[39m  Inline extension \`icon\` found  debug
+  1:1  [33mwarning[39m  Full match: \\"!icon\\"            debug
+  1:1  [33mwarning[39m  Content: \\"\\"                    debug
+  1:1  [33mwarning[39m  Argument: \\"\\"                   debug
+  1:1  [33mwarning[39m  Properties string: \\"\\"          debug
+  1:1  [33mwarning[39m  Computed properties: {}        debug
   1:1  [33mwarning[39m  Hast output tree:
 {
   \\"type\\": \\"inline-extension\\",
@@ -15,7 +15,7 @@ exports[`should log information if debug is enabled 1`] = `
     \\"hChildren\\": [],
     \\"hProperties\\": {}
   }
-}
+}              debug
 
 [33m⚠[39m 7 warnings"
 `;
