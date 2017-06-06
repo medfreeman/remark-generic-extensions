@@ -208,13 +208,7 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
       }
     })
 
-    /*
-      Assign the first-level html element properties
-      sorted in this order, `id` property, `class` property,
-      then alphabetical, since remark-html prints its output
-      in the order by which the properties have been added to the object
-      Does not show through remark-react
-    */
+    // Assign the first-level properties to the hast node
     hastOutputTree.data.hProperties = newProperties
 
     debug("Hast output tree:\n" + hastOutputTree::prettify())
