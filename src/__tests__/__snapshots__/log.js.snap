@@ -1,5 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should log a warning if there is an invalid property 1`] = `
+"  1:1  [33mwarning[39m  There was some invalid properties: \\"/\\" was left after the processing of \\"/foo\\"
+
+[33m⚠[39m 1 warning"
+`;
+
 exports[`should log information if debug is enabled 1`] = `
 "  1:1  [33mwarning[39m  Inline extension \`icon\` found  debug
   1:1  [33mwarning[39m  Full match: \\"!icon\\"            debug

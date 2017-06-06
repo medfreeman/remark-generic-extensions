@@ -11,3 +11,8 @@ test(
   "should log information if debug is enabled",
   t => t.snapshot(transformToLog("!icon", { debug: true }))
 )
+
+test(
+  "should log a warning if there is an invalid property",
+  t => t.snapshot(transformToLog("!icon{/foo}"))
+)

@@ -5,7 +5,7 @@ import startsWith from "core-js/library/fn/string/virtual/starts-with"
 import trim from "core-js/library/fn/string/virtual/trim"
 
 import { get, prettify } from "../utils/object"
-import { vfileDebug } from "../utils/eat"
+import { vfileDebug, vfileWarning } from "../utils/eat"
 
 function inlineExtensionTokenizer(eat, value, silent, settings) {
   const inlineExtensionRegex =
@@ -24,6 +24,7 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
     if (silent) return true
 
     const debug = settings.debug ? eat::vfileDebug : () => {}
+    const warning = eat::vfileWarning
 
     const element = {
       name: match[1],
@@ -94,6 +95,13 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
         }
       )
 
+    }
+
+    if (propertiesString && propertiesString !== "") {
+      warning(
+        `There was some invalid properties: "${propertiesString}" ` +
+        `was left after the processing of "${match[4]}"`
+      )
     }
 
     debug(
