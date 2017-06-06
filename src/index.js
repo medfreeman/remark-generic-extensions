@@ -1,13 +1,20 @@
-import _ from "lodash"
+import assign from "core-js/library/fn/object/assign"
 
 import inlineExtensionLocator from "./locators/inline"
 import inlineExtensionTokenizer from "./tokenizers/inline"
+import { escapeRegExp } from "./utils/string"
 
 function remarkGenericExtensions(options = {}) {
-  const settings = _.assign({}, {
-    placeholder: "::",
-    elements: {}
-  }, options)
+  const settings = Object::assign({},
+    {
+      placeholder: "::",
+      elements: {}
+    },
+    options
+  )
+
+  // Escape the user provided placeholder for use in regex
+  settings.placeholder = settings.placeholder::escapeRegExp()
 
   const Parser = this.Parser
   const tokenizers = Parser.prototype.inlineTokenizers

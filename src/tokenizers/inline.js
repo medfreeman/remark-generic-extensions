@@ -1,6 +1,10 @@
-import _ from "lodash"
+import entries from "core-js/library/fn/object/entries"
+import forEach from "core-js/library/fn/array/virtual/for-each"
+import keys from "core-js/library/fn/object/keys"
+import startsWith from "core-js/library/fn/string/virtual/starts-with"
+import trim from "core-js/library/fn/string/virtual/trim"
 
-import { prettify, sortKeysByHtmlAttrs } from "../utils/object"
+import { get, prettify } from "../utils/object"
 import { vfileDebug } from "../utils/eat"
 
 function inlineExtensionTokenizer(eat, value, silent, settings) {
@@ -31,7 +35,7 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
       }
     }
 
-    let propertiesString = match[4] ? _.trim(match[4]) : undefined
+    let propertiesString = match[4] ? match[4]::trim() : undefined
 
     debug(`Inline extension \`${element.name}\` found`)
     debug(`Full match: "${match[0]}"`)
@@ -82,9 +86,8 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
       propertiesString = propertiesString.replace(
         lonePropertiesRegex,
         (match, s1) => {
-          element.properties[s1] = _.get(
-            settings,
-            `elements[${element.name}].attributeDefaultValues[${s1}]`,
+          element.properties[s1] = settings::get(
+            `elements.${element.name}.attributeDefaultValues.${s1}`,
             ""
           )
           return ""
@@ -98,9 +101,8 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
     )
 
     // Fetch the user provided pseudo hast tree
-    const hastInputTree = _.get(
-      settings,
-      `elements[${element.name}].hast`,
+    const hastInputTree = settings::get(
+      `elements.${element.name}.hast`,
       {}
     )
     // Extract the first-level hast properties separated from structure
@@ -110,13 +112,9 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
     const hastOutputTree = {
       type: "inline-extension",
       data: {
-        hName: tagName ? tagName : element.name,
-        hChildren: []
+        hName: tagName ? tagName : element.name
       }
     }
-
-    // Escape the user provided placeholder for use in regex
-    const placeholder = _.escapeRegExp(settings.placeholder)
 
     /*
       Prepare the found placeholders object
@@ -140,35 +138,37 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
     */
     const replacePlaceholders = (propertiesObject) => {
       const newPropertiesObject = {}
-      _.forOwn(propertiesObject, function(value, key) {
-        const newValue = value.replace(
-          new RegExp(
-            placeholder +
-            "(content|argument|prop" + placeholder +
-            "(" + _.keys(element.properties).join("|") + "))" +
-            placeholder
-          ),
-          (match, s1, s2) => {
-            if (_.startsWith(s1, "prop")) {
-              foundPlaceholders.properties[s2] = true
-              return element.properties[s2]
-            } else {
-              foundPlaceholders.s1 = true
-              return element[s1]
+      Object::entries(propertiesObject)::forEach(
+        ([key, value]) => {
+          const newValue = value.replace(
+            new RegExp(
+              settings.placeholder +
+              "(content|argument|prop" + settings.placeholder +
+              "(" + Object::keys(element.properties).join("|") + "))" +
+              settings.placeholder
+            ),
+            (match, s1, s2) => {
+              if (s1::startsWith("prop")) {
+                foundPlaceholders.properties[s2] = true
+                return element.properties[s2]
+              } else {
+                foundPlaceholders.s1 = true
+                return element[s1]
+              }
             }
-          }
-        )
-        newPropertiesObject[key] = newValue
-      })
+          )
+          newPropertiesObject[key] = newValue
+        }
+      )
       return newPropertiesObject
     }
 
     // Replace the placeholders in the first-level of the tree
     const newProperties = replacePlaceholders(properties)
 
-    const parseHastChildrenTreeRecursive = (inputChildrenArray) => {
+    const parseHastChildrenTreeRecursive = (inputChildrenArray = []) => {
       const outputChildrenArray = []
-      _.forEach(inputChildrenArray, (childElement) => {
+      inputChildrenArray::forEach((childElement) => {
         // Extract the current level hast properties separated from structure
         const { type, tagName, value, children, ...properties } =
           childElement
@@ -200,11 +200,11 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
     hastOutputTree.data.hChildren = parseHastChildrenTreeRecursive(children)
 
     // For each property found in markdown
-    _.forOwn(element.properties, function(value, key) {
+    Object::entries(element.properties)::forEach( ([key, value]) => {
       // If the property was not referenced by a placeholder
-      if (!_.get(foundPlaceholders, `properties[${key}]`, undefined)) {
+      if (!foundPlaceholders::get(`properties.${key}`, undefined)) {
         // Set the corresponding property to the first-level html element
-        newProperties[key] = element.properties[key]
+        newProperties[key] = value
       }
     })
 
@@ -215,7 +215,7 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
       in the order by which the properties have been added to the object
       Does not show through remark-react
     */
-    hastOutputTree.data.hProperties = newProperties::sortKeysByHtmlAttrs()
+    hastOutputTree.data.hProperties = newProperties
 
     debug("Hast output tree:\n" + hastOutputTree::prettify())
 

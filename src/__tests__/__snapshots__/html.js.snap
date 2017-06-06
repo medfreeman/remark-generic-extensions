@@ -41,7 +41,7 @@ exports[`should add an extension with a replaced tag 1`] = `
 `;
 
 exports[`should add an extension with all types of parameters 1`] = `
-"<p><icon id=\\"my-id\\" class=\\"my-class\\" attr=\\"default\\" attr2=\\"my-attr\\" attr3=\\"my attribute\\"></icon></p>
+"<p><icon id=\\"my-id\\" class=\\"my-class\\" attr3=\\"my attribute\\" attr2=\\"my-attr\\" attr=\\"default\\"></icon></p>
 "
 `;
 
