@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should log an error message to console when an invalid schema is provided 1`] = `
+"Invalid options provided:
+{
+  \\"elements\\": {
+    \\"icon\\": {
+      \\"hast\\": {
+        \\"tagName\\": \\"div\\",
+        \\"children\\": [
+          {
+            \\"type\\": \\"grooow\\"
+          }
+        ]
+      }
+    }
+  }
+}
+
+returned:
+{
+  \\"error\\": {
+    \\"isJoi\\": true,
+    \\"name\\": \\"ValidationError\\",
+    \\"details\\": [
+      {
+        \\"message\\": \\"\\\\\\"type\\\\\\" with value \\\\\\"grooow\\\\\\" fails to match the hast node type pattern\\",
+        \\"path\\": \\"elements.icon.hast.children.0.type\\",
+        \\"type\\": \\"string.regex.name\\",
+        \\"context\\": {
+          \\"name\\": \\"hast node type\\",
+          \\"pattern\\": {},
+          \\"value\\": \\"grooow\\",
+          \\"key\\": \\"type\\"
+        }
+      }
+    ],
+    \\"_object\\": {
+      \\"elements\\": {
+        \\"icon\\": {
+          \\"hast\\": {
+            \\"tagName\\": \\"div\\",
+            \\"children\\": [
+              {
+                \\"type\\": \\"grooow\\"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  \\"value\\": {
+    \\"elements\\": {
+      \\"icon\\": {
+        \\"hast\\": {
+          \\"tagName\\": \\"div\\",
+          \\"children\\": [
+            {
+              \\"type\\": \\"grooow\\"
+            }
+          ]
+        }
+      }
+    }
+  }
+}"
+`;

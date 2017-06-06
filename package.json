@@ -57,10 +57,12 @@
     "remark": "^7.0.1",
     "remark-html": "^6.0.0",
     "remark-react": "^4.0.0",
+    "sinon": "^2.3.2",
     "vfile-reporter": "^3.0.0"
   },
   "dependencies": {
-    "core-js": "^2.4.1"
+    "core-js": "^2.4.1",
+    "joi": "^10.5.2"
   },
   "babel": {
     "presets": [
