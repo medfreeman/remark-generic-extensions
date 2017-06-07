@@ -1,6 +1,339 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should log an error message to console when an invalid schema is provided 1`] = `
+exports[`should log a console error message when a children node has a forbidden property 1`] = `
+"Invalid options provided:
+{
+  \\"elements\\": {
+    \\"icon\\": {
+      \\"hast\\": {
+        \\"tagName\\": \\"div\\",
+        \\"children\\": [
+          {
+            \\"type\\": \\"element\\",
+            \\"tagName\\": \\"div\\",
+            \\"class\\": \\"foo\\"
+          }
+        ]
+      }
+    }
+  }
+}
+
+returned:
+{
+  \\"error\\": {
+    \\"isJoi\\": true,
+    \\"name\\": \\"ValidationError\\",
+    \\"details\\": [
+      {
+        \\"message\\": \\"\\\\\\"class\\\\\\" is not allowed\\",
+        \\"path\\": \\"elements.icon.hast.children.0.class\\",
+        \\"type\\": \\"any.unknown\\",
+        \\"context\\": {
+          \\"key\\": \\"class\\"
+        }
+      }
+    ],
+    \\"_object\\": {
+      \\"elements\\": {
+        \\"icon\\": {
+          \\"hast\\": {
+            \\"tagName\\": \\"div\\",
+            \\"children\\": [
+              {
+                \\"type\\": \\"element\\",
+                \\"tagName\\": \\"div\\",
+                \\"class\\": \\"foo\\"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  \\"value\\": {
+    \\"elements\\": {
+      \\"icon\\": {
+        \\"hast\\": {
+          \\"tagName\\": \\"div\\",
+          \\"children\\": [
+            {
+              \\"type\\": \\"element\\",
+              \\"tagName\\": \\"div\\",
+              \\"class\\": \\"foo\\"
+            }
+          ]
+        }
+      }
+    }
+  }
+}"
+`;
+
+exports[`should log a console error message when a comment node hasn't a value 1`] = `
+"Invalid options provided:
+{
+  \\"elements\\": {
+    \\"icon\\": {
+      \\"hast\\": {
+        \\"tagName\\": \\"div\\",
+        \\"children\\": [
+          {
+            \\"type\\": \\"comment\\"
+          }
+        ]
+      }
+    }
+  }
+}
+
+returned:
+{
+  \\"error\\": {
+    \\"isJoi\\": true,
+    \\"name\\": \\"ValidationError\\",
+    \\"details\\": [
+      {
+        \\"message\\": \\"\\\\\\"value\\\\\\" is required\\",
+        \\"path\\": \\"elements.icon.hast.children.0.value\\",
+        \\"type\\": \\"any.required\\",
+        \\"context\\": {
+          \\"key\\": \\"value\\"
+        }
+      }
+    ],
+    \\"_object\\": {
+      \\"elements\\": {
+        \\"icon\\": {
+          \\"hast\\": {
+            \\"tagName\\": \\"div\\",
+            \\"children\\": [
+              {
+                \\"type\\": \\"comment\\"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  \\"value\\": {
+    \\"elements\\": {
+      \\"icon\\": {
+        \\"hast\\": {
+          \\"tagName\\": \\"div\\",
+          \\"children\\": [
+            {
+              \\"type\\": \\"comment\\"
+            }
+          ]
+        }
+      }
+    }
+  }
+}"
+`;
+
+exports[`should log a console error message when a text node hasn't a value 1`] = `
+"Invalid options provided:
+{
+  \\"elements\\": {
+    \\"icon\\": {
+      \\"hast\\": {
+        \\"tagName\\": \\"div\\",
+        \\"children\\": [
+          {
+            \\"type\\": \\"text\\"
+          }
+        ]
+      }
+    }
+  }
+}
+
+returned:
+{
+  \\"error\\": {
+    \\"isJoi\\": true,
+    \\"name\\": \\"ValidationError\\",
+    \\"details\\": [
+      {
+        \\"message\\": \\"\\\\\\"value\\\\\\" is required\\",
+        \\"path\\": \\"elements.icon.hast.children.0.value\\",
+        \\"type\\": \\"any.required\\",
+        \\"context\\": {
+          \\"key\\": \\"value\\"
+        }
+      }
+    ],
+    \\"_object\\": {
+      \\"elements\\": {
+        \\"icon\\": {
+          \\"hast\\": {
+            \\"tagName\\": \\"div\\",
+            \\"children\\": [
+              {
+                \\"type\\": \\"text\\"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  \\"value\\": {
+    \\"elements\\": {
+      \\"icon\\": {
+        \\"hast\\": {
+          \\"tagName\\": \\"div\\",
+          \\"children\\": [
+            {
+              \\"type\\": \\"text\\"
+            }
+          ]
+        }
+      }
+    }
+  }
+}"
+`;
+
+exports[`should log a console error message when an element node has a dashed property 1`] = `
+"Invalid options provided:
+{
+  \\"elements\\": {
+    \\"icon\\": {
+      \\"hast\\": {
+        \\"tagName\\": \\"div\\",
+        \\"children\\": [
+          {
+            \\"type\\": \\"element\\",
+            \\"tagName\\": \\"div\\",
+            \\"t-a\\": \\"huu\\"
+          }
+        ]
+      }
+    }
+  }
+}
+
+returned:
+{
+  \\"error\\": {
+    \\"isJoi\\": true,
+    \\"name\\": \\"ValidationError\\",
+    \\"details\\": [
+      {
+        \\"message\\": \\"\\\\\\"t-a\\\\\\" is not allowed\\",
+        \\"path\\": \\"elements.icon.hast.children.0.t-a\\",
+        \\"type\\": \\"object.allowUnknown\\",
+        \\"context\\": {
+          \\"child\\": \\"t-a\\",
+          \\"key\\": \\"t-a\\"
+        }
+      }
+    ],
+    \\"_object\\": {
+      \\"elements\\": {
+        \\"icon\\": {
+          \\"hast\\": {
+            \\"tagName\\": \\"div\\",
+            \\"children\\": [
+              {
+                \\"type\\": \\"element\\",
+                \\"tagName\\": \\"div\\",
+                \\"t-a\\": \\"huu\\"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  \\"value\\": {
+    \\"elements\\": {
+      \\"icon\\": {
+        \\"hast\\": {
+          \\"tagName\\": \\"div\\",
+          \\"children\\": [
+            {
+              \\"type\\": \\"element\\",
+              \\"tagName\\": \\"div\\",
+              \\"t-a\\": \\"huu\\"
+            }
+          ]
+        }
+      }
+    }
+  }
+}"
+`;
+
+exports[`should log a console error message when an element node hasn't a tagName 1`] = `
+"Invalid options provided:
+{
+  \\"elements\\": {
+    \\"icon\\": {
+      \\"hast\\": {
+        \\"tagName\\": \\"div\\",
+        \\"children\\": [
+          {
+            \\"type\\": \\"element\\"
+          }
+        ]
+      }
+    }
+  }
+}
+
+returned:
+{
+  \\"error\\": {
+    \\"isJoi\\": true,
+    \\"name\\": \\"ValidationError\\",
+    \\"details\\": [
+      {
+        \\"message\\": \\"\\\\\\"tagName\\\\\\" is required\\",
+        \\"path\\": \\"elements.icon.hast.children.0.tagName\\",
+        \\"type\\": \\"any.required\\",
+        \\"context\\": {
+          \\"key\\": \\"tagName\\"
+        }
+      }
+    ],
+    \\"_object\\": {
+      \\"elements\\": {
+        \\"icon\\": {
+          \\"hast\\": {
+            \\"tagName\\": \\"div\\",
+            \\"children\\": [
+              {
+                \\"type\\": \\"element\\"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  \\"value\\": {
+    \\"elements\\": {
+      \\"icon\\": {
+        \\"hast\\": {
+          \\"tagName\\": \\"div\\",
+          \\"children\\": [
+            {
+              \\"type\\": \\"element\\"
+            }
+          ]
+        }
+      }
+    }
+  }
+}"
+`;
+
+exports[`should log a console error message when an invalid schema is provided 1`] = `
 "Invalid options provided:
 {
   \\"elements\\": {
@@ -60,6 +393,58 @@ returned:
               \\"type\\": \\"grooow\\"
             }
           ]
+        }
+      }
+    }
+  }
+}"
+`;
+
+exports[`should log a console error message when the top-level node has a forbidden property 1`] = `
+"Invalid options provided:
+{
+  \\"elements\\": {
+    \\"icon\\": {
+      \\"hast\\": {
+        \\"tagName\\": \\"div\\",
+        \\"class\\": \\"foo\\"
+      }
+    }
+  }
+}
+
+returned:
+{
+  \\"error\\": {
+    \\"isJoi\\": true,
+    \\"name\\": \\"ValidationError\\",
+    \\"details\\": [
+      {
+        \\"message\\": \\"\\\\\\"class\\\\\\" is not allowed\\",
+        \\"path\\": \\"elements.icon.hast.class\\",
+        \\"type\\": \\"any.unknown\\",
+        \\"context\\": {
+          \\"key\\": \\"class\\"
+        }
+      }
+    ],
+    \\"_object\\": {
+      \\"elements\\": {
+        \\"icon\\": {
+          \\"hast\\": {
+            \\"tagName\\": \\"div\\",
+            \\"class\\": \\"foo\\"
+          }
+        }
+      }
+    }
+  },
+  \\"value\\": {
+    \\"elements\\": {
+      \\"icon\\": {
+        \\"hast\\": {
+          \\"tagName\\": \\"div\\",
+          \\"class\\": \\"foo\\"
         }
       }
     }
