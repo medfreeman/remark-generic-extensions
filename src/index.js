@@ -1,49 +1,22 @@
 import assign from "core-js/library/fn/object/assign"
 import joi from "joi"
 
+import optionsSchema from "./utils/optionsSchema"
 import inlineExtensionLocator from "./locators/inline"
 import inlineExtensionTokenizer from "./tokenizers/inline"
 import { prettify } from "./utils/object"
 import { escapeRegExp } from "./utils/string"
 
 function remarkGenericExtensions(options = {}) {
-  const html5TagNameValidator = joi.string().regex(
-    /^\w([^A-Z\s\/\u0000>])*$/,
-    "html element tag name"
-  )
+  const optionsValidation = joi.validate(options, optionsSchema)
 
-  const hastSchema = joi.array().items(
-    joi.object({
-      type: joi.string().regex(
-        /^(element|doctype|comment|text)$/,
-        "hast node type"
-      ),
-      tagName: html5TagNameValidator,
-      children: joi.lazy(() => hastSchema).description("Hast schema"),
-    }).pattern(/\w/, joi.string())
-  )
-
-  const schema = joi.object({
-    debug: joi.boolean(),
-    placeholder: joi.string(),
-    elements: joi.object(undefined).pattern(/\w/, joi.object({
-      attributeDefaultValues: joi.object(undefined).pattern(/\w/, joi.string()),
-      hast: joi.object({
-        tagName: html5TagNameValidator,
-        children: hastSchema,
-      }).pattern(/\w/, joi.string())
-    }))
-  })
-
-  const result = joi.validate(options, schema)
-
-  if (result.error !== null) {
+  if (optionsValidation.error !== null) {
     console.error(
       "Invalid options provided:\n" +
       options::prettify() +
       "\n\n" +
       "returned:\n" +
-      result::prettify()
+      optionsValidation::prettify()
     )
     return false
   }
