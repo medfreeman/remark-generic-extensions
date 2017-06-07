@@ -4,20 +4,18 @@ import keys from "core-js/library/fn/object/keys"
 import startsWith from "core-js/library/fn/string/virtual/starts-with"
 import trim from "core-js/library/fn/string/virtual/trim"
 
+import {
+  inlineExtensionRegex,
+  keyValueQuotedPropertiesRegex,
+  keyValuePropertiesRegex,
+  classNameRegex,
+  idRegex,
+  lonePropertiesRegex
+} from "../utils/regexes.js"
 import { get, prettify } from "../utils/object"
 import { vfileDebug, vfileWarning } from "../utils/eat"
 
 function inlineExtensionTokenizer(eat, value, silent, settings) {
-  const inlineExtensionRegex =
-    /^\!(\w+)(?:\[([^\)]*)\])?(?:\(([^\)]*)\))?(?:\{([^\}]*)\})?/
-  const keyValueQuotedPropertiesRegex =
-    /(?:\t )*([^\t \/>"'=]+)=(?:\"([^"]+)\")/g
-  const keyValuePropertiesRegex =
-    /(?:\t )*([^\t \/>"'=]+)=([^\t \/>"'=]+)/g
-  const classNameRegex = /(?:\t )*\.([^\t ]+)/g
-  const idRegex = /(?:\t )*\#([^\t ]+)/g
-  const lonePropertiesRegex = /(?:\t )*([^\t \/>"'=]+)/g
-
   const match = inlineExtensionRegex.exec(value)
   if (match) {
     /* istanbul ignore if */

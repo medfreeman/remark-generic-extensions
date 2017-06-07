@@ -1,7 +1,9 @@
 import joi from "joi"
 
+import { tagNameRegex } from "./regexes.js"
+
 const html5TagNameRegex = joi.string().regex(
-  /^\w([^A-Z\s\/\u0000>])*$/,
+  tagNameRegex,
   "html element tag name"
 )
 
