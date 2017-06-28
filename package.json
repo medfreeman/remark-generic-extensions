@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/medfreeman/remark-generic-extensions#readme",
   "devDependencies": {
-    "ava": "^0.19.1",
+    "ava": "^0.20.0",
     "babel-cli": "^6.24.1",
     "babel-eslint": "^7.2.3",
     "babel-plugin-add-module-exports": "^0.2.1",
