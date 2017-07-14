@@ -6,11 +6,11 @@ const hastNodeTypeRegex = joi.string().regex(
 )
 
 const html5TagNameRegex = joi.string().regex(
-  /^[a-z]([^A-Z\s\/\u0000>])*$/,
+  /^[a-z]([^A-Z\s/\u0000>])*$/,
   "html5 element tag name"
 )
 
-const hastPropertyNameRegex = /^[^\t \/>"'=\-]+$/
+const hastPropertyNameRegex = /^[^\t />"'=-]+$/
 
 const hastSchema = joi.array().items(
   joi.object({
@@ -33,7 +33,7 @@ const hastSchema = joi.array().items(
     for: joi.any().forbidden(),
     children: joi.lazy(() => hastSchema),
   })
-  .pattern(hastPropertyNameRegex, joi.any())
+    .pattern(hastPropertyNameRegex, joi.any())
 ).description("hast schema")
 
 const schema = joi.object({
