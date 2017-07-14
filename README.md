@@ -8,3 +8,15 @@
 [![Coverage Status](https://img.shields.io/coveralls/medfreeman/remark-generic-extensions/master.svg)](https://coveralls.io/github/medfreeman/remark-generic-extensions?branch=master)
 
 !Extension\[Content\]\(Argument\)\{Properties\} -> :tada: — [commonmark generic directive extension](https://github.com/jgm/CommonMark/wiki/Generic-Directive-Extension-List) for remark
+
+---
+
+## CONTRIBUTING
+
+* ⇄ Pull requests and ★ Stars are always welcome.
+* For bugs and feature requests, please create an issue.
+* Pull requests must be accompanied by passing automated tests (`$ yarn test`).
+
+## [CHANGELOG](CHANGELOG.md)
+
+## [LICENSE](LICENSE)
