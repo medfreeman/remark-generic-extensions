@@ -14,11 +14,17 @@
 Allow the use of [commonmark generic directive extension](https://github.com/jgm/CommonMark/wiki/Generic-Directive-Extension-List) in markdown,
 generating components through [remark-html](https://github.com/wooorm/remark-html) or [remark-react](https://github.com/mapbox/remark-react).
 
-i.e:
+### Examples
 
-`!youtube[C8NAYW-Z54o]` -> ![youtube cat video embed](https://j.gifs.com/j2zN2v.gif)
+`!youtube[C8NAYW-Z54o]`
 
-`!Icon[add](Add button)` -> ![react-toolbox icon with tooltip](https://j.gifs.com/xGRwl9.gif)
+![youtube cat video embed](https://j.gifs.com/j2zN2v.gif)
+
+OR
+
+`!Icon[add](Add button)`
+
+![react-toolbox icon with tooltip](https://j.gifs.com/xGRwl9.gif)
 
 ## Limitations
 
