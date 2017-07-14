@@ -26,20 +26,20 @@ OR
 
 ![react-toolbox icon with tooltip](https://j.gifs.com/xGRwl9.gif)
 
-## Limitations
+## Disclaimer
 
 At the moment, this supports only inline extensions, not block extensions.
 Feel free to submit a PR to add this feature if you need it before i got the time to implement it.
 
 ## Installation
 
-[npm][]:
+npm:
 
 ```bash
 npm install remark-generic-extensions
 ```
 
-[yarn][]:
+yarn:
 
 ```bash
 yarn add remark-generic-extensions
