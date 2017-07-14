@@ -9,6 +9,36 @@
 
 !Extension\[Content\]\(Argument\)\{Properties\} -> :tada: — [commonmark generic directive extension](https://github.com/jgm/CommonMark/wiki/Generic-Directive-Extension-List) for remark
 
+## Purpose
+
+Allow the use of [commonmark generic directive extension](https://github.com/jgm/CommonMark/wiki/Generic-Directive-Extension-List) in markdown,
+generating components through [remark-html](https://github.com/wooorm/remark-html) or [remark-react](https://github.com/mapbox/remark-react).
+
+i.e:
+
+`!youtube[C8NAYW-Z54o]` -> ![youtube cat video embed](https://j.gifs.com/j2zN2v.gif)
+
+`!Icon[add](Add button)` -> ![react-toolbox icon with tooltip](https://j.gifs.com/xGRwl9.gif)
+
+## Limitations
+
+At the moment, this supports only inline extensions, not block extensions.
+Feel free to submit a PR to add this feature if you need it before i got the time to implement it.
+
+## Installation
+
+[npm][]:
+
+```bash
+npm install remark-generic-extensions
+```
+
+[yarn][]:
+
+```bash
+yarn add remark-generic-extensions
+```
+
 ---
 
 ## CONTRIBUTING
