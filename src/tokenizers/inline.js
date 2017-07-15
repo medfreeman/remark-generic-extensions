@@ -108,7 +108,7 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
 
     // Fetch the user provided pseudo hast tree
     const hastInputTree = settings::get(
-      `elements.${element.name}.hast`,
+      `elements.${element.name}.html`,
       {}
     )
     // Extract the first-level hast properties separated from structure

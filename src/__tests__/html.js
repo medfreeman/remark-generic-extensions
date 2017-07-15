@@ -76,7 +76,7 @@ test(
       {
         elements: {
           icon: {
-            hast: {
+            html: {
               tooltip: "::content::"
             }
           }
@@ -94,7 +94,7 @@ test(
       {
         elements: {
           icon: {
-            hast: {
+            html: {
               icon: "::argument::"
             }
           }
@@ -113,7 +113,7 @@ test(
         placeholder: "||",
         elements: {
           icon: {
-            hast: {
+            html: {
               icon: "||argument||"
             }
           }
@@ -131,7 +131,7 @@ test(
       {
         elements: {
           icon: {
-            hast: {
+            html: {
               tagName: "my-icon"
             }
           }
@@ -160,7 +160,7 @@ test(
       {
         elements: {
           icon: {
-            hast: {
+            html: {
               children: [
                 {
                   tagName: "p",
@@ -188,7 +188,7 @@ test(
       {
         elements: {
           icon: {
-            hast: {
+            html: {
               children: [
                 {
                   tagName: "p",
@@ -211,7 +211,7 @@ test(
       {
         elements: {
           icon: {
-            hast: {
+            html: {
               children: [
                 {
                   tagName: "p",

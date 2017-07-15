@@ -42,7 +42,7 @@ const schema = joi.object({
   elements: joi.object(undefined).pattern(/\w/, joi.object({
     propsDefaultValues:
       joi.object(undefined).pattern(hastPropertyNameRegex, joi.any()),
-    hast: joi.object({
+    html: joi.object({
       tagName: html5TagNameRegex,
       class: joi.any().forbidden(),
       for: joi.any().forbidden(),

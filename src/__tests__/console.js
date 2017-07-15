@@ -35,7 +35,7 @@ test(
         {
           icon:
           {
-            hast:
+            html:
             {
               tagName: "div",
               children:
@@ -68,7 +68,7 @@ test(
         {
           icon:
           {
-            hast:
+            html:
             {
               tagName: "div",
               children:
@@ -101,7 +101,7 @@ test(
         {
           icon:
           {
-            hast:
+            html:
             {
               tagName: "div",
               children:
@@ -134,7 +134,7 @@ test(
         {
           icon:
           {
-            hast:
+            html:
             {
               tagName: "div",
               children:
@@ -168,7 +168,7 @@ test(
         {
           icon:
           {
-            hast:
+            html:
             {
               tagName: "div",
               children:
@@ -204,7 +204,7 @@ test(
         {
           icon:
           {
-            hast:
+            html:
             {
               tagName: "div",
               class: "foo"
@@ -233,7 +233,7 @@ test(
         {
           icon:
           {
-            hast:
+            html:
             {
               tagName: "div",
               children:

@@ -94,7 +94,7 @@ test(
       {
         elements: {
           Icon: {
-            hast: {
+            html: {
               tooltip: "::content::"
             }
           }
@@ -112,7 +112,7 @@ test(
       {
         elements: {
           Icon: {
-            hast: {
+            html: {
               icon: "::argument::"
             }
           }
