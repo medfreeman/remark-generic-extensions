@@ -150,10 +150,10 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
             typeof value === "string"
               ? value.replace(
                 new RegExp(
-                  settings.placeholder +
-                "(content|argument|prop" + settings.placeholder +
-                "(" + Object::keys(element.properties).join("|") + "))" +
-                settings.placeholder
+                  settings.placeholderAffix +
+                  "(content|argument|prop" + settings.placeholderAffix +
+                  "(" + Object::keys(element.properties).join("|") + "))" +
+                  settings.placeholderAffix
                 ),
                 (match, s1, s2) => {
                   if (s1::startsWith("prop")) {

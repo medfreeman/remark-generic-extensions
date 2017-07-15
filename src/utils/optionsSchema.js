@@ -39,7 +39,7 @@ const hastSchema = joi.array().items(
 
 const schema = joi.object({
   debug: joi.boolean(),
-  placeholder: joi.string(),
+  placeholderAffix: joi.string(),
   elements: joi.object(undefined).pattern(/\w/, joi.object({
     propsDefaultValues:
       joi.object(undefined).pattern(hastPropertyNameRegex, joi.any()),

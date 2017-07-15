@@ -24,14 +24,14 @@ function remarkGenericExtensions(options = {}) {
   const settings = Object::assign({},
     {
       debug: false,
-      placeholder: "::",
+      placeholderAffix: "::",
       elements: {}
     },
     options
   )
 
-  // Escape the user provided placeholder for use in regex
-  settings.placeholder = settings.placeholder::escapeRegExp()
+  // Escape the user provided placeholder affix for use in regex
+  settings.placeholderAffix = settings.placeholderAffix::escapeRegExp()
 
   const Parser = this.Parser
   const tokenizers = Parser.prototype.inlineTokenizers

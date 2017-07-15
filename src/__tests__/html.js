@@ -148,12 +148,12 @@ test(
 )
 
 test(
-  "should work with a different placeholder",
+  "should work with a different placeholder affix",
   t => t.snapshot(
     transformToHtml(
       "!icon(my-icon)",
       {
-        placeholder: "||",
+        placeholderAffix: "||",
         elements: {
           icon: {
             html: {
