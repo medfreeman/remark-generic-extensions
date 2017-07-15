@@ -86,6 +86,24 @@ test(
   )
 )
 
+test.skip(
+  "should add an extension with a boolean property",
+  t => t.snapshot(
+    transformToReact(
+      "!Icon",
+      {
+        elements: {
+          Icon: {
+            html: {
+              highlight: true
+            }
+          }
+        }
+      }
+    )
+  )
+)
+
 test(
   "should add an extension with a mapped content",
   t => t.snapshot(

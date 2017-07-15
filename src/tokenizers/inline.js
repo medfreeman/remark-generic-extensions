@@ -146,23 +146,26 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
       const newPropertiesObject = {}
       Object::entries(propertiesObject)::forEach(
         ([key, value]) => {
-          const newValue = value.replace(
-            new RegExp(
-              settings.placeholder +
-              "(content|argument|prop" + settings.placeholder +
-              "(" + Object::keys(element.properties).join("|") + "))" +
-              settings.placeholder
-            ),
-            (match, s1, s2) => {
-              if (s1::startsWith("prop")) {
-                foundPlaceholders.properties[s2] = true
-                return element.properties[s2]
-              } else {
-                foundPlaceholders.s1 = true
-                return element[s1]
-              }
-            }
-          )
+          const newValue =
+            typeof value === "string"
+              ? value.replace(
+                new RegExp(
+                  settings.placeholder +
+                "(content|argument|prop" + settings.placeholder +
+                "(" + Object::keys(element.properties).join("|") + "))" +
+                settings.placeholder
+                ),
+                (match, s1, s2) => {
+                  if (s1::startsWith("prop")) {
+                    foundPlaceholders.properties[s2] = true
+                    return element.properties[s2]
+                  } else {
+                    foundPlaceholders.s1 = true
+                    return element[s1]
+                  }
+                }
+              )
+              : value
           newPropertiesObject[key] = newValue
         }
       )

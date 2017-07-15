@@ -87,6 +87,25 @@ test(
 )
 
 test(
+  "should add an extension with a boolean property",
+  t => t.snapshot(
+    transformToHtml(
+      "!checkbox",
+      {
+        elements: {
+          checkbox: {
+            html: {
+              tagName: "checkbox",
+              checked: true
+            }
+          }
+        }
+      }
+    )
+  )
+)
+
+test(
   "should add an extension with a mapped content",
   t => t.snapshot(
     transformToHtml(
