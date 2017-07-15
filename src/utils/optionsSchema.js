@@ -40,7 +40,7 @@ const schema = joi.object({
   debug: joi.boolean(),
   placeholder: joi.string(),
   elements: joi.object(undefined).pattern(/\w/, joi.object({
-    attributeDefaultValues:
+    propsDefaultValues:
       joi.object(undefined).pattern(hastPropertyNameRegex, joi.any()),
     hast: joi.object({
       tagName: html5TagNameRegex,

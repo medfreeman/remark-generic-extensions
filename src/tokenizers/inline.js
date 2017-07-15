@@ -86,7 +86,7 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
         lonePropertiesRegex,
         (match, s1) => {
           element.properties[s1] = settings::get(
-            `elements.${element.name}.attributeDefaultValues.${s1}`,
+            `elements.${element.name}.propsDefaultValues.${s1}`,
             ""
           )
           return ""

@@ -40,7 +40,7 @@ test(
       {
         elements: {
           icon: {
-            attributeDefaultValues: {
+            propsDefaultValues: {
               attr: "default",
             }
           }
@@ -58,7 +58,7 @@ test(
       {
         elements: {
           icon: {
-            attributeDefaultValues: {
+            propsDefaultValues: {
               attr: "default",
             }
           }
