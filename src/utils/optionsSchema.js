@@ -29,11 +29,12 @@ const hastSchema = joi.array().items(
         is: "text",
         then: joi.required()
       }),
-    class: joi.any().forbidden(),
-    for: joi.any().forbidden(),
-    children: joi.lazy(() => hastSchema),
+    properties: joi.object({
+      class: joi.any().forbidden(),
+      for: joi.any().forbidden()
+    }).pattern(hastPropertyNameRegex, joi.any()),
+    children: joi.lazy(() => hastSchema)
   })
-    .pattern(hastPropertyNameRegex, joi.any())
 ).description("hast schema")
 
 const schema = joi.object({
@@ -44,10 +45,12 @@ const schema = joi.object({
       joi.object(undefined).pattern(hastPropertyNameRegex, joi.any()),
     html: joi.object({
       tagName: html5TagNameRegex,
-      class: joi.any().forbidden(),
-      for: joi.any().forbidden(),
+      properties: joi.object({
+        class: joi.any().forbidden(),
+        for: joi.any().forbidden()
+      }).pattern(hastPropertyNameRegex, joi.any()),
       children: hastSchema
-    }).pattern(hastPropertyNameRegex, joi.any())
+    })
   }))
 })
 

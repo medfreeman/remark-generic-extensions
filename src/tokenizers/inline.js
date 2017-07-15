@@ -112,7 +112,7 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
       {}
     )
     // Extract the first-level hast properties separated from structure
-    const { tagName, children, ...properties } = hastInputTree
+    const { tagName, children, properties = {} } = hastInputTree
 
     // Prepare the final hast tree
     const hastOutputTree = {
@@ -179,7 +179,7 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
       const outputChildrenArray = []
       inputChildrenArray::forEach((childElement) => {
         // Extract the current level hast properties separated from structure
-        const { type, tagName, value, children, ...properties } =
+        const { type, tagName, value, children, properties = {} } =
           childElement
 
         // Replace the placeholders in the current level of the tree

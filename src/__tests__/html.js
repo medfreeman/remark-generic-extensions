@@ -96,7 +96,9 @@ test(
           checkbox: {
             html: {
               tagName: "checkbox",
-              checked: true
+              properties: {
+                checked: true
+              }
             }
           }
         }
@@ -114,7 +116,9 @@ test(
         elements: {
           icon: {
             html: {
-              tooltip: "::content::"
+              properties: {
+                tooltip: "::content::"
+              }
             }
           }
         }
@@ -132,7 +136,9 @@ test(
         elements: {
           icon: {
             html: {
-              icon: "::argument::"
+              properties: {
+                icon: "::argument::"
+              }
             }
           }
         }
@@ -151,7 +157,9 @@ test(
         elements: {
           icon: {
             html: {
-              icon: "||argument||"
+              properties: {
+                icon: "||argument||"
+              }
             }
           }
         }
@@ -229,7 +237,9 @@ test(
               children: [
                 {
                   tagName: "p",
-                  id: "::prop::id::"
+                  properties: {
+                    id: "::prop::id::"
+                  }
                 }
               ]
             }

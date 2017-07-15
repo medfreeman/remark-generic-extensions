@@ -176,7 +176,9 @@ test(
                 {
                   type: "element",
                   tagName: "div",
-                  "t-a": "huu"
+                  properties: {
+                    "t-a": "huu"
+                  }
                 }
               ]
             }
@@ -207,7 +209,9 @@ test(
             html:
             {
               tagName: "div",
-              class: "foo"
+              properties: {
+                class: "foo"
+              }
             }
           }
         }
@@ -241,7 +245,9 @@ test(
                 {
                   type: "element",
                   tagName: "div",
-                  class: "foo"
+                  properties: {
+                    class: "foo"
+                  }
                 }
               ]
             }

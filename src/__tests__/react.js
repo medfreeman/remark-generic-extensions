@@ -95,7 +95,9 @@ test.skip(
         elements: {
           Icon: {
             html: {
-              highlight: true
+              properties: {
+                highlight: true
+              }
             }
           }
         }
@@ -113,7 +115,9 @@ test(
         elements: {
           Icon: {
             html: {
-              tooltip: "::content::"
+              properties: {
+                tooltip: "::content::"
+              }
             }
           }
         }
@@ -131,7 +135,9 @@ test(
         elements: {
           Icon: {
             html: {
-              icon: "::argument::"
+              properties: {
+                icon: "::argument::"
+              }
             }
           }
         }
