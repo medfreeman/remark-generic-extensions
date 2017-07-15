@@ -51,6 +51,24 @@ test(
 )
 
 test(
+  "should add an extension with a lone attribute with a default boolean value",
+  t => t.snapshot(
+    transformToHtml(
+      `!icon{ highlight }`,
+      {
+        elements: {
+          icon: {
+            propsDefaultValues: {
+              highlight: true,
+            }
+          }
+        }
+      }
+    )
+  )
+)
+
+test(
   "should add an extension with all types of parameters",
   t => t.snapshot(
     transformToHtml(
