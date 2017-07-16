@@ -11,9 +11,20 @@
     "react"
   ],
   "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "browser": {
+    "joi": "joi-browser",
+    "lib/index.js": "lib/browser.min.js"
+  },
   "scripts": {
-    "build": "babel --ignore /__tests__/ -d ./lib ./src",
+    "build": "yarn build-server && yarn build-browser",
+    "build-server": "babel --ignore /__tests__/ -d ./lib ./src",
     "watch": "babel -w  --ignore /__tests__/ -d ./lib ./src",
+    "build-browser": "yarn build-browserify && yarn build-mangle",
+    "build-browserify": "browserify ./src/index.js --bare -t babelify -s remarkGenericExtensions > ./lib/browser.js",
+    "build-mangle": "esmangle ./lib/browser.js > ./lib/browser.min.js",
     "prepublish": "yarn build -s",
     "lint": "eslint --fix ./src",
     "pretest": "yarn lint -s",
@@ -42,12 +53,15 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.4.0",
     "coveralls": "^2.13.1",
     "cross-env": "^5.0.0",
     "eslint": "^4.1.0",
     "eslint-config-i-am-meticulous": "^6.0.1",
     "eslint-plugin-babel": "^4.1.1",
     "eslint-plugin-import": "^2.3.0",
+    "esmangle": "^1.0.1",
     "nyc": "^11.0.2",
     "react": "^15.5.4",
     "react-test-renderer": "^15.5.4",
@@ -59,7 +73,8 @@
   },
   "dependencies": {
     "core-js": "^2.4.1",
-    "joi": "^10.5.2"
+    "joi": "^10.5.2",
+    "joi-browser": "^10.6.1"
   },
   "babel": {
     "presets": [
