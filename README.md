@@ -130,7 +130,7 @@ And our script, `example.js`, looks as follows:
 ```javascript
 import vfile from "to-vfile"
 import remark from "remark"
-import genericExtensions "remark-generic-extensions"
+import genericExtensions from "remark-generic-extensions"
 import html from "remark-html"
 
 remark()
