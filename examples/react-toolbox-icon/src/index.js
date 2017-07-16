@@ -9,7 +9,8 @@ import "./assets/react-toolbox/theme.css"
 const content = markdownToReact(
 `# Hello
 
-!Icon[add](Add button){ floating accent }`
+!Icon[add](Add){ floating accent }
+!Icon[bookmark](Bookmark){ raised primary label="Bookmark" }`
 )
 
 const styles = {
