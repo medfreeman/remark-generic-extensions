@@ -58,7 +58,90 @@ OR
 yarn add remark-generic-extensions
 ```
 
-## Usage
+## Usage (es6)
+
+*with [`remark-html`](https://github.com/wooorm/remark-html)*
+
+Say we have the following file, `example.md`:
+
+```markdown
+# Alpha
+
+!alert[My message!](my subtext is rad){ #my-alert .custom-alert }
+
+## Bravo
+
+## Delta
+```
+
+And our script, `example.js`, looks as follows:
+
+```javascript
+import vfile from "to-vfile"
+import remark from "remark"
+import genericExtensions "remark-generic-extensions"
+import html from "remark-html"
+
+remark()
+.use(genericExtensions,
+  {
+    elements: {
+      alert: {
+        html: {
+          tagName: "span",
+          children: [
+            {
+              type: "element",
+              tagName: "i",
+              properties: {
+                className: "fa fa-exclamation",
+                ariaHidden: true
+              }
+            },
+            {
+              type: "element",
+              tagName: "span",
+              children: [
+                {
+                  type: "text",
+                  value: "::content::"
+                }
+              ]
+            },
+            {
+              type: "element",
+              tagName: "span",
+              properties: {
+                className: "subtext"
+              },
+              children: [
+                {
+                  type: "text",
+                  value: "::argument::"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+)
+.use(html)
+.process(vfile.readSync('example.md'), (err, file) => {
+  if (err) throw err
+  console.log(String(file))
+})
+```
+
+Now, running `node example` yields:
+
+```html
+<h1>Alpha</h1>
+<p><span id="my-alert" class="custom-alert"><i class="fa fa-exclamation" aria-hidden="true"></i><span>My message!</span><span class="subtext">my subtext is rad</span></span></p>
+<h2>Bravo</h2>
+<h2>Delta</h2>
+```
 
 ## API
 
