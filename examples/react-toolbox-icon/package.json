@@ -20,9 +20,6 @@
       "BUTTON",
       "TOOLTIP"
     ],
-    "customProperties": {
-      "tooltip-color": "#000"
-    },
     "javascript": "src/assets/react-toolbox/theme.js",
     "styles": "src/assets/react-toolbox/theme.css"
   },

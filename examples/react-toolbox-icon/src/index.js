@@ -50,7 +50,7 @@ const markdownToReact = (markdown) =>
 
 const content = markdownToReact(`# Hello
 
-!Icon[add](Add button)`)
+!Icon[add](Add button){ floating accent }`)
 
 const styles = {
   fontFamily: "sans-serif",
