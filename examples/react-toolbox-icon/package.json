@@ -13,11 +13,22 @@
     "deepmerge": "1.5.0"
   },
   "devDependencies": {
-    "react-scripts": "1.0.0"
+    "react-scripts": "1.0.0",
+    "react-toolbox-themr": "^1.0.2"
+  },
+  "reactToolbox": {
+    "include": [
+      "BUTTON",
+      "TOOLTIP"
+    ],
+    "customProperties": {
+      "tooltip-color": "#000"
+    },
+    "output": "src/assets/react-toolbox"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-toolbox-themr && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
