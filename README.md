@@ -92,6 +92,8 @@ In case of error, it will be logged to the console and this module bypassed by r
     
     See [Logging](#logging) for more information.
 
+---
+
 #### `Elements` (object)
 
 This object defines the extensions configuration.
@@ -111,7 +113,7 @@ You can define one or more extensions if needed.
 
       <details><summary>example with `highlight` property on `icon` extension (es6)</summary><p>
 
-      ```
+      ```javascript
       import remark from "remark"
       import genericExtensions "remark-generic-extensions"
       import html from "remark-html"
@@ -144,6 +146,8 @@ You can define one or more extensions if needed.
     - children ([`Hast`](#hast-arrayobject), optional) - the element children
     - properties ([`HastProperties`](#hastproperties-object), optional) - the element properties
 
+---
+
 #### `Hast` (array[object])
 
 This structure is a [hast](https://github.com/syntax-tree/hast) tree, with a few restrictions.
@@ -160,6 +164,8 @@ It is recursive, the `children` property also being of `Hast` type.
 - value (string, required when type === ("comment" || "text")) - comment or text content
 - children ([`Hast`](#hast-arrayobject), optional) - the element children
 - properties ([`HastProperties`](#hastproperties-object)) - the element properties
+
+---
 
 #### `HastProperties` (object)
 
@@ -193,7 +199,7 @@ By default, this module logs warnings, but enabling the [`debug` option](#proper
 
 <details><summary>logging example (es6)</summary><p>
 
-```
+```javascript
 import remark from "remark"
 import genericExtensions "remark-generic-extensions"
 import html from "remark-html"
@@ -211,7 +217,7 @@ remark()
 
 <details><summary>debugging example (es6)</summary><p>
 
-```
+```javascript
 import remark from "remark"
 import genericExtensions "remark-generic-extensions"
 import html from "remark-html"
