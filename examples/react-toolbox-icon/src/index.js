@@ -48,7 +48,7 @@ const markdownToReact = (markdown) =>
     },
   })
   .processSync(markdown, { commonmark: true })
-.contents
+  .contents
 
 const content = markdownToReact(`# Hello
 
