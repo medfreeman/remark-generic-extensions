@@ -1,0 +1,24 @@
+{
+  "name": "remark-generic-extensions",
+  "description": "remark-react example with react-toolbox TooltipIcon",
+  "version": "1.1.0",
+  "dependencies": {
+    "remark-react": "4.0.0",
+    "remark-generic-extensions": "1.1.0",
+    "remark": "7.0.1",
+    "react-toolbox": "2.0.0-beta.12",
+    "react-dom": "15.5.3",
+    "react": "15.5.3",
+    "hast-util-sanitize": "1.1.1",
+    "deepmerge": "1.5.0"
+  },
+  "devDependencies": {
+    "react-scripts": "1.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
