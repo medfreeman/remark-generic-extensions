@@ -37,7 +37,9 @@ const markdownToReact = (markdown) =>
         "*": ["className"],
         Icon: [
           "tooltip",
-          "icon"
+          "icon",
+          "floating",
+          "accent"
         ]
       }
     }),
