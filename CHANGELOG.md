@@ -1,3 +1,8 @@
+# 1.1.0 - 2017-07-16
+
+- Added: browser build (#10)
+- Added: documentation improvements
+
 # 1.0.0 - 2017-07-16
 
 - Changed: replace `attributeDefaultValues` by `propsDefaultValues` in `elements` option
