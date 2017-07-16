@@ -46,6 +46,57 @@ There is a [known bug in remark-react](https://github.com/mapbox/remark-react/is
 A [PR](https://github.com/mapbox/remark-react/pull/43) is in waiting, do not hesitate to upvote it !
 The [corresponding issue is here](https://github.com/medfreeman/remark-generic-extensions/issues/9).
 
+
+## Syntax
+
+`!Extension[Content](Argument){Properties}`
+
+:information_source: The extension syntax is validated through [regexes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp), that you can inspect [here](https://github.com/medfreeman/remark-generic-extensions/blob/master/src/utils/regexes.js) if needed
+
+- `Extension` defines the element you want to use
+
+It matches the `\w` character class.
+
+```
+Matches any alphanumeric character from the basic Latin alphabet, including the underscore. Equivalent to [A-Za-z0-9_].
+```
+
+- `Content` defines the element content
+
+It matches everything but the `]` character.
+
+It can be mapped to any hast element property or value, see [placeholders](#placeholders).
+
+- `Argument` defines the element argument
+
+It matches everything but the `)` character.
+
+It can be mapped to any hast element property or value, see [placeholders](#placeholders).
+
+- `Properties` defines the element properties
+
+They can have leading and / or trailing spaces before / after the opening / closing braces.
+
+The different properties are separated by spaces, and so each of them match any character but spaces, except for quoted properties.
+
+### Available properties
+
+  - id: `#my-id`
+
+    It will be applied to the top-level hast element.
+  - class: `.my-class .my-other-class`
+
+    It will be applied to the top-level hast element.
+  - key / value property: `my-prop=my-value`
+
+    It can be mapped to any hast element property or value, see [placeholders](#placeholders).
+  - key / value quoted property: `my-other-prop="my value with spaces"`
+
+    It can be mapped to any hast element property or value, see [placeholders](#placeholders).
+  - lone property: `my-alone-prop`
+
+    It can be mapped to any hast element property or value, see [placeholders](#placeholders).
+
 ## Installation
 
 ```bash
