@@ -251,6 +251,34 @@ test(
 )
 
 test(
+  "should work with an element with a mapped content on a child value",
+  t => t.snapshot(
+    transformToHtml(
+      "!icon[my-content]",
+      {
+        elements: {
+          icon: {
+            html: {
+              children: [
+                {
+                  tagName: "p",
+                  children: [
+                    {
+                      type: "text",
+                      value: "::content::"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      }
+    )
+  )
+)
+
+test(
   "should work with an element with multiple children on the same level",
   t => t.snapshot(
     transformToHtml(

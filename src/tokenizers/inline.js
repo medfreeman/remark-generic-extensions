@@ -137,6 +137,25 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
       }
     }
 
+    const replacePlaceholder = (inputString) =>
+      inputString.replace(
+        new RegExp(
+          settings.placeholderAffix +
+          "(content|argument|prop" + settings.placeholderAffix +
+          "(" + Object::keys(element.properties).join("|") + "))" +
+          settings.placeholderAffix
+        ),
+        (match, s1, s2) => {
+          if (s1::startsWith("prop")) {
+            foundPlaceholders.properties[s2] = true
+            return element.properties[s2]
+          } else {
+            foundPlaceholders.s1 = true
+            return element[s1]
+          }
+        }
+      )
+
     /*
       Replace the placeholders on any level
       of the pseudo hast tree by their corresponding
@@ -148,23 +167,7 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
         ([key, value]) => {
           const newValue =
             typeof value === "string"
-              ? value.replace(
-                new RegExp(
-                  settings.placeholderAffix +
-                  "(content|argument|prop" + settings.placeholderAffix +
-                  "(" + Object::keys(element.properties).join("|") + "))" +
-                  settings.placeholderAffix
-                ),
-                (match, s1, s2) => {
-                  if (s1::startsWith("prop")) {
-                    foundPlaceholders.properties[s2] = true
-                    return element.properties[s2]
-                  } else {
-                    foundPlaceholders.s1 = true
-                    return element[s1]
-                  }
-                }
-              )
+              ? replacePlaceholder(value)
               : value
           newPropertiesObject[key] = newValue
         }
@@ -189,7 +192,7 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
         const branch = {
           type: type ? type : "element",
           tagName: tagName ? tagName : undefined,
-          value: value ? value : undefined,
+          value: value ? replacePlaceholder(value) : undefined,
           properties: {
             ...newProperties
           }

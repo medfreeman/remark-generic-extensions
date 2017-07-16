@@ -161,7 +161,7 @@ It is recursive, the `children` property also being of `Hast` type.
   - comment
   - text
 - tagName (string, required when type === "element") - html5 element tag name
-- value (string, required when type === ("comment" || "text")) - comment or text content
+- value (string, required when type === ("comment" || "text")) - comment or text content, supports [placeholders](#placeholders)
 - children ([`Hast`](#hast-arrayobject), optional) - the element children
 - properties ([`HastProperties`](#hastproperties-object)) - the element properties
 
@@ -175,19 +175,23 @@ This object pairs are mapped to [hast properties](https://github.com/syntax-tree
 
 - *propertyName* (string, except "class" && "for"): (enum)
   - (string) - When a property value is a string,
-    it supports placeholders that will be replaced by their corresponding value.
-
-    The available placeholders are:
-      - "::content::" -> will be replaced by the `content` part of the extension in markdown (the part between `[]`)
-      - "::argument::" -> will be replaced by the `argument` part of the extension in markdown (the part between `()`)
-      - "::prop::*property*::" -> will be replaced by the corresponding `property` value present in the extension in markdown (in the part between `{}`)
-
-    Specifying the [`placeholderAffix` option](#properties) allows changing the placeholders.
-    For example, using "||" would make the available placeholders become "||content||", "||argument||" and "||prop||*property*||".
+    it supports [placeholders](#placeholders) that will be replaced by their corresponding value.
 
   - (any) - A property value can also be of any other type
 
 :information_source: Any property present in a markdown extension and not referenced by a placeholder will be applied to the top-level element.
+
+## Placeholders
+
+The `value` property and all `properties` members in [`Hast`](#hast-arrayobject) children support placeholders.
+
+The available placeholders are:
+  - "::content::" -> will be replaced by the `content` part of the extension in markdown (the part between `[]`)
+  - "::argument::" -> will be replaced by the `argument` part of the extension in markdown (the part between `()`)
+  - "::prop::*property*::" -> will be replaced by the corresponding `property` value present in the extension in markdown (in the part between `{}`)
+
+Specifying the [`placeholderAffix` option](#properties) allows changing the placeholders.
+For example, using "||" would make the available placeholders become "||content||", "||argument||" and "||prop||*property*||".
 
 ## Logging
 
