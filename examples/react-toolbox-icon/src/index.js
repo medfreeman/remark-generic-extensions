@@ -7,7 +7,8 @@ import deepmerge from "deepmerge"
 import sanitizeGhSchema from "hast-util-sanitize/lib/github.json"
 import ThemeProvider from "react-toolbox/lib/ThemeProvider"
 
-import theme from "./assets/react-toolbox-theme"
+import theme from "./assets/react-toolbox/theme"
+import "./assets/react-toolbox/theme.css"
 import TooltipIcon from "./TooltipIcon.jsx"
 
 const markdownToReact = (markdown) =>

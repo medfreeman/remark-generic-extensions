@@ -23,8 +23,8 @@
     "customProperties": {
       "tooltip-color": "#000"
     },
-    "javascript": "src/assets/react-toolbox-theme.js",
-    "styles": "public/assets/react-toolbox-theme.css"
+    "javascript": "src/assets/react-toolbox/theme.js",
+    "styles": "src/assets/react-toolbox/theme.css"
   },
   "scripts": {
     "toolbox": "react-toolbox-themr"
