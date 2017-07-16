@@ -55,29 +55,29 @@ The [corresponding issue is here](https://github.com/medfreeman/remark-generic-e
 
 - `Extension` defines the element you want to use
 
-It matches the `\w` character class.
+  It matches the `\w` character class.
 
-```
-Matches any alphanumeric character from the basic Latin alphabet, including the underscore. Equivalent to [A-Za-z0-9_].
-```
+  ```
+  Matches any alphanumeric character from the basic Latin alphabet, including the underscore. Equivalent to [A-Za-z0-9_].
+  ```
 
 - `Content` defines the element content
 
-It matches everything but the `]` character.
-
-It can be mapped to any hast element property or value, see [placeholders](#placeholders).
+  It matches everything but the `]` character.
+  
+  It can be mapped to any hast element property or value, see [placeholders](#placeholders).
 
 - `Argument` defines the element argument
 
-It matches everything but the `)` character.
-
-It can be mapped to any hast element property or value, see [placeholders](#placeholders).
+  It matches everything but the `)` character.
+  
+  It can be mapped to any hast element property or value, see [placeholders](#placeholders).
 
 - `Properties` defines the element properties
 
-They can have leading and / or trailing spaces before / after the opening / closing braces.
-
-The different properties are separated by spaces, and so each of them match any character but spaces, except for quoted properties.
+  They can have leading and / or trailing spaces before / after the opening / closing braces.
+  
+  The different properties are separated by spaces, and so each of them match any character but spaces, except for quoted properties.
 
 ### Available properties
 
