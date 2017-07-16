@@ -5,7 +5,9 @@ import genericExtensions from "remark-generic-extensions"
 import remarkReact from "remark-react"
 import deepmerge from "deepmerge"
 import sanitizeGhSchema from "hast-util-sanitize/lib/github.json"
+import ThemeProvider from "react-toolbox/lib/ThemeProvider"
 
+import theme from "./assets/react-toolbox-theme"
 import TooltipIcon from "./TooltipIcon.jsx"
 
 const markdownToReact = (markdown) =>
@@ -55,9 +57,11 @@ const styles = {
 }
 
 const App = () => (
-  <div style={styles}>
-    { content }
-  </div>
+  <ThemeProvider theme={theme}>
+    <div style={styles}>
+      { content }
+    </div>
+  </ThemeProvider>
 )
 
 render(<App />, document.getElementById('root'))

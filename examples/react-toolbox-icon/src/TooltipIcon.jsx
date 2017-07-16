@@ -1,6 +1,6 @@
 import React from "react"
-import { Button } from "react-toolbox/lib/button/Button"
-import Tooltip from "react-toolbox/lib/tooltip"
+import Button from "react-toolbox/lib/button/Button"
+import Tooltip from "react-toolbox/lib/tooltip/Tooltip"
 
 const TooltipButton = Tooltip(Button)
 
