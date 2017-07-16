@@ -1,6 +1,6 @@
 {
   "name": "remark-generic-extensions",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "!Extension\\[Content\\]\\(Argument\\)\\{Properties\\} -> :tada: — [commonmark generic directive extension](https://github.com/jgm/CommonMark/wiki/Generic-Directive-Extension-List) for remark",
   "keywords": [
     "remark",
