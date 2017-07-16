@@ -185,11 +185,17 @@ remark()
 })
 ```
 
-Now, running `node example` yields:
+Now, running `node example` yields (indented):
 
 ```html
 <h1>Alpha</h1>
-<p><span id="my-alert" class="custom-alert"><i class="fa fa-exclamation" aria-hidden="true"></i><span>My message!</span><span class="subtext">my subtext is rad</span></span></p>
+<p>
+  <span id="my-alert" class="custom-alert">
+    <i class="fa fa-exclamation" aria-hidden="true"></i>
+    <span>My message!</span>
+    <span class="subtext">my subtext is rad</span>
+  </span>
+</p>
 <h2>Bravo</h2>
 <h2>Delta</h2>
 ```
