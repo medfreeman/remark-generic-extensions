@@ -19,8 +19,8 @@ const styles = {
 }
 
 const App = () => (
-  <ThemeProvider theme={theme}>
-    <div style={styles}>
+  <ThemeProvider theme={ theme }>
+    <div style={ styles }>
       { content }
     </div>
   </ThemeProvider>

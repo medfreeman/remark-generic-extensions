@@ -1,18 +1,31 @@
 {
-  "name": "remark-generic-extensions",
+  "name": "remark-generic-extensions-example-react-toolbox-icon",
   "description": "remark-react example with react-toolbox TooltipIcon",
   "version": "1.1.0",
+  "private": "true",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/medfreeman/remark-generic-extensions.git"
+  },
+  "author": "Mehdi Lahlou <mehdi.lahlou@free.fr>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/medfreeman/remark-generic-extensions/issues"
+  },
+  "homepage": "https://github.com/medfreeman/remark-generic-extensions/examples/react-toolbox-icon#readme",
   "dependencies": {
-    "remark-react": "4.0.0",
-    "remark-generic-extensions": "1.1.0",
-    "remark": "7.0.1",
-    "react-toolbox": "2.0.0-beta.12",
-    "react-dom": "15.5.3",
-    "react": "15.5.3",
+    "deepmerge": "1.5.0",
     "hast-util-sanitize": "1.1.1",
-    "deepmerge": "1.5.0"
+    "prop-types": "^15.5.10",
+    "react": "15.5.3",
+    "react-dom": "15.5.3",
+    "react-toolbox": "2.0.0-beta.12",
+    "remark": "7.0.1",
+    "remark-generic-extensions": "1.1.0",
+    "remark-react": "4.0.0"
   },
   "devDependencies": {
+    "react-scripts": "1.0.0",
     "react-toolbox-themr": "^1.0.2"
   },
   "reactToolbox": {
@@ -20,10 +33,13 @@
       "BUTTON",
       "TOOLTIP"
     ],
-    "javascript": "src/assets/react-toolbox/theme.js",
-    "styles": "src/assets/react-toolbox/theme.css"
+    "output": "src/assets/react-toolbox"
   },
   "scripts": {
-    "toolbox": "react-toolbox-themr"
+    "toolbox": "react-toolbox-themr",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
 }

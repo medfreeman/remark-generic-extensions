@@ -1,5 +1,5 @@
 import remark from "remark"
-import genericExtensions from "remark-generic-extensions"
+import genericExtensions from "remark-generic-extensions/lib/browser"
 import remarkReact from "remark-react"
 import deepmerge from "deepmerge"
 import sanitizeGhSchema from "hast-util-sanitize/lib/github.json"
@@ -11,6 +11,12 @@ const markdownToReact = (markdown) =>
   .use(genericExtensions, {
     elements: {
       Icon: {
+        propsDefaultValues: {
+          accent: true,
+          floating: true,
+          primary: true,
+          raised: true
+        },
         html: {
           properties: {
             icon: "::content::",
@@ -31,10 +37,12 @@ const markdownToReact = (markdown) =>
       attributes: {
         "*": ["className"],
         Icon: [
-          "tooltip",
-          "icon",
+          "accent",
           "floating",
-          "accent"
+          "icon",
+          "primary",
+          "raised",
+          "tooltip"
         ]
       }
     }),
