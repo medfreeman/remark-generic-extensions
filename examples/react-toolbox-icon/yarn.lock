@@ -5994,9 +5994,9 @@ relateurl@0.2.x:
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
 
-remark-generic-extensions@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/remark-generic-extensions/-/remark-generic-extensions-1.1.0.tgz#4b0fca68cb49039f41f8de61516e4fa464b76b7e"
+remark-generic-extensions@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/remark-generic-extensions/-/remark-generic-extensions-1.2.0.tgz#73919e8d70761a16b5f3dc59cd25eedbde1a0bd1"
   dependencies:
     core-js "^2.4.1"
     joi "^10.5.2"
