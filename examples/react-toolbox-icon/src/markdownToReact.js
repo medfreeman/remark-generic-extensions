@@ -28,14 +28,13 @@ const markdownToReact = (markdown) =>
   })
   .use(remarkReact, {
     sanitize: deepmerge(sanitizeGhSchema, {
-      // remove user-content from github.json to remark-slug work as expected
-      clobberPrefix: "",
       tagNames: [
         "Icon",
       ],
-      // allow code to have className
       attributes: {
+        // allow every element to have className
         "*": ["className"],
+        // allow Icon to have these properties
         Icon: [
           "accent",
           "floating",
