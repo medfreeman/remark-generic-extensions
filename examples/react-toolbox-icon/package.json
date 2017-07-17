@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/medfreeman/remark-generic-extensions/issues"
   },
-  "homepage": "https://github.com/medfreeman/remark-generic-extensions/examples/react-toolbox-icon#readme",
+  "homepage": "https://github.com/medfreeman/remark-generic-extensions/tree/master/examples/react-toolbox-icon#readme",
   "dependencies": {
     "deepmerge": "1.5.0",
     "hast-util-sanitize": "1.1.1",
