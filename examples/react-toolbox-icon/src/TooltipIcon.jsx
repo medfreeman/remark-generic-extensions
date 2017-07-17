@@ -24,7 +24,7 @@ const TooltipIcon = props => {
 
 TooltipIcon.propTypes = {
   accent: PropTypes.oneOfType([
-    PropTypes.node,
+    PropTypes.bool,
     PropTypes.string,
   ]),
   icon: PropTypes.oneOfType([
@@ -36,15 +36,14 @@ TooltipIcon.propTypes = {
     PropTypes.string,
   ]),
   primary: PropTypes.oneOfType([
-    PropTypes.node,
+    PropTypes.bool,
     PropTypes.string,
   ]),
   raised: PropTypes.oneOfType([
-    PropTypes.node,
+    PropTypes.bool,
     PropTypes.string,
   ]),
-  tooltip: PropTypes.any.isRequired,
-  theme: PropTypes.object,
+  tooltip: PropTypes.any.isRequired
 }
 
 export default TooltipIcon
