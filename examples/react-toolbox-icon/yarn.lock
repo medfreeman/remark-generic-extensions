@@ -5554,7 +5554,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.10, prop-types@^15.5.2, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@~15.5.0:
+prop-types@15.5.10, prop-types@^15.5.2, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@~15.5.0:
   version "15.5.10"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.10.tgz#2797dfc3126182e3a95e3dfbb2e893ddd7456154"
   dependencies:
@@ -5783,7 +5783,7 @@ react-style-proptype@^3.0.0:
   dependencies:
     prop-types "^15.5.4"
 
-react-toolbox-themr@^1.0.2:
+react-toolbox-themr@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/react-toolbox-themr/-/react-toolbox-themr-1.0.2.tgz#ca08ccc4ac9074a3784d69601a115ff08252d176"
   dependencies:
