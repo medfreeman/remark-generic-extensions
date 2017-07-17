@@ -8,7 +8,7 @@
 yarn
 ```
 
-## Compile css theme for react-toolbox
+## Compile css theme for react-toolbox (see [react-toolbox-themr](https://github.com/react-toolbox/react-toolbox-themr))
 
 ```sh
 yarn toolbox
