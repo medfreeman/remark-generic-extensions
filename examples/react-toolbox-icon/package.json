@@ -1,7 +1,7 @@
 {
   "name": "remark-generic-extensions-example-react-toolbox-icon",
   "description": "remark-react example with react-toolbox TooltipIcon",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": "true",
   "repository": {
     "type": "git",

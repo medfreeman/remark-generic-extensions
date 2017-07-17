@@ -1,3 +1,7 @@
+# 1.2.0 - 2017-07-16
+
+- Added: [react-toolbox](http://react-toolbox.com/) demo using [CodeSandbox](https://codesandbox.io)
+
 # 1.1.0 - 2017-07-16
 
 - Added: browser build (#10)
