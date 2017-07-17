@@ -10,16 +10,12 @@
 Allows the use of [commonmark generic directive extension](https://github.com/jgm/CommonMark/wiki/Generic-Directive-Extension-List) in markdown,
 generating components through [remark-html](https://github.com/wooorm/remark-html) or [remark-react](https://github.com/mapbox/remark-react).
 
-### Examples
+### Demo
 
-`!youtube[C8NAYW-Z54o]` ->
+Here's a demo using [remark-react](https://github.com/mapbox/remark-react) and [react-toolbox](https://github.com/react-toolbox/react-toolbox).
+It is made using [create-react-app](https://github.com/facebookincubator/create-react-app), the [source is here](https://github.com/medfreeman/remark-generic-extensions/tree/master/examples/react-toolbox-icon) and can also be run locally.
 
-![youtube cat video embed](https://j.gifs.com/j2zN2v.gif)
-
-
-`!Icon[add](Add button)` ->
-
-![react-toolbox icon with tooltip](https://j.gifs.com/xGRwl9.gif)
+[![Edit medfreeman/remark-generic-extensions: react-toolbox-icon](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/medfreeman/remark-generic-extensions/tree/master/examples/react-toolbox-icon)
 
 ## Disclaimer
 
@@ -111,7 +107,11 @@ yarn add remark-generic-extensions
 
 ## Usage (es6)
 
-*with [`remark-html`](https://github.com/wooorm/remark-html)*
+### *with [`remark-react`](https://github.com/mapbox/remark-react)*
+
+See [demo](#demo)
+
+### *with [`remark-html`](https://github.com/wooorm/remark-html)*
 
 Say we have the following file, `example.md`:
 
