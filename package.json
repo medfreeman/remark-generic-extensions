@@ -43,7 +43,7 @@
   },
   "homepage": "https://github.com/medfreeman/remark-generic-extensions#readme",
   "devDependencies": {
-    "ava": "^0.21.0",
+    "ava": "^0.22.0",
     "babel-cli": "^6.24.1",
     "babel-eslint": "^7.2.3",
     "babel-plugin-add-module-exports": "^0.2.1",
@@ -65,10 +65,10 @@
     "nyc": "^11.0.2",
     "react": "^15.5.4",
     "react-test-renderer": "^15.5.4",
-    "remark": "^7.0.1",
+    "remark": "^8.0.0",
     "remark-html": "^6.0.0",
     "remark-react": "^4.0.0",
-    "sinon": "^2.3.2",
+    "sinon": "^3.2.1",
     "vfile-reporter": "^4.0.0"
   },
   "dependencies": {
