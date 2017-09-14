@@ -73,7 +73,7 @@
   },
   "dependencies": {
     "core-js": "^2.5.1",
-    "joi": "^10.6.0",
+    "joi": "^11.0.0",
     "joi-browser": "^10.6.1"
   },
   "babel": {
