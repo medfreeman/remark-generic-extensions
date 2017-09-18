@@ -11,6 +11,8 @@
 Allows the use of [commonmark generic directive extension](https://github.com/jgm/CommonMark/wiki/Generic-Directive-Extension-List) in markdown,
 generating components through [remark-html](https://github.com/wooorm/remark-html) or [remark-react](https://github.com/mapbox/remark-react).
 
+[📖 **Release Notes**](./CHANGELOG.md)
+
 ### Demo
 
 Here's a demo using [remark-react](https://github.com/mapbox/remark-react) and [react-toolbox](https://github.com/react-toolbox/react-toolbox).
@@ -384,6 +386,8 @@ remark()
 * For bugs and feature requests, please create an issue.
 * Pull requests must be accompanied by passing automated tests (`$ yarn test`).
 
-## [CHANGELOG](CHANGELOG.md)
+## LICENSE
 
-## [LICENSE](LICENSE)
+[Apache License 2.0](./LICENSE)
+
+Copyright (c) Mehdi Lahlou <mlahlou@protonmail.ch>
