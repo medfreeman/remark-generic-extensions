@@ -25,9 +25,9 @@
     "build-browser": "yarn build-browserify && yarn build-mangle",
     "build-browserify": "browserify ./src/index.js --bare -t babelify -s remarkGenericExtensions > ./lib/browser.js",
     "build-mangle": "esmangle ./lib/browser.js > ./lib/browser.min.js",
-    "prepublish": "yarn build -s",
+    "prepublish": "yarn build",
     "lint": "eslint --fix ./src",
-    "pretest": "yarn lint -s",
+    "pretest": "yarn lint",
     "test": "cross-env NODE_ENV=test ava",
     "test-with-coverage": "cross-env NODE_ENV=test nyc ava",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
