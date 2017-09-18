@@ -1,9 +1,9 @@
 function vfileWarning(message, ruleId = "") {
-  this.file.message(message , this.now(), ruleId)
+  this.file.message(message, this.now(), ruleId);
 }
 
 function vfileDebug(message) {
-  this::vfileWarning(message, "debug")
+  this::vfileWarning(message, "debug");
 }
 
-export { vfileWarning, vfileDebug }
+export { vfileWarning, vfileDebug };

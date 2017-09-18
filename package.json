@@ -19,6 +19,9 @@
     "lib/index.js": "lib/browser.min.js"
   },
   "scripts": {
+    "#<git hooks>": "handled by husky",
+    "precommit": "lint-staged",
+    "#</git hooks>": "handled by husky",
     "build": "yarn build-server && yarn build-browser",
     "build-server": "babel --ignore /__tests__/ -d ./lib ./src",
     "watch": "babel -w  --ignore /__tests__/ -d ./lib ./src",
@@ -59,10 +62,16 @@
     "cross-env": "^5.0.5",
     "eslint": "^4.6.1",
     "eslint-config-i-am-meticulous": "^7.0.1",
+    "eslint-config-prettier": "^2.5.0",
     "eslint-plugin-babel": "^4.1.2",
     "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-prettier": "^2.3.1",
     "esmangle": "^1.0.1",
+    "git-exec-and-restage": "^1.0.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.2.1",
     "nyc": "^11.2.1",
+    "prettier": "^1.7.0",
     "react": "^15.6.1",
     "react-test-renderer": "^15.6.1",
     "remark": "^8.0.0",
@@ -75,6 +84,11 @@
     "core-js": "^2.5.1",
     "joi": "^10.6.0",
     "joi-browser": "^10.6.1"
+  },
+  "lint-staged": {
+    "*.js": [
+      "git-exec-and-restage prettier --write --"
+    ]
   },
   "babel": {
     "presets": [
@@ -119,14 +133,15 @@
   "eslintConfig": {
     "parser": "babel-eslint",
     "parserOptions": {
-      "ecmaVersion": 6,
+      "ecmaVersion": 8,
       "sourceType": "module"
     },
     "plugins": [
       "babel"
     ],
     "extends": [
-      "eslint-config-i-am-meticulous"
+      "eslint-config-i-am-meticulous",
+      "eslint-config-prettier"
     ],
     "env": {
       "node": true,
@@ -134,43 +149,10 @@
     },
     "globals": {
       "Promise": true
-    },
-    "rules": {
-      "indent": [
-        "error",
-        2
-      ],
-      "max-len": [
-        "error",
-        80
-      ],
-      "quotes": [
-        "error",
-        "double",
-        {
-          "allowTemplateLiterals": true
-        }
-      ],
-      "semi": [
-        "error",
-        "never"
-      ],
-      "object-curly-spacing": [
-        "error",
-        "always"
-      ]
-    },
-    "settings": {
-      "import/resolver": {
-        "node": {
-          "extensions": [
-            ".js"
-          ],
-          "moduleDirectory": [
-            "node_modules"
-          ]
-        }
-      }
     }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "parser": "babylon"
   }
 }
