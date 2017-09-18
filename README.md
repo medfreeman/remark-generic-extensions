@@ -38,10 +38,8 @@ extentionNames: argumentField
 At the moment, this module only supports inline extensions, not block extensions.
 Feel free to submit a PR to add this feature if you need it before i got the time to implement it.
 
-There is a [known bug in remark-react](https://github.com/mapbox/remark-react/issues/41), that wrongly coerces non-string values to strings.
-A [PR](https://github.com/mapbox/remark-react/pull/43) is in waiting, do not hesitate to upvote it !
-The [corresponding issue is here](https://github.com/medfreeman/remark-generic-extensions/issues/9).
-
+There is a [known bug in remark-react < 4.0.1](https://github.com/mapbox/remark-react/issues/41), that wrongly coerces non-string values to strings.
+Make sure to use at least v4.0.1.
 
 ## Syntax
 

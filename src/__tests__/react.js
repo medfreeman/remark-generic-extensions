@@ -50,7 +50,7 @@ test(
   )
 )
 
-test.skip(
+test(
   "should add an extension with a lone attribute with a default boolean value",
   t => t.snapshot(
     transformToReact(
@@ -86,7 +86,7 @@ test(
   )
 )
 
-test.skip(
+test(
   "should add an extension with a boolean property",
   t => t.snapshot(
     transformToReact(
