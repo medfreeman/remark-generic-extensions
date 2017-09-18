@@ -22,7 +22,7 @@ const transformToLog = (input, options) => {
     .use(genericExtensions, options)
     .use(html)
     .process(input, function(err, file) {
-      log += report(err || file);
+      log += report(err || file, { color: false });
     });
   return log;
 };
