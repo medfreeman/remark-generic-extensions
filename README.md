@@ -1,11 +1,12 @@
 # remark-generic-extensions
 
-[![Build Status](https://img.shields.io/travis/medfreeman/remark-generic-extensions.svg?label=build)](https://travis-ci.org/medfreeman/remark-generic-extensions)
 [![npm version](https://img.shields.io/npm/v/remark-generic-extensions.svg)](https://www.npmjs.com/package/remark-generic-extensions)
+[![npm](https://img.shields.io/npm/dt/remark-generic-extensions.svg?style=flat-square)](https://npmjs.com/package/remark-generic-extensions)
+[![Build Status](https://img.shields.io/travis/medfreeman/remark-generic-extensions.svg?label=build)](https://travis-ci.org/medfreeman/remark-generic-extensions)
+[![Coverage Status](https://img.shields.io/coveralls/medfreeman/remark-generic-extensions/master.svg)](https://coveralls.io/github/medfreeman/remark-generic-extensions?branch=master)
+[![Greenkeeper badge](https://badges.greenkeeper.io/medfreeman/remark-generic-extensions.svg)](https://greenkeeper.io/)
 [![dependencies Status](https://img.shields.io/david/medfreeman/remark-generic-extensions.svg)](https://david-dm.org/medfreeman/remark-generic-extensions)
 [![devDependencies Status](https://img.shields.io/david/dev/medfreeman/remark-generic-extensions.svg)](https://david-dm.org/medfreeman/remark-generic-extensions?type=dev)
-[![Greenkeeper badge](https://badges.greenkeeper.io/medfreeman/remark-generic-extensions.svg)](https://greenkeeper.io/)
-[![Coverage Status](https://img.shields.io/coveralls/medfreeman/remark-generic-extensions/master.svg)](https://coveralls.io/github/medfreeman/remark-generic-extensions?branch=master)
 
 Allows the use of [commonmark generic directive extension](https://github.com/jgm/CommonMark/wiki/Generic-Directive-Extension-List) in markdown,
 generating components through [remark-html](https://github.com/wooorm/remark-html) or [remark-react](https://github.com/mapbox/remark-react).
