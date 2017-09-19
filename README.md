@@ -406,6 +406,8 @@ This object pairs are mapped to [hast properties](https://github.com/syntax-tree
 
 :information_source: Any property present in a markdown extension and not referenced by a placeholder will be applied to the top-level element.
 
+:information_source: If the `content` property is not referenced on a block element, it will be applied to a child `text` node of the top-level element.
+
 ## Placeholders
 
 The `value` property and all `properties` members in [`Hast`](#hast-arrayobject) children support placeholders.
@@ -414,6 +416,8 @@ The available placeholders are:
   - "::content::" -> will be replaced by the `content` part of the extension in markdown (the part between `[]`)
   - "::argument::" -> will be replaced by the `argument` part of the extension in markdown (the part between `()`)
   - "::prop::*property*::" -> will be replaced by the corresponding `property` value present in the extension in markdown (in the part between `{}`)
+
+:information_source: the available properties are `id`, `className` or any other property defined in your markdown.
 
 Specifying the [`placeholderAffix` option](#properties) allows changing the placeholders.
 For example, using "||" would make the available placeholders become "||content||", "||argument||" and "||prop||*property*||".
