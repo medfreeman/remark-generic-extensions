@@ -5,6 +5,7 @@ import { replacePlaceholdersInObject } from "../utils/placeholderReplacer";
 import parseHastChildrenTreeRecursive from "../utils/hastChildrenTreeParser";
 
 function commonTokenizer(
+  type,
   rawElement,
   propertiesString,
   elementSettings,
@@ -48,7 +49,7 @@ function commonTokenizer(
 
   // Prepare the final hast tree
   const hastOutputTree = {
-    type: "inline-extension",
+    type: type,
     data: {
       hName: tagName ? tagName : element.name
     }
@@ -103,6 +104,16 @@ function commonTokenizer(
       newProperties[key] = value;
     }
   });
+
+  if (type === "block-extension") {
+    if (!foundPlaceholdersInElement.content) {
+      // Set the content on a child text element
+      hastOutputTree.data.hChildren.push({
+        type: "text",
+        value: element.content
+      });
+    }
+  }
 
   // Assign the first-level properties to the hast node
   hastOutputTree.data.hProperties = newProperties;
