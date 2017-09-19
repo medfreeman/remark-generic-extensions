@@ -13,6 +13,8 @@
 Allows the use of [commonmark generic directive extension](https://github.com/jgm/CommonMark/wiki/Generic-Directive-Extension-List) in markdown,
 generating components through [remark-html](https://github.com/wooorm/remark-html) or [remark-react](https://github.com/mapbox/remark-react).
 
+This module also works in browser environments.
+
 [📖 **Release Notes**](./CHANGELOG.md)
 
 ### Demo
