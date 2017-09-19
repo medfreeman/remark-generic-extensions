@@ -31,9 +31,8 @@
     "prepublish": "yarn build",
     "lint": "eslint --fix ./src",
     "pretest": "yarn lint",
-    "test": "cross-env NODE_ENV=test ava",
-    "test-with-coverage": "cross-env NODE_ENV=test nyc ava",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "test": "cross-env NODE_ENV=test jest --runInBand",
+    "coverage": "nyc report --temp-directory=coverage --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -46,16 +45,13 @@
   },
   "homepage": "https://github.com/medfreeman/remark-generic-extensions#readme",
   "devDependencies": {
-    "ava": "^0.22.0",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.0",
     "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-istanbul": "^4.1.4",
     "babel-plugin-transform-function-bind": "^6.22.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
-    "babel-register": "^6.26.0",
     "babelify": "^7.3.0",
     "browserify": "^14.4.0",
     "coveralls": "^2.13.1",
@@ -65,10 +61,12 @@
     "eslint-config-prettier": "^2.5.0",
     "eslint-plugin-babel": "^4.1.2",
     "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jest": "^21.1.0",
     "eslint-plugin-prettier": "^2.3.1",
     "esmangle": "^1.0.1",
     "git-exec-and-restage": "^1.0.1",
     "husky": "^0.14.3",
+    "jest": "^21.1.0",
     "lint-staged": "^4.2.1",
     "nyc": "^11.2.1",
     "prettier": "^1.7.0",
@@ -106,29 +104,21 @@
           "babel-preset-stage-2",
           "babel-preset-react"
         ],
-        "plugins": [
-          "istanbul",
-          "transform-function-bind"
-        ],
-        "sourceMaps": "inline"
+        "sourceMaps": "both"
       }
     },
     "ignore": [
       "node_modules/*"
     ]
   },
-  "ava": {
-    "require": [
-      "babel-register"
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/?(*.)test.js"
     ],
-    "babel": "inherit"
-  },
-  "nyc": {
-    "require": [
-      "babel-register"
-    ],
-    "sourceMap": false,
-    "instrument": false
+    "coverageDirectory": "./coverage/",
+    "mapCoverage": true,
+    "collectCoverage": true
   },
   "eslintConfig": {
     "parser": "babel-eslint",
@@ -137,18 +127,22 @@
       "sourceType": "module"
     },
     "plugins": [
-      "babel"
+      "babel",
+      "jest"
     ],
     "extends": [
       "eslint-config-i-am-meticulous",
+      "plugin:jest/recommended",
       "eslint-config-prettier"
     ],
     "env": {
       "node": true,
-      "es6": true
+      "es6": true,
+      "jest": true
     },
     "globals": {
-      "Promise": true
+      "jest/globals": true,
+      "jasmine": true
     }
   },
   "prettier": {

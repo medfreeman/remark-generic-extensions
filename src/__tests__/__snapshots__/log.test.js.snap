@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`log should log a warning if there is an invalid property 1`] = `
+"  1:1  warning  There was some invalid properties: \\"/\\" was left after the processing of \\"/foo\\"
+
+⚠ 1 warning"
+`;
+
+exports[`log should log information if debug is enabled 1`] = `
+"  1:1  warning  Inline extension \`icon\` found  debug
+  1:1  warning  Full match: \\"!icon\\"            debug
+  1:1  warning  Content: \\"\\"                    debug
+  1:1  warning  Argument: \\"\\"                   debug
+  1:1  warning  Properties string: \\"\\"          debug
+  1:1  warning  Computed properties: {}        debug
+  1:1  warning  Hast output tree:
+{
+  \\"type\\": \\"inline-extension\\",
+  \\"data\\": {
+    \\"hName\\": \\"icon\\",
+    \\"hChildren\\": [],
+    \\"hProperties\\": {}
+  }
+}              debug
+
+⚠ 7 warnings"
+`;
+
+exports[`log should show a \`no issues found\` message 1`] = `"no issues found"`;
