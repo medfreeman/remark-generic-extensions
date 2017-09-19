@@ -1,7 +1,6 @@
-/* eslint-disable no-irregular-whitespace */
 const inlineExtensionRegex = /^!(\w+)(?:\[([^)]*)\])?(?:\(([^)]*)\))?(?:\{([^}]*)\})?/;
 
-const blockExtensionRegex = /^(\w+):(?:[ \t]+)([^\f\n\r\v]*)?(?:[\f\n\r\v]+):::(?:[\f\n\r\v]+)([^]*?)(?:[\f\n\r\v]+):::(?:(?:[\f\n\r\v]+)(?:\{([^}]*)\}))?/;
+const blockExtensionRegex = /^(\w+):(?:(?:[ \t]+)([^\f\n\r\v]*))?(?:[\f\n\r\v]+):::([^]*?):::(?:(?:[\f\n\r\v]+)(?:\{([^}]*)\}))?/;
 
 const keyValueQuotedPropertiesRegex = /(?:\t )*([^\t />"'=]+)=(?:"([^"]+)")/g;
 
