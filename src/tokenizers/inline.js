@@ -4,10 +4,8 @@ import { forEach } from "../utils/array";
 import { trim } from "../utils/string";
 import { vfileDebug, vfileWarning } from "../utils/eat";
 import propertiesExtractor from "../utils/propertiesExtractor";
-import {
-  replacePlaceholder,
-  replacePlaceholdersInObject
-} from "../utils/placeholderReplacer";
+import { replacePlaceholdersInObject } from "../utils/placeholderReplacer";
+import parseHastChildrenTreeRecursive from "../utils/hastChildrenTreeParser";
 
 function inlineExtensionTokenizer(eat, value, silent, settings) {
   const match = inlineExtensionRegex.exec(value);
@@ -98,65 +96,21 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
       ...foundPlaceholdersInObject
     };
 
-    const parseHastChildrenTreeRecursive = (inputChildrenArray = []) => {
-      const outputChildrenArray = [];
-      inputChildrenArray::forEach(childElement => {
-        // Extract the current level hast properties separated from structure
-        const {
-          type,
-          tagName,
-          value,
-          children,
-          properties = {}
-        } = childElement;
+    const {
+      outputChildrenArray,
+      foundPlaceholdersInTree
+    } = parseHastChildrenTreeRecursive(
+      children,
+      element,
+      settings.placeholderAffix
+    );
 
-        // Replace the placeholders in the current level of the tree
-        const {
-          newObject,
-          foundPlaceholdersInObject
-        } = replacePlaceholdersInObject(
-          properties,
-          element,
-          settings.placeholderAffix
-        );
+    hastOutputTree.data.hChildren = outputChildrenArray;
 
-        const newProperties = newObject;
-        foundPlaceholdersInElement = {
-          ...foundPlaceholdersInElement,
-          ...foundPlaceholdersInObject
-        };
-
-        const { newValue, foundPlaceholders } = replacePlaceholder(
-          value,
-          element,
-          settings.placeholderAffix
-        );
-
-        foundPlaceholdersInElement = {
-          ...foundPlaceholdersInElement,
-          ...foundPlaceholders
-        };
-
-        // Prepare the current level of the hast output tree
-        const branch = {
-          type: type ? type : "element",
-          tagName: tagName ? tagName : undefined,
-          value: newValue,
-          properties: {
-            ...newProperties
-          }
-        };
-
-        // Add the current level tree branch to the output tree
-        outputChildrenArray.push({
-          children: parseHastChildrenTreeRecursive(children),
-          ...branch
-        });
-      });
-      return outputChildrenArray;
+    foundPlaceholdersInElement = {
+      ...foundPlaceholdersInElement,
+      ...foundPlaceholdersInTree
     };
-
-    hastOutputTree.data.hChildren = parseHastChildrenTreeRecursive(children);
 
     // For each property found in markdown
     Object::entries(element.properties)::forEach(([key, value]) => {
