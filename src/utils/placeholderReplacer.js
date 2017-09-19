@@ -43,8 +43,8 @@ const replacePlaceholder = (inputString, element, affix) => {
   property and populate the found placeholders object
 */
 const replacePlaceholdersInObject = (propertiesObject, element, affix) => {
-  const newPropertiesObject = {};
-  let allFoundPlaceholders = {};
+  const newObject = {};
+  let foundPlaceholdersInObject = {};
 
   Object::entries(propertiesObject)::forEach(([key, value]) => {
     if (typeof value === "string") {
@@ -54,19 +54,19 @@ const replacePlaceholdersInObject = (propertiesObject, element, affix) => {
         affix
       );
 
-      newPropertiesObject[key] = newValue;
-      allFoundPlaceholders = {
-        ...allFoundPlaceholders,
+      newObject[key] = newValue;
+      foundPlaceholdersInObject = {
+        ...foundPlaceholdersInObject,
         ...foundPlaceholders
       };
     } else {
-      newPropertiesObject[key] = value;
+      newObject[key] = value;
     }
   });
 
   return {
-    newObject: newPropertiesObject,
-    foundPlaceholdersInObject: allFoundPlaceholders
+    newObject,
+    foundPlaceholdersInObject
   };
 };
 
