@@ -21,7 +21,7 @@
     "react-dom": "15.5.3",
     "react-toolbox": "2.0.0-beta.12",
     "remark": "7.0.1",
-    "remark-generic-extensions": "1.2.0",
+    "remark-generic-extensions": "1.3.0",
     "remark-react": "4.0.1"
   },
   "devDependencies": {
