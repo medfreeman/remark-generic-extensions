@@ -1,5 +1,109 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`html block extensions should add an extension 1`] = `
+"<icon></icon>
+"
+`;
+
+exports[`html block extensions should add an extension with a boolean property 1`] = `
+"<checkbox checked></checkbox>
+"
+`;
+
+exports[`html block extensions should add an extension with a class 1`] = `
+"<icon class=\\"my-class\\"></icon>
+"
+`;
+
+exports[`html block extensions should add an extension with a lone attribute 1`] = `
+"<icon attr=\\"\\"></icon>
+"
+`;
+
+exports[`html block extensions should add an extension with a lone attribute with a default boolean value 1`] = `
+"<icon highlight=\\"true\\"></icon>
+"
+`;
+
+exports[`html block extensions should add an extension with a lone attribute with a default value 1`] = `
+"<icon attr=\\"default\\"></icon>
+"
+`;
+
+exports[`html block extensions should add an extension with a mapped argument 1`] = `
+"<icon icon=\\"my-icon\\"></icon>
+"
+`;
+
+exports[`html block extensions should add an extension with a mapped content 1`] = `
+"<icon tooltip=\\"my-tooltip\\"></icon>
+"
+`;
+
+exports[`html block extensions should add an extension with a quoted attribute 1`] = `
+"<icon attr=\\"my attribute\\"></icon>
+"
+`;
+
+exports[`html block extensions should add an extension with a replaced tag 1`] = `
+"<my-icon></my-icon>
+"
+`;
+
+exports[`html block extensions should add an extension with all types of parameters 1`] = `
+"<icon attr3=\\"my attribute\\" attr2=\\"my-attr\\" class=\\"my-class\\" id=\\"my-id\\" attr=\\"default\\"></icon>
+"
+`;
+
+exports[`html block extensions should add an extension with an attribute 1`] = `
+"<icon attr=\\"my-attr\\"></icon>
+"
+`;
+
+exports[`html block extensions should add an extension with an id 1`] = `
+"<icon id=\\"my-id\\"></icon>
+"
+`;
+
+exports[`html block extensions should work with a different placeholder affix 1`] = `
+"<icon icon=\\"my-icon\\"></icon>
+"
+`;
+
+exports[`html block extensions should work with an element with a mapped content on a child value 1`] = `
+"<icon><p>my-content</p></icon>
+"
+`;
+
+exports[`html block extensions should work with an element with a mapped property on a child 1`] = `
+"<icon><p id=\\"test\\"></p></icon>
+"
+`;
+
+exports[`html block extensions should work with an element with multiple children 1`] = `
+"<icon><p>test</p></icon>
+"
+`;
+
+exports[`html block extensions should work with an element with multiple children on the same level 1`] = `
+"<icon><p>test</p><span>bla</span></icon>
+"
+`;
+
+exports[`html block extensions should work with other markdown 1`] = `
+"<p>#heading</p>
+<icon></icon>
+"
+`;
+
+exports[`html block extensions should work with the example from README 1`] = `
+"<h1>Alpha</h1>
+<div class=\\"custom-alert\\" id=\\"my-alert\\"><i class=\\"fa fa-exclamation\\" aria-hidden=\\"true\\"></i><span>My message!</span><span class=\\"subtext\\">my subtext is rad</span></div>
+<h2>Bravo</h2>
+<h2>Delta</h2>
+"
+`;
+
 exports[`html inline extensions should add an extension 1`] = `
 "<p><icon></icon></p>
 "
