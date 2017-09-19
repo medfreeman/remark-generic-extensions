@@ -1,5 +1,5 @@
 function vfileWarning(message, ruleId = "") {
-  this.file.message(message, this.now(), ruleId);
+  this.file.message(message, null, ruleId);
 }
 
 function vfileDebug(message) {
