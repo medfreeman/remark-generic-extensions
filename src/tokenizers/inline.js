@@ -1,15 +1,9 @@
-import {
-  inlineExtensionRegex,
-  keyValueQuotedPropertiesRegex,
-  keyValuePropertiesRegex,
-  classNameRegex,
-  idRegex,
-  lonePropertiesRegex
-} from "../utils/regexes.js";
+import { inlineExtensionRegex } from "../utils/regexes.js";
 import { entries, keys, get, prettify } from "../utils/object";
 import { forEach } from "../utils/array";
 import { startsWith, trim } from "../utils/string";
 import { vfileDebug, vfileWarning } from "../utils/eat";
+import propertiesExtractor from "../utils/propertiesExtractor";
 
 function inlineExtensionTokenizer(eat, value, silent, settings) {
   const match = inlineExtensionRegex.exec(value);
@@ -30,7 +24,7 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
       }
     };
 
-    let propertiesString = match[4] ? match[4]::trim() : undefined;
+    const propertiesString = match[4] ? match[4]::trim() : undefined;
 
     debug(`Inline extension \`${element.name}\` found`);
     debug(`Full match: "${match[0]}"`);
@@ -38,63 +32,19 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
     debug(`Argument: "${element.argument || ""}"`);
     debug(`Properties string: "${propertiesString || ""}"`);
 
-    const classNamesArray = [];
-
     if (propertiesString) {
-      // Extract key/value pairs surrounded by quotes i.e `foo="bar baz"`
-      propertiesString = propertiesString.replace(
-        keyValueQuotedPropertiesRegex,
-        (match, s1, s2) => {
-          element.properties[s1] = s2;
-          return "";
-        }
+      const { properties, propertiesLeft } = propertiesExtractor(
+        propertiesString,
+        settings::get(`elements.${element.name}.propsDefaultValues`, {})
       );
+      element.properties = properties;
 
-      // Extract key/value pairs not surrounded by quotes i.e `foo=bar`
-      propertiesString = propertiesString.replace(
-        keyValuePropertiesRegex,
-        (match, s1, s2) => {
-          element.properties[s1] = s2;
-          return "";
-        }
-      );
-
-      // Extract classnames i.e `.yeah`
-      propertiesString = propertiesString.replace(
-        classNameRegex,
-        (match, s1) => {
-          classNamesArray.push(s1);
-          return "";
-        }
-      );
-      if (classNamesArray.length) {
-        element.properties.className = classNamesArray.join(" ");
+      if (propertiesLeft && propertiesLeft !== "") {
+        warning(
+          `There was some invalid properties: "${propertiesLeft}" ` +
+            `was left after the processing of "${propertiesString}"`
+        );
       }
-
-      // Extract ids i.e `#heyy`, last one is kept if multiple are specified
-      propertiesString = propertiesString.replace(idRegex, (match, s1) => {
-        element.properties.id = s1;
-        return "";
-      });
-
-      // Extract lone properties i.e `alone`
-      propertiesString = propertiesString.replace(
-        lonePropertiesRegex,
-        (match, s1) => {
-          element.properties[s1] = settings::get(
-            `elements.${element.name}.propsDefaultValues.${s1}`,
-            ""
-          );
-          return "";
-        }
-      );
-    }
-
-    if (propertiesString && propertiesString !== "") {
-      warning(
-        `There was some invalid properties: "${propertiesString}" ` +
-          `was left after the processing of "${match[4]}"`
-      );
     }
 
     debug("Computed properties: " + element.properties::prettify());
