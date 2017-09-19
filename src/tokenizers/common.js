@@ -1,3 +1,5 @@
+import merge from "deepmerge";
+
 import { entries, prettify } from "../utils/object";
 import { forEach } from "../utils/array";
 import propertiesExtractor from "../utils/propertiesExtractor";
@@ -79,10 +81,10 @@ function commonTokenizer(
 
   const newProperties = newObject;
 
-  foundPlaceholdersInElement = {
-    ...foundPlaceholdersInElement,
-    ...foundPlaceholdersInObject
-  };
+  foundPlaceholdersInElement = merge(
+    foundPlaceholdersInElement,
+    foundPlaceholdersInObject
+  );
 
   const {
     outputChildrenArray,
@@ -91,10 +93,10 @@ function commonTokenizer(
 
   hastOutputTree.data.hChildren = outputChildrenArray;
 
-  foundPlaceholdersInElement = {
-    ...foundPlaceholdersInElement,
-    ...foundPlaceholdersInTree
-  };
+  foundPlaceholdersInElement = merge(
+    foundPlaceholdersInElement,
+    foundPlaceholdersInTree
+  );
 
   // For each property found in markdown
   Object::entries(element.properties)::forEach(([key, value]) => {

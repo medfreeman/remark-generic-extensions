@@ -1,3 +1,5 @@
+import merge from "deepmerge";
+
 import { forEach } from "./array";
 import {
   replacePlaceholder,
@@ -24,10 +26,10 @@ const parseHastChildrenTreeRecursive = (
 
     const newProperties = newObject;
 
-    foundPlaceholdersInTree = {
-      ...foundPlaceholdersInTree,
-      ...foundPlaceholdersInObject
-    };
+    foundPlaceholdersInTree = merge(
+      foundPlaceholdersInTree,
+      foundPlaceholdersInObject
+    );
 
     const { newValue, foundPlaceholders } = replacePlaceholder(
       value,
@@ -35,10 +37,7 @@ const parseHastChildrenTreeRecursive = (
       affix
     );
 
-    foundPlaceholdersInTree = {
-      ...foundPlaceholdersInTree,
-      ...foundPlaceholders
-    };
+    foundPlaceholdersInTree = merge(foundPlaceholdersInTree, foundPlaceholders);
 
     // Prepare the current level of the hast output tree
     const branch = {
@@ -62,11 +61,12 @@ const parseHastChildrenTreeRecursive = (
       ...branch
     });
 
-    foundPlaceholdersInTree = {
-      ...foundPlaceholdersInTree,
-      ...childrenProps.foundPlaceholdersInTree
-    };
+    foundPlaceholdersInTree = merge(
+      foundPlaceholdersInTree,
+      childrenProps.foundPlaceholdersInTree
+    );
   });
+
   return {
     outputChildrenArray,
     foundPlaceholdersInTree

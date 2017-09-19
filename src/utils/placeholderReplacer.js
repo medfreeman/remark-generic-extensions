@@ -1,3 +1,5 @@
+import merge from "deepmerge";
+
 import { keys, entries } from "../utils/object";
 import { forEach } from "../utils/array";
 import { startsWith } from "../utils/string";
@@ -54,10 +56,10 @@ const replacePlaceholdersInObject = (propertiesObject, element, affix) => {
       );
 
       newObject[key] = newValue;
-      foundPlaceholdersInObject = {
-        ...foundPlaceholdersInObject,
-        ...foundPlaceholders
-      };
+      foundPlaceholdersInObject = merge(
+        foundPlaceholdersInObject,
+        foundPlaceholders
+      );
     } else {
       newObject[key] = value;
     }
