@@ -1,9 +1,3 @@
-import entries from "core-js/library/fn/object/entries";
-import forEach from "core-js/library/fn/array/virtual/for-each";
-import keys from "core-js/library/fn/object/keys";
-import startsWith from "core-js/library/fn/string/virtual/starts-with";
-import trim from "core-js/library/fn/string/virtual/trim";
-
 import {
   inlineExtensionRegex,
   keyValueQuotedPropertiesRegex,
@@ -12,7 +6,9 @@ import {
   idRegex,
   lonePropertiesRegex
 } from "../utils/regexes.js";
-import { get, prettify } from "../utils/object";
+import { entries, keys, get, prettify } from "../utils/object";
+import { forEach } from "../utils/array";
+import { startsWith, trim } from "../utils/string";
 import { vfileDebug, vfileWarning } from "../utils/eat";
 
 function inlineExtensionTokenizer(eat, value, silent, settings) {
