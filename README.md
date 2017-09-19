@@ -40,14 +40,13 @@ extentionNames: argumentField
 { #id .class key1=value key2=value }
 ```
 
-At the moment, this module only supports inline extensions, not block extensions.
-Feel free to submit a PR to add this feature if you need it before i got the time to implement it.
-
 There is a [known bug in remark-react < 4.0.1](https://github.com/mapbox/remark-react/issues/41), that wrongly coerces non-string values to strings.
 
 Make sure to use at least v4.0.1.
 
 ## Syntax
+
+### Inline extensions
 
 `!Extension[Content](Argument){Properties}`
 
@@ -70,6 +69,46 @@ Make sure to use at least v4.0.1.
 - `Argument` defines the element argument
 
   It matches everything but the `)` character.
+  
+  It can be mapped to any hast element property or value, see [placeholders](#placeholders).
+
+- `Properties` defines the element properties
+
+  They can have leading and / or trailing spaces before / after the opening / closing braces.
+  
+  The different properties are separated by spaces, and so each of them match any character but spaces, except for quoted properties.
+
+### Block extensions
+
+```
+Extension: Argument
+:::
+[Content]
+:::
+{Properties}
+```
+
+:information_source: The extension syntax is validated through [regexes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp), that you can inspect [here](https://github.com/medfreeman/remark-generic-extensions/blob/master/src/utils/regexes.js) if needed
+
+- `Extension` defines the element you want to use
+
+  It matches the `\w` character class.
+
+  ```
+  Matches any alphanumeric character from the basic Latin alphabet, including the underscore. Equivalent to [A-Za-z0-9_].
+  ```
+
+- `Argument` defines the element argument
+
+  It matches everything but a line break.
+  
+  It can be mapped to any hast element property or value, see [placeholders](#placeholders).
+
+- `Content` defines the element content
+
+  It matches everything, and stops at the next `:::` occurence.
+
+  Leading and trailing line breaks will be stripped.
   
   It can be mapped to any hast element property or value, see [placeholders](#placeholders).
 
@@ -123,6 +162,12 @@ Say we have the following file, `example.md`:
 # Alpha
 
 !alert[My message!](my subtext is rad){ #my-alert .custom-alert }
+
+youtube: C8NAYW-Z54o
+:::
+My featured video!
+:::
+{ #my-video .custom-video-style spanClassName=custom-span-class }
 
 ## Bravo
 
@@ -179,6 +224,34 @@ remark()
           ]
         }
       }
+    },
+    youtube: {
+      html: {
+        tagName: "div",
+        children: [
+          {
+            type: "element",
+            tagName: "iframe",
+            properties: {
+              width: 420,
+              height: 315,
+              src: "https://www.youtube.com/embed/::argument::"
+            }
+          },
+          {
+            tagName: "span",
+            properties: {
+              className: "::prop::spanClassName::"
+            },
+            children: [
+              {
+                type: "text",
+                value: "::content::"
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 )
@@ -193,6 +266,7 @@ Now, running `node example` yields (indented):
 
 ```html
 <h1>Alpha</h1>
+
 <p>
   <span id="my-alert" class="custom-alert">
     <i class="fa fa-exclamation" aria-hidden="true"></i>
@@ -200,7 +274,14 @@ Now, running `node example` yields (indented):
     <span class="subtext">my subtext is rad</span>
   </span>
 </p>
+
+<div class="custom-video-style" id="my-video">
+  <iframe width="420" height="315" src="https://www.youtube.com/embed/C8NAYW-Z54o"></iframe>
+  <span class="custom-span-class">My featured video!</span>
+</div>
+
 <h2>Bravo</h2>
+
 <h2>Delta</h2>
 ```
 

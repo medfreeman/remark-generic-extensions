@@ -250,6 +250,12 @@ describe("html inline extensions", () => {
 
 !alert[My message!](my subtext is rad){ #my-alert .custom-alert }
 
+youtube: C8NAYW-Z54o
+:::
+My featured video!
+:::
+{ #my-video .custom-video-style spanClassName=custom-span-class }
+
 ## Bravo
 
 ## Delta`,
@@ -287,6 +293,34 @@ describe("html inline extensions", () => {
                       {
                         type: "text",
                         value: "::argument::"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            youtube: {
+              html: {
+                tagName: "div",
+                children: [
+                  {
+                    type: "element",
+                    tagName: "iframe",
+                    properties: {
+                      width: 420,
+                      height: 315,
+                      src: "https://www.youtube.com/embed/::argument::"
+                    }
+                  },
+                  {
+                    tagName: "span",
+                    properties: {
+                      className: "::prop::spanClassName::"
+                    },
+                    children: [
+                      {
+                        type: "text",
+                        value: "::content::"
                       }
                     ]
                   }
@@ -637,65 +671,6 @@ my-content
                       {
                         type: "text",
                         value: "bla"
-                      }
-                    ]
-                  }
-                ]
-              }
-            }
-          }
-        }
-      )
-    ).toMatchSnapshot());
-
-  test("should work with the example from README", () =>
-    expect(
-      transformToHtml(
-        `# Alpha
-
-alert: my subtext is rad
-:::
-My message!
-:::
-{ #my-alert .custom-alert }
-
-## Bravo
-
-## Delta`,
-        {
-          elements: {
-            alert: {
-              html: {
-                tagName: "div",
-                children: [
-                  {
-                    type: "element",
-                    tagName: "i",
-                    properties: {
-                      className: "fa fa-exclamation",
-                      ariaHidden: true
-                    }
-                  },
-                  {
-                    type: "element",
-                    tagName: "span",
-                    children: [
-                      {
-                        type: "text",
-                        value: "::content::"
-                      }
-                    ]
-                  },
-                  {
-                    type: "element",
-                    tagName: "span",
-                    properties: {
-                      className: "subtext"
-                    },
-                    children: [
-                      {
-                        type: "text",
-                        value: "::argument::"
                       }
                     ]
                   }

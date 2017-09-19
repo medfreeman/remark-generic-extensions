@@ -96,14 +96,6 @@ exports[`html block extensions should work with other markdown 1`] = `
 "
 `;
 
-exports[`html block extensions should work with the example from README 1`] = `
-"<h1>Alpha</h1>
-<div class=\\"custom-alert\\" id=\\"my-alert\\"><i class=\\"fa fa-exclamation\\" aria-hidden=\\"true\\"></i><span>My message!</span><span class=\\"subtext\\">my subtext is rad</span></div>
-<h2>Bravo</h2>
-<h2>Delta</h2>
-"
-`;
-
 exports[`html inline extensions should add an extension 1`] = `
 "<p><icon></icon></p>
 "
@@ -203,6 +195,7 @@ exports[`html inline extensions should work with other markdown 1`] = `
 exports[`html inline extensions should work with the example from README 1`] = `
 "<h1>Alpha</h1>
 <p><span class=\\"custom-alert\\" id=\\"my-alert\\"><i class=\\"fa fa-exclamation\\" aria-hidden=\\"true\\"></i><span>My message!</span><span class=\\"subtext\\">my subtext is rad</span></span></p>
+<div class=\\"custom-video-style\\" id=\\"my-video\\"><iframe width=\\"420\\" height=\\"315\\" src=\\"https://www.youtube.com/embed/C8NAYW-Z54o\\"></iframe><span class=\\"custom-span-class\\">My featured video!</span></div>
 <h2>Bravo</h2>
 <h2>Delta</h2>
 "
