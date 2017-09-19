@@ -1,3 +1,6 @@
+import entries from "core-js/library/fn/object/entries";
+import keys from "core-js/library/fn/object/keys";
+
 function get(path, def) {
   let object = this;
   return path
@@ -12,4 +15,4 @@ function prettify() {
   return JSON.stringify(this, undefined, 2);
 }
 
-export { get, prettify };
+export { entries, keys, get, prettify };
