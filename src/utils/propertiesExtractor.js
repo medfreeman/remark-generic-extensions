@@ -5,6 +5,7 @@ import {
   idRegex,
   lonePropertiesRegex
 } from "./regexes.js";
+import { trim } from "./string";
 
 const propertiesExtractor = (propertiesString, propsDefaultValues) => {
   const properties = {};
@@ -53,7 +54,7 @@ const propertiesExtractor = (propertiesString, propsDefaultValues) => {
 
   return {
     properties,
-    propertiesLeft
+    propertiesLeft: propertiesLeft::trim()
   };
 };
 
