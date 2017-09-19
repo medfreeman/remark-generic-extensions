@@ -1,9 +1,13 @@
 import { inlineExtensionRegex } from "../utils/regexes.js";
-import { entries, keys, get, prettify } from "../utils/object";
+import { entries, get, prettify } from "../utils/object";
 import { forEach } from "../utils/array";
-import { startsWith, trim } from "../utils/string";
+import { trim } from "../utils/string";
 import { vfileDebug, vfileWarning } from "../utils/eat";
 import propertiesExtractor from "../utils/propertiesExtractor";
+import {
+  replacePlaceholder,
+  replacePlaceholdersInObject
+} from "../utils/placeholderReplacer";
 
 function inlineExtensionTokenizer(eat, value, silent, settings) {
   const match = inlineExtensionRegex.exec(value);
@@ -68,7 +72,7 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
       will have their corresponding properties
       applied to the top-level html element later
     */
-    const foundPlaceholders = {
+    let foundPlaceholdersInElement = {
       content: false,
       argument: false,
       properties: {
@@ -77,45 +81,22 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
       }
     };
 
-    const replacePlaceholder = inputString =>
-      inputString.replace(
-        new RegExp(
-          settings.placeholderAffix +
-            "(content|argument|prop" +
-            settings.placeholderAffix +
-            "(" +
-            Object::keys(element.properties).join("|") +
-            "))" +
-            settings.placeholderAffix
-        ),
-        (match, s1, s2) => {
-          if (s1::startsWith("prop")) {
-            foundPlaceholders.properties[s2] = true;
-            return element.properties[s2];
-          } else {
-            foundPlaceholders.s1 = true;
-            return element[s1];
-          }
-        }
-      );
-
-    /*
-      Replace the placeholders on any level
-      of the pseudo hast tree by their corresponding
-      property and populate the found placeholders object
-    */
-    const replacePlaceholders = propertiesObject => {
-      const newPropertiesObject = {};
-      Object::entries(propertiesObject)::forEach(([key, value]) => {
-        const newValue =
-          typeof value === "string" ? replacePlaceholder(value) : value;
-        newPropertiesObject[key] = newValue;
-      });
-      return newPropertiesObject;
-    };
-
     // Replace the placeholders in the first-level of the tree
-    const newProperties = replacePlaceholders(properties);
+    const {
+      newObject,
+      foundPlaceholdersInObject
+    } = replacePlaceholdersInObject(
+      properties,
+      element,
+      settings.placeholderAffix
+    );
+
+    const newProperties = newObject;
+
+    foundPlaceholdersInElement = {
+      ...foundPlaceholdersInElement,
+      ...foundPlaceholdersInObject
+    };
 
     const parseHastChildrenTreeRecursive = (inputChildrenArray = []) => {
       const outputChildrenArray = [];
@@ -130,13 +111,37 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
         } = childElement;
 
         // Replace the placeholders in the current level of the tree
-        const newProperties = replacePlaceholders(properties);
+        const {
+          newObject,
+          foundPlaceholdersInObject
+        } = replacePlaceholdersInObject(
+          properties,
+          element,
+          settings.placeholderAffix
+        );
+
+        const newProperties = newObject;
+        foundPlaceholdersInElement = {
+          ...foundPlaceholdersInElement,
+          ...foundPlaceholdersInObject
+        };
+
+        const { newValue, foundPlaceholders } = replacePlaceholder(
+          value,
+          element,
+          settings.placeholderAffix
+        );
+
+        foundPlaceholdersInElement = {
+          ...foundPlaceholdersInElement,
+          ...foundPlaceholders
+        };
 
         // Prepare the current level of the hast output tree
         const branch = {
           type: type ? type : "element",
           tagName: tagName ? tagName : undefined,
-          value: value ? replacePlaceholder(value) : undefined,
+          value: newValue,
           properties: {
             ...newProperties
           }
@@ -156,7 +161,7 @@ function inlineExtensionTokenizer(eat, value, silent, settings) {
     // For each property found in markdown
     Object::entries(element.properties)::forEach(([key, value]) => {
       // If the property was not referenced by a placeholder
-      if (!foundPlaceholders::get(`properties.${key}`, undefined)) {
+      if (!foundPlaceholdersInElement::get(`properties.${key}`, undefined)) {
         // Set the corresponding property to the first-level html element
         newProperties[key] = value;
       }
