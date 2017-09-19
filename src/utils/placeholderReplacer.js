@@ -18,10 +18,9 @@ const replacePlaceholder = (inputString, element, affix) => {
         ),
         (match, s1, s2) => {
           if (s1::startsWith("prop")) {
-            if (!foundPlaceholders.properties) {
-              foundPlaceholders.properties = {};
-            }
-            foundPlaceholders.properties[s2] = true;
+            foundPlaceholders.properties = {
+              [s2]: true
+            };
             return element.properties[s2];
           } else {
             foundPlaceholders[s1] = true;
