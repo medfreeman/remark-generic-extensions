@@ -1,4 +1,3 @@
-import assign from "core-js/library/fn/object/assign";
 import joi from "joi";
 
 import optionsSchema from "./utils/optionsSchema";
@@ -32,15 +31,12 @@ function remarkGenericExtensions(options = {}) {
     return false;
   }
 
-  const settings = Object::assign(
-    {},
-    {
-      debug: false,
-      placeholderAffix: "::",
-      elements: {}
-    },
-    options
-  );
+  const settings = {
+    debug: false,
+    placeholderAffix: "::",
+    elements: {},
+    ...options
+  };
 
   // Escape the user provided placeholder affix for use in regex
   settings.placeholderAffix = settings.placeholderAffix::escapeRegExp();
