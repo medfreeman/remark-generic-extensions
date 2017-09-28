@@ -55,7 +55,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "babelify": "^7.3.0",
     "browserify": "^14.4.0",
-    "coveralls": "^2.13.1",
+    "coveralls": "^3.0.0",
     "cross-env": "^5.0.5",
     "eslint": "^4.6.1",
     "eslint-config-i-am-meticulous": "^7.0.1",
