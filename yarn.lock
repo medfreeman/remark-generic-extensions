@@ -1031,7 +1031,7 @@ babel-types@^6.18.0, babel-types@^6.19.0, babel-types@^6.24.1, babel-types@^6.26
     lodash "^4.17.4"
     to-fast-properties "^1.0.3"
 
-babelify@8.0.0:
+babelify@^8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/babelify/-/babelify-8.0.0.tgz#6f60f5f062bfe7695754ef2403b842014a580ed3"
 
@@ -3824,9 +3824,9 @@ jest@^21.1.0:
   dependencies:
     jest-cli "^21.1.0"
 
-joi-browser@^10.6.1:
-  version "10.6.1"
-  resolved "https://registry.yarnpkg.com/joi-browser/-/joi-browser-10.6.1.tgz#1cfc1a244c9242327842c24354d8ead1c2fe3571"
+joi-browser@13.0.1:
+  version "13.0.1"
+  resolved "https://registry.yarnpkg.com/joi-browser/-/joi-browser-13.0.1.tgz#06a7b782d94bca6fa0f107138846ea16588b2e7b"
 
 joi@^10.6.0:
   version "10.6.0"
