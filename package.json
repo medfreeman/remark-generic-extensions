@@ -72,7 +72,7 @@
     "nyc": "^11.2.1",
     "prettier": "^1.7.0",
     "react": "^15.6.1",
-    "react-test-renderer": "^15.6.1",
+    "react-test-renderer": "^16.2.0",
     "remark": "^8.0.0",
     "remark-html": "^6.0.1",
     "remark-react": "^4.0.1",
