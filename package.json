@@ -54,7 +54,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babelify": "^8.0.0",
-    "browserify": "^14.4.0",
+    "browserify": "^15.0.0",
     "coveralls": "^3.0.0",
     "cross-env": "^5.0.5",
     "eslint": "^4.6.1",
@@ -74,7 +74,7 @@
     "react": "^15.6.1",
     "react-test-renderer": "^15.6.1",
     "remark": "^8.0.0",
-    "remark-html": "^6.0.1",
+    "remark-html": "^7.0.0",
     "remark-react": "^4.0.1",
     "sinon": "^4.0.0",
     "vfile-reporter": "^4.0.0"
