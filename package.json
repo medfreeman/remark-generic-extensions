@@ -82,8 +82,8 @@
   "dependencies": {
     "core-js": "^2.5.1",
     "deepmerge": "^2.0.0",
-    "joi": "^10.6.0",
-    "joi-browser": "^10.6.1"
+    "joi": "^13.0.1",
+    "joi-browser": "^13.0.1"
   },
   "lint-staged": {
     "*.js": [

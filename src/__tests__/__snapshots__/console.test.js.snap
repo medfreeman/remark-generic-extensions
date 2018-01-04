@@ -29,10 +29,19 @@ returned:
     \\"details\\": [
       {
         \\"message\\": \\"\\\\\\"class\\\\\\" is not allowed\\",
-        \\"path\\": \\"elements.icon.html.children.0.properties.class\\",
+        \\"path\\": [
+          \\"elements\\",
+          \\"icon\\",
+          \\"html\\",
+          \\"children\\",
+          0,
+          \\"properties\\",
+          \\"class\\"
+        ],
         \\"type\\": \\"any.unknown\\",
         \\"context\\": {
-          \\"key\\": \\"class\\"
+          \\"key\\": \\"class\\",
+          \\"label\\": \\"class\\"
         }
       }
     ],
@@ -101,10 +110,18 @@ returned:
     \\"details\\": [
       {
         \\"message\\": \\"\\\\\\"value\\\\\\" is required\\",
-        \\"path\\": \\"elements.icon.html.children.0.value\\",
+        \\"path\\": [
+          \\"elements\\",
+          \\"icon\\",
+          \\"html\\",
+          \\"children\\",
+          0,
+          \\"value\\"
+        ],
         \\"type\\": \\"any.required\\",
         \\"context\\": {
-          \\"key\\": \\"value\\"
+          \\"key\\": \\"value\\",
+          \\"label\\": \\"value\\"
         }
       }
     ],
@@ -165,10 +182,18 @@ returned:
     \\"details\\": [
       {
         \\"message\\": \\"\\\\\\"value\\\\\\" is required\\",
-        \\"path\\": \\"elements.icon.html.children.0.value\\",
+        \\"path\\": [
+          \\"elements\\",
+          \\"icon\\",
+          \\"html\\",
+          \\"children\\",
+          0,
+          \\"value\\"
+        ],
         \\"type\\": \\"any.required\\",
         \\"context\\": {
-          \\"key\\": \\"value\\"
+          \\"key\\": \\"value\\",
+          \\"label\\": \\"value\\"
         }
       }
     ],
@@ -233,11 +258,20 @@ returned:
     \\"details\\": [
       {
         \\"message\\": \\"\\\\\\"t-a\\\\\\" is not allowed\\",
-        \\"path\\": \\"elements.icon.html.children.0.properties.t-a\\",
+        \\"path\\": [
+          \\"elements\\",
+          \\"icon\\",
+          \\"html\\",
+          \\"children\\",
+          0,
+          \\"properties\\",
+          \\"t-a\\"
+        ],
         \\"type\\": \\"object.allowUnknown\\",
         \\"context\\": {
           \\"child\\": \\"t-a\\",
-          \\"key\\": \\"t-a\\"
+          \\"key\\": \\"t-a\\",
+          \\"label\\": \\"t-a\\"
         }
       }
     ],
@@ -306,10 +340,18 @@ returned:
     \\"details\\": [
       {
         \\"message\\": \\"\\\\\\"tagName\\\\\\" is required\\",
-        \\"path\\": \\"elements.icon.html.children.0.tagName\\",
+        \\"path\\": [
+          \\"elements\\",
+          \\"icon\\",
+          \\"html\\",
+          \\"children\\",
+          0,
+          \\"tagName\\"
+        ],
         \\"type\\": \\"any.required\\",
         \\"context\\": {
-          \\"key\\": \\"tagName\\"
+          \\"key\\": \\"tagName\\",
+          \\"label\\": \\"tagName\\"
         }
       }
     ],
@@ -370,13 +412,21 @@ returned:
     \\"details\\": [
       {
         \\"message\\": \\"\\\\\\"type\\\\\\" with value \\\\\\"grooow\\\\\\" fails to match the hast node type pattern\\",
-        \\"path\\": \\"elements.icon.html.children.0.type\\",
+        \\"path\\": [
+          \\"elements\\",
+          \\"icon\\",
+          \\"html\\",
+          \\"children\\",
+          0,
+          \\"type\\"
+        ],
         \\"type\\": \\"string.regex.name\\",
         \\"context\\": {
           \\"name\\": \\"hast node type\\",
           \\"pattern\\": {},
           \\"value\\": \\"grooow\\",
-          \\"key\\": \\"type\\"
+          \\"key\\": \\"type\\",
+          \\"label\\": \\"type\\"
         }
       }
     ],
@@ -435,10 +485,17 @@ returned:
     \\"details\\": [
       {
         \\"message\\": \\"\\\\\\"class\\\\\\" is not allowed\\",
-        \\"path\\": \\"elements.icon.html.properties.class\\",
+        \\"path\\": [
+          \\"elements\\",
+          \\"icon\\",
+          \\"html\\",
+          \\"properties\\",
+          \\"class\\"
+        ],
         \\"type\\": \\"any.unknown\\",
         \\"context\\": {
-          \\"key\\": \\"class\\"
+          \\"key\\": \\"class\\",
+          \\"label\\": \\"class\\"
         }
       }
     ],
