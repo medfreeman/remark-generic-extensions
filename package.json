@@ -120,7 +120,6 @@
       "**/?(*.)test.js"
     ],
     "coverageDirectory": "./coverage/",
-    "mapCoverage": true,
     "collectCoverage": true
   },
   "eslintConfig": {
