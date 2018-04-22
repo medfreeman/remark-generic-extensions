@@ -60,7 +60,7 @@
     "eslint": "^4.6.1",
     "eslint-config-i-am-meticulous": "^8.0.0",
     "eslint-config-prettier": "^2.5.0",
-    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-babel": "^5.1.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jest": "^21.1.0",
     "eslint-plugin-prettier": "^2.3.1",
@@ -76,7 +76,7 @@
     "remark": "^9.0.0",
     "remark-html": "^7.0.0",
     "remark-react": "^4.0.1",
-    "sinon": "^4.0.0",
+    "sinon": "^5.0.0",
     "vfile-reporter": "^4.0.0"
   },
   "dependencies": {
