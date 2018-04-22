@@ -6,6 +6,7 @@ const hastNodeTypeRegex = joi
 
 const html5TagNameRegex = joi
   .string()
+  // eslint-disable-next-line no-control-regex
   .regex(/^[a-z]([^A-Z\s/\u0000>])*$/, "html5 element tag name");
 
 const hastPropertyNameRegex = /^[^\t />"'=-]+$/;
