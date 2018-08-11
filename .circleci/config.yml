@@ -46,6 +46,10 @@ jobs:
           name: Testing
           command: yarn test
 
+      - run:
+          name: Authenticating with coveralls
+          command: echo "repo_token: $COVERALLS_TOKEN" > /usr/src/app/.coveralls.yml
+
       # Build
       - run:
           name: Uploading test coverage
