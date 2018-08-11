@@ -4,7 +4,7 @@ import react from "remark-react";
 import report from "vfile-reporter";
 import reactTestRenderer from "react-test-renderer";
 
-import genericExtensions from "../../";
+import genericExtensions from "../..";
 
 import Icon from "./Icon.jsx";
 
