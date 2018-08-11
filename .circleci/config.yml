@@ -3,7 +3,7 @@ version: 2
 defaults: &defaults
   working_directory: /usr/src/app
   docker:
-    - image: node:8
+    - image: node:10
 
 jobs:
   build-job:
