@@ -2488,11 +2488,11 @@ escope@~1.0.1:
   dependencies:
     estraverse "^2.0.0"
 
-eslint-config-i-am-meticulous@^8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-i-am-meticulous/-/eslint-config-i-am-meticulous-8.0.0.tgz#59c199ccc054e61a18fc08b8a174bc72a13b1fe9"
+eslint-config-i-am-meticulous@^11.0.0:
+  version "11.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-i-am-meticulous/-/eslint-config-i-am-meticulous-11.0.0.tgz#ffc69564bef47d601472d7ad6383b0bb3f4e7f01"
   dependencies:
-    eslint-plugin-import "^2.7.0"
+    eslint-plugin-import "^2.12.0"
 
 eslint-config-prettier@^2.5.0:
   version "2.9.0"
@@ -2519,6 +2519,21 @@ eslint-plugin-babel@^5.1.0:
   resolved "https://registry.yarnpkg.com/eslint-plugin-babel/-/eslint-plugin-babel-5.1.0.tgz#9c76e476162041e50b6ba69aa4eae3bdd6a4e1c3"
   dependencies:
     eslint-rule-composer "^0.3.0"
+
+eslint-plugin-import@^2.12.0:
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.13.0.tgz#df24f241175e312d91662dc91ca84064caec14ed"
+  dependencies:
+    contains-path "^0.1.0"
+    debug "^2.6.8"
+    doctrine "1.5.0"
+    eslint-import-resolver-node "^0.3.1"
+    eslint-module-utils "^2.2.0"
+    has "^1.0.1"
+    lodash "^4.17.4"
+    minimatch "^3.0.3"
+    read-pkg-up "^2.0.0"
+    resolve "^1.6.0"
 
 eslint-plugin-import@^2.7.0:
   version "2.11.0"
