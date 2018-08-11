@@ -1,8 +1,8 @@
 import merge from "deepmerge";
 
-import { keys, entries } from "../utils/object";
-import { forEach } from "../utils/array";
-import { startsWith } from "../utils/string";
+import { keys, entries } from "./object";
+import { forEach } from "./array";
+import { startsWith } from "./string";
 
 const replacePlaceholder = (inputString, element, affix) => {
   const foundPlaceholders = {};
