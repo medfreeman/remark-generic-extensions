@@ -1,0 +1,10 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "examples/react-toolbox-icon/package.json",
+        "package.json"
+      ]
+    }
+  }
+}
