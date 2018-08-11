@@ -67,7 +67,7 @@
     "esmangle": "^1.0.1",
     "git-exec-and-restage": "^1.0.1",
     "husky": "^0.14.3",
-    "jest": "^22.0.4",
+    "jest": "^23.5.0",
     "lint-staged": "^7.0.4",
     "nyc": "^12.0.2",
     "prettier": "^1.7.0",
@@ -77,11 +77,11 @@
     "remark-html": "^8.0.0",
     "remark-react": "^4.0.1",
     "sinon": "^6.0.1",
-    "vfile-reporter": "^4.0.0"
+    "vfile-reporter": "^5.0.0"
   },
   "dependencies": {
     "core-js": "^2.5.1",
-    "deepmerge": "^2.0.0",
+    "deepmerge": "2.1.1",
     "joi": "^13.0.1",
     "joi-browser": "^13.0.1"
   },
