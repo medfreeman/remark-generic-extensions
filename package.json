@@ -46,7 +46,7 @@
   "homepage": "https://github.com/medfreeman/remark-generic-extensions#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.0.0",
+    "babel-eslint": "^9.0.0",
     "babel-plugin-add-module-exports": "^0.3.1",
     "babel-plugin-transform-function-bind": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
