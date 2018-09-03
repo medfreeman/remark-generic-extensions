@@ -68,6 +68,7 @@
     "git-exec-and-restage": "^1.0.1",
     "husky": "^0.14.3",
     "jest": "^23.5.0",
+    "jest-serializer-vue": "^2.0.2",
     "lint-staged": "^7.0.4",
     "nyc": "^12.0.2",
     "prettier": "^1.7.0",
@@ -119,6 +120,9 @@
     "testEnvironment": "node",
     "testMatch": [
       "**/?(*.)test.js"
+    ],
+    "snapshotSerializers": [
+      "jest-serializer-vue"
     ],
     "coverageDirectory": "./coverage/",
     "collectCoverage": true
