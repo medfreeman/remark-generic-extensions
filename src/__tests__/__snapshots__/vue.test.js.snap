@@ -1,0 +1,185 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`vue block extensions should add an extension 1`] = `
+<div>
+  <icon></icon>
+</div>
+`;
+
+exports[`vue block extensions should add an extension with a boolean property 1`] = `
+<div>
+  <icon highlight="true"></icon>
+</div>
+`;
+
+exports[`vue block extensions should add an extension with a class 1`] = `
+<div>
+  <icon class="my-class"></icon>
+</div>
+`;
+
+exports[`vue block extensions should add an extension with a lone attribute 1`] = `
+<div>
+  <icon attr=""></icon>
+</div>
+`;
+
+exports[`vue block extensions should add an extension with a lone attribute with a default boolean value 1`] = `
+<div>
+  <icon highlight="true"></icon>
+</div>
+`;
+
+exports[`vue block extensions should add an extension with a lone attribute with a default value 1`] = `
+<div>
+  <icon attr="default"></icon>
+</div>
+`;
+
+exports[`vue block extensions should add an extension with a mapped argument 1`] = `
+<div>
+  <icon icon="my-icon"></icon>
+</div>
+`;
+
+exports[`vue block extensions should add an extension with a mapped content 1`] = `
+<div>
+  <icon tooltip="my-tooltip"></icon>
+</div>
+`;
+
+exports[`vue block extensions should add an extension with a quoted attribute 1`] = `
+<div>
+  <icon attr="my attribute"></icon>
+</div>
+`;
+
+exports[`vue block extensions should add an extension with all types of parameters 1`] = `
+<div>
+  <icon attr3="my attribute" attr2="my-attr" class="my-class" id="my-id" attr="default"></icon>
+</div>
+`;
+
+exports[`vue block extensions should add an extension with an attribute 1`] = `
+<div>
+  <icon attr="my-attr"></icon>
+</div>
+`;
+
+exports[`vue block extensions should add an extension with an id 1`] = `
+<div>
+  <icon id="my-id"></icon>
+</div>
+`;
+
+exports[`vue block extensions should work with other markdown 1`] = `
+<div>
+  <h1>heading</h1>
+  <icon></icon>
+</div>
+`;
+
+exports[`vue inline extensions should add an extension 1`] = `
+<div>
+  <p>
+    <icon></icon>
+  </p>
+</div>
+`;
+
+exports[`vue inline extensions should add an extension with a boolean property 1`] = `
+<div>
+  <p>
+    <icon highlight="true"></icon>
+  </p>
+</div>
+`;
+
+exports[`vue inline extensions should add an extension with a class 1`] = `
+<div>
+  <p>
+    <icon class="my-class"></icon>
+  </p>
+</div>
+`;
+
+exports[`vue inline extensions should add an extension with a lone attribute 1`] = `
+<div>
+  <p>
+    <icon attr=""></icon>
+  </p>
+</div>
+`;
+
+exports[`vue inline extensions should add an extension with a lone attribute with a default boolean value 1`] = `
+<div>
+  <p>
+    <icon highlight="true"></icon>
+  </p>
+</div>
+`;
+
+exports[`vue inline extensions should add an extension with a lone attribute with a default value 1`] = `
+<div>
+  <p>
+    <icon attr="default"></icon>
+  </p>
+</div>
+`;
+
+exports[`vue inline extensions should add an extension with a mapped argument 1`] = `
+<div>
+  <p>
+    <icon icon="my-icon"></icon>
+  </p>
+</div>
+`;
+
+exports[`vue inline extensions should add an extension with a mapped content 1`] = `
+<div>
+  <p>
+    <icon tooltip="my-tooltip"></icon>
+  </p>
+</div>
+`;
+
+exports[`vue inline extensions should add an extension with a quoted attribute 1`] = `
+<div>
+  <p>
+    <icon attr="my attribute"></icon>
+  </p>
+</div>
+`;
+
+exports[`vue inline extensions should add an extension with all types of parameters 1`] = `
+<div>
+  <p>
+    <icon attr3="my attribute" attr2="my-attr" class="my-class" id="my-id" attr="default"></icon>
+  </p>
+</div>
+`;
+
+exports[`vue inline extensions should add an extension with an attribute 1`] = `
+<div>
+  <p>
+    <icon attr="my-attr"></icon>
+  </p>
+</div>
+`;
+
+exports[`vue inline extensions should add an extension with an id 1`] = `
+<div>
+  <p>
+    <icon id="my-id"></icon>
+  </p>
+</div>
+`;
+
+exports[`vue inline extensions should work with other markdown 1`] = `
+<div>
+  <h1>heading</h1>
+  <p>
+    <icon></icon>
+  </p>
+</div>
+`;
