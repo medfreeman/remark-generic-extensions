@@ -109,7 +109,7 @@ describe("react inline extensions", () => {
   test("should work with other markdown", () =>
     expect(
       transformToReact(
-        `#heading
+        `# heading
 
 !Icon`
       )
@@ -297,7 +297,7 @@ my-tooltip
   test("should work with other markdown", () =>
     expect(
       transformToReact(
-        `#heading
+        `# heading
 
 Icon:
 :::

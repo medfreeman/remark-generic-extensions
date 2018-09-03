@@ -122,9 +122,9 @@ exports[`react block extensions should add an extension with an id 1`] = `
 
 exports[`react block extensions should work with other markdown 1`] = `
 <div>
-  <p>
-    #heading
-  </p>
+  <h1>
+    heading
+  </h1>
   
 
   <icon>
@@ -257,9 +257,9 @@ exports[`react inline extensions should add an extension with an id 1`] = `
 
 exports[`react inline extensions should work with other markdown 1`] = `
 <div>
-  <p>
-    #heading
-  </p>
+  <h1>
+    heading
+  </h1>
   
 
   <p>
