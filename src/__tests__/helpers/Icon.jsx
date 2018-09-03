@@ -1,17 +1,13 @@
-import React from "react"
-import PropTypes from "prop-types"
+/* eslint-disable no-unused-vars */
+import React from "react";
+import PropTypes from "prop-types";
 
 const Icon = props => {
-
-  return (
-    <icon
-      { ...props }
-    />
-  )
-}
+  return <icon {...props} />;
+};
 
 Icon.propTypes = {
-  highlight: PropTypes.bool,
-}
+  highlight: PropTypes.bool
+};
 
-export default Icon
+export default Icon;

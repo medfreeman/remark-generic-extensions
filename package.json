@@ -71,6 +71,7 @@
     "lint-staged": "^7.0.4",
     "nyc": "^12.0.2",
     "prettier": "^1.7.0",
+    "prop-types": "^15.6.2",
     "react": "^16.2.0",
     "react-test-renderer": "^16.2.0",
     "remark": "^9.0.0",
