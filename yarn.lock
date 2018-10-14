@@ -4877,9 +4877,9 @@ joi-browser@^13.0.1:
   version "13.0.1"
   resolved "https://registry.yarnpkg.com/joi-browser/-/joi-browser-13.0.1.tgz#06a7b782d94bca6fa0f107138846ea16588b2e7b"
 
-joi@^13.0.1:
-  version "13.2.0"
-  resolved "https://registry.yarnpkg.com/joi/-/joi-13.2.0.tgz#72307f1765bb40b068361f9368a4ba1092b8478e"
+joi@^14.0.0:
+  version "14.0.0"
+  resolved "https://registry.yarnpkg.com/joi/-/joi-14.0.0.tgz#05a206b259e702f426eb2b2e523d642fb383e6ad"
   dependencies:
     hoek "5.x.x"
     isemail "3.x.x"
