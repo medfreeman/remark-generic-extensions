@@ -20,7 +20,7 @@
     "react": "16.4.2",
     "react-dom": "16.4.2",
     "react-toolbox": "2.0.0-beta.13",
-    "remark": "9.0.0",
+    "remark": "10.0.0",
     "remark-generic-extensions": "1.3.0",
     "remark-react": "4.0.3"
   },
