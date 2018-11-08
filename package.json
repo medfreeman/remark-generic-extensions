@@ -31,7 +31,7 @@
     "lint": "eslint --fix ./src",
     "pretest": "yarn lint",
     "test": "cross-env NODE_ENV=test jest --runInBand",
-    "coverage": "coveralls"
+    "coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
