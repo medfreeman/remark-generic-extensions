@@ -89,7 +89,7 @@
   },
   "dependencies": {
     "core-js": "^2.5.1",
-    "deepmerge": "2.1.1",
+    "deepmerge": "2.2.1",
     "joi": "^13.0.1",
     "joi-browser": "^13.0.1"
   },
