@@ -31,7 +31,7 @@
     "lint": "eslint --fix ./src",
     "pretest": "yarn lint",
     "test": "cross-env NODE_ENV=test jest --runInBand",
-    "coverage": "nyc report --temp-directory=coverage --reporter=text-lcov | coveralls"
+    "coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
@@ -70,11 +70,10 @@
     "jest": "^23.5.0",
     "jest-serializer-vue": "^2.0.2",
     "lint-staged": "^8.0.4",
-    "nyc": "^13.0.1",
     "prettier": "^1.7.0",
     "prop-types": "^15.6.2",
-    "react": "^16.2.0",
-    "react-test-renderer": "^16.2.0",
+    "react": "^16.6.1",
+    "react-test-renderer": "^16.6.1",
     "remark": "^10.0.0",
     "remark-html": "^8.0.0",
     "remark-react": "^4.0.1",
