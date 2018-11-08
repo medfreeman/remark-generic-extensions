@@ -2116,9 +2116,9 @@ eslint-plugin-import@^2.12.0, eslint-plugin-import@^2.7.0:
     read-pkg-up "^2.0.0"
     resolve "^1.6.0"
 
-eslint-plugin-jest@^21.1.0:
-  version "21.27.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-21.27.2.tgz#2a795b7c3b5e707df48a953d651042bd01d7b0a8"
+eslint-plugin-jest@^22.0.0:
+  version "22.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-22.0.0.tgz#87dc52bbdd47f37f23bf2b10bb8469458bb3ed68"
 
 eslint-plugin-prettier@^3.0.0:
   version "3.0.0"
@@ -2829,9 +2829,9 @@ hast-to-hyperscript@^4.0.0:
     trim "0.0.1"
     unist-util-is "^2.0.0"
 
-"hast-to-hyperscript@https://github.com/medfreeman/hast-to-hyperscript.git#vuejs":
+"hast-to-hyperscript@git+https://github.com/medfreeman/hast-to-hyperscript.git#vuejs":
   version "6.0.0"
-  resolved "https://github.com/medfreeman/hast-to-hyperscript.git#74f157813dcf966b4060ad777ef4cb9edf0bb317"
+  resolved "git+https://github.com/medfreeman/hast-to-hyperscript.git#74f157813dcf966b4060ad777ef4cb9edf0bb317"
   dependencies:
     comma-separated-tokens "^1.0.0"
     property-information "^5.0.0"
