@@ -13,7 +13,7 @@ exports[`log should log information if debug is enabled 1`] = `
   1:1  warning  Argument: \\"\\"                   debug
   1:1  warning  Properties string: \\"\\"          debug
   1:1  warning  Computed properties: {}        debug
-  1:1  warning  Hast output tree:
+  1:1  warning  Hast output tree:              debug
 {
   \\"type\\": \\"inline-extension\\",
   \\"data\\": {
@@ -21,7 +21,7 @@ exports[`log should log information if debug is enabled 1`] = `
     \\"hChildren\\": [],
     \\"hProperties\\": {}
   }
-}              debug
+}
 
 ⚠ 7 warnings"
 `;
