@@ -74,7 +74,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.6.1",
     "react-test-renderer": "^16.6.1",
-    "remark": "^10.0.0",
+    "remark": "^10.0.1",
     "remark-html": "^8.0.0",
     "remark-react": "^4.0.1",
     "remark-vue": "^0.9.4",
