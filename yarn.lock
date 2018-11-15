@@ -2829,9 +2829,9 @@ hast-to-hyperscript@^4.0.0:
     trim "0.0.1"
     unist-util-is "^2.0.0"
 
-"hast-to-hyperscript@git+https://github.com/medfreeman/hast-to-hyperscript.git#vuejs":
+"hast-to-hyperscript@https://github.com/medfreeman/hast-to-hyperscript.git#vuejs":
   version "6.0.0"
-  resolved "git+https://github.com/medfreeman/hast-to-hyperscript.git#74f157813dcf966b4060ad777ef4cb9edf0bb317"
+  resolved "https://github.com/medfreeman/hast-to-hyperscript.git#74f157813dcf966b4060ad777ef4cb9edf0bb317"
   dependencies:
     comma-separated-tokens "^1.0.0"
     property-information "^5.0.0"
@@ -5237,9 +5237,9 @@ remark-vue@^0.9.4:
     hast-util-sanitize "^1.0.0"
     mdast-util-to-hast "^3.0.0"
 
-remark@^10.0.0:
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/remark/-/remark-10.0.0.tgz#4d94ae09d0e81e52fe40a31e89a0103c553f509e"
+remark@^10.0.1:
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/remark/-/remark-10.0.1.tgz#3058076dc41781bf505d8978c291485fe47667df"
   dependencies:
     remark-parse "^6.0.0"
     remark-stringify "^6.0.0"
