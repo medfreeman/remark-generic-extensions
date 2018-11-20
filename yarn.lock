@@ -2829,9 +2829,9 @@ hast-to-hyperscript@^4.0.0:
     trim "0.0.1"
     unist-util-is "^2.0.0"
 
-"hast-to-hyperscript@git+https://github.com/medfreeman/hast-to-hyperscript.git#vuejs":
+"hast-to-hyperscript@https://github.com/medfreeman/hast-to-hyperscript.git#vuejs":
   version "6.0.0"
-  resolved "git+https://github.com/medfreeman/hast-to-hyperscript.git#74f157813dcf966b4060ad777ef4cb9edf0bb317"
+  resolved "https://github.com/medfreeman/hast-to-hyperscript.git#74f157813dcf966b4060ad777ef4cb9edf0bb317"
   dependencies:
     comma-separated-tokens "^1.0.0"
     property-information "^5.0.0"
@@ -2850,16 +2850,16 @@ hast-util-sanitize@^1.0.0:
   dependencies:
     xtend "^4.0.1"
 
-hast-util-to-html@^4.0.0:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/hast-util-to-html/-/hast-util-to-html-4.0.1.tgz#3666b05afb62bd69f8f5e6c94db04dea19438e2a"
+hast-util-to-html@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/hast-util-to-html/-/hast-util-to-html-5.0.0.tgz#8b5c9710adb0689e3603f552f3104de2507aca35"
   dependencies:
     ccount "^1.0.0"
     comma-separated-tokens "^1.0.1"
     hast-util-is-element "^1.0.0"
     hast-util-whitespace "^1.0.0"
     html-void-elements "^1.0.0"
-    property-information "^4.0.0"
+    property-information "^5.0.0"
     space-separated-tokens "^1.0.0"
     stringify-entities "^1.0.1"
     unist-util-is "^2.0.0"
@@ -4196,6 +4196,22 @@ mdast-util-to-hast@^3.0.0:
     unist-util-visit "^1.1.0"
     xtend "^4.0.1"
 
+mdast-util-to-hast@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/mdast-util-to-hast/-/mdast-util-to-hast-4.0.0.tgz#d8467ce28ea73b4648667bc389aa39dfa9f67f18"
+  dependencies:
+    collapse-white-space "^1.0.0"
+    detab "^2.0.0"
+    mdast-util-definitions "^1.2.0"
+    mdurl "^1.0.1"
+    trim "0.0.1"
+    trim-lines "^1.0.0"
+    unist-builder "^1.0.1"
+    unist-util-generated "^1.1.0"
+    unist-util-position "^3.0.0"
+    unist-util-visit "^1.1.0"
+    xtend "^4.0.1"
+
 mdurl@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/mdurl/-/mdurl-1.0.1.tgz#fe85b2ec75a59037f2adfec100fd6c601761152e"
@@ -4928,12 +4944,6 @@ property-information@^3.0.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/property-information/-/property-information-3.2.0.tgz#fd1483c8fbac61808f5fe359e7693a1f48a58331"
 
-property-information@^4.0.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/property-information/-/property-information-4.2.0.tgz#f0e66e07cbd6fed31d96844d958d153ad3eb486e"
-  dependencies:
-    xtend "^4.0.1"
-
 property-information@^5.0.0:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/property-information/-/property-information-5.0.1.tgz#c3b09f4f5750b1634c0b24205adbf78f18bdf94f"
@@ -5171,13 +5181,13 @@ regjsparser@^0.1.4:
   dependencies:
     jsesc "~0.5.0"
 
-remark-html@^8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/remark-html/-/remark-html-8.0.0.tgz#9fcb859a6f3cb40f3ef15402950f1a62ec301b3a"
+remark-html@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/remark-html/-/remark-html-9.0.0.tgz#0f3ef91e0e433f9ffc10aaa752655231f607b37f"
   dependencies:
     hast-util-sanitize "^1.0.0"
-    hast-util-to-html "^4.0.0"
-    mdast-util-to-hast "^3.0.0"
+    hast-util-to-html "^5.0.0"
+    mdast-util-to-hast "^4.0.0"
     xtend "^4.0.1"
 
 remark-parse@^6.0.0:
