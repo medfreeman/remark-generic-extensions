@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/medfreeman/remark-generic-extensions/tree/master/examples/react-toolbox-icon#readme",
   "dependencies": {
-    "deepmerge": "2.2.1",
+    "deepmerge": "3.0.0",
     "hast-util-sanitize": "1.2.1",
     "prop-types": "15.6.2",
     "react": "16.6.1",
