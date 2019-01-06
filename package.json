@@ -21,9 +21,10 @@
   "scripts": {
     "#<git hooks>": "handled by husky",
     "#</git hooks>": "handled by husky",
-    "build": "yarn build-server && yarn build-browser",
-    "build-server": "babel --ignore /__tests__/ -d ./lib ./src",
-    "watch": "babel -w  --ignore /__tests__/ -d ./lib ./src",
+    "build": "yarn build:clean && yarn build-server && yarn build-browser",
+    "build:clean": "del lib && mkdirp lib",
+    "build-server": "babel --ignore src/**/__tests__/**/*.js,src/**/__tests__/**/*.jsx -d ./lib ./src",
+    "watch": "babel -w  --ignore src/**/__tests__/**/*.js,src/**/__tests__/**/*.jsx -d ./lib ./src",
     "build-browser": "yarn build-browserify && yarn build-mangle",
     "build-browserify": "browserify ./src/index.js --bare -t babelify -s remarkGenericExtensions > ./lib/browser.js",
     "build-mangle": "esmangle ./lib/browser.js > ./lib/browser.min.js",
@@ -44,19 +45,22 @@
   },
   "homepage": "https://github.com/medfreeman/remark-generic-extensions#readme",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-function-bind": "^7.2.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.2.0",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
-    "babel-jest": "^23.4.2",
-    "babel-plugin-add-module-exports": "^1.0.0",
-    "babel-plugin-transform-function-bind": "^6.22.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
-    "babelify": "^8.0.0",
+    "babel-jest": "^23.6.0",
+    "babelify": "^10.0.0",
     "browserify": "^16.0.0",
     "coveralls": "^3.0.0",
     "cross-env": "^5.0.5",
+    "del-cli": "^1.1.0",
     "eslint": "^5.0.1",
     "eslint-config-i-am-meticulous": "^11.0.0",
     "eslint-config-prettier": "^3.0.1",
@@ -67,9 +71,10 @@
     "esmangle": "^1.0.1",
     "git-exec-and-restage": "^1.0.1",
     "husky": "^1.1.3",
-    "jest": "^23.5.0",
+    "jest": "^23.6.0",
     "jest-serializer-vue": "^2.0.2",
     "lint-staged": "^8.0.4",
+    "mkdirp": "^0.5.1",
     "prettier": "^1.7.0",
     "prop-types": "^15.6.2",
     "react": "^16.6.1",
@@ -78,7 +83,7 @@
     "remark-html": "^8.0.0",
     "remark-react": "^4.0.1",
     "remark-vue": "^0.9.4",
-    "sinon": "^6.0.1",
+    "sinon": "^7.2.2",
     "vfile-reporter": "^5.0.0",
     "vue": "^2.5.17",
     "vue-jest": "^3.0.0",
@@ -98,27 +103,34 @@
   },
   "babel": {
     "presets": [
-      "babel-preset-env",
-      "babel-preset-stage-2"
+      "@babel/preset-env"
     ],
     "plugins": [
-      "add-module-exports",
-      "transform-function-bind",
-      "transform-object-rest-spread"
+      "@babel/plugin-proposal-function-bind",
+      "@babel/plugin-proposal-object-rest-spread"
     ],
     "env": {
       "test": {
         "presets": [
-          "babel-preset-env",
-          "babel-preset-stage-2",
-          "babel-preset-react"
+          "@babel/preset-env",
+          "@babel/preset-react"
+        ],
+        "plugins": [
+          "@babel/plugin-proposal-function-bind",
+          "@babel/plugin-proposal-object-rest-spread",
+          [
+            "@babel/plugin-transform-runtime",
+            {
+              "corejs": false,
+              "helpers": false,
+              "regenerator": true,
+              "useESModules": false
+            }
+          ]
         ],
         "sourceMaps": "both"
       }
-    },
-    "ignore": [
-      "node_modules/*"
-    ]
+    }
   },
   "jest": {
     "testEnvironment": "node",

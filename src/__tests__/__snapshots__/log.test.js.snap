@@ -7,12 +7,10 @@ exports[`log should log a warning if there is an invalid property 1`] = `
 `;
 
 exports[`log should log information if debug is enabled 1`] = `
-"  1:1  warning  Inline extension \`icon\` found  debug
-  1:1  warning  Full match: \\"!icon\\"            debug
-  1:1  warning  Content: \\"\\"                    debug
-  1:1  warning  Argument: \\"\\"                   debug
-  1:1  warning  Properties string: \\"\\"          debug
+"  1:1  warning  Argument: \\"\\"                   debug
   1:1  warning  Computed properties: {}        debug
+  1:1  warning  Content: \\"\\"                    debug
+  1:1  warning  Full match: \\"!icon\\"            debug
   1:1  warning  Hast output tree:              debug
 {
   \\"type\\": \\"inline-extension\\",
@@ -22,6 +20,8 @@ exports[`log should log information if debug is enabled 1`] = `
     \\"hProperties\\": {}
   }
 }
+  1:1  warning  Inline extension \`icon\` found  debug
+  1:1  warning  Properties string: \\"\\"          debug
 
 ⚠ 7 warnings"
 `;
