@@ -19,8 +19,6 @@
     "lib/index.js": "lib/browser.min.js"
   },
   "scripts": {
-    "#<git hooks>": "handled by husky",
-    "#</git hooks>": "handled by husky",
     "build": "run-s build:clean build:server build:browser",
     "build:clean": "del lib; mkdirp lib",
     "build:server": "babel --ignore src/**/__tests__/**/*.js,src/**/__tests__/**/*.jsx -d ./lib ./src",
