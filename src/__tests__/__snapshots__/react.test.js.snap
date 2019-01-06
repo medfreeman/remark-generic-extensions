@@ -1,269 +1,221 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`react block extensions should add an extension 1`] = `
-<div>
-  <icon>
-    
-  </icon>
-</div>
+<icon>
+  
+</icon>
 `;
 
 exports[`react block extensions should add an extension with a boolean property 1`] = `
-<div>
-  <icon
-    highlight={true}
-  >
-    
-  </icon>
-</div>
+<icon
+  highlight={true}
+>
+  
+</icon>
 `;
 
 exports[`react block extensions should add an extension with a class 1`] = `
-<div>
-  <icon
-    className="my-class"
-  >
-    
-  </icon>
-</div>
+<icon
+  className="my-class"
+>
+  
+</icon>
 `;
 
 exports[`react block extensions should add an extension with a lone attribute 1`] = `
-<div>
-  <icon
-    attr=""
-  >
-    
-  </icon>
-</div>
+<icon
+  attr=""
+>
+  
+</icon>
 `;
 
 exports[`react block extensions should add an extension with a lone attribute with a default boolean value 1`] = `
-<div>
-  <icon
-    highlight={true}
-  >
-    
-  </icon>
-</div>
+<icon
+  highlight={true}
+>
+  
+</icon>
 `;
 
 exports[`react block extensions should add an extension with a lone attribute with a default value 1`] = `
-<div>
-  <icon
-    attr="default"
-  >
-    
-  </icon>
-</div>
+<icon
+  attr="default"
+>
+  
+</icon>
 `;
 
 exports[`react block extensions should add an extension with a mapped argument 1`] = `
-<div>
-  <icon
-    icon="my-icon"
-  >
-    
-  </icon>
-</div>
+<icon
+  icon="my-icon"
+>
+  
+</icon>
 `;
 
 exports[`react block extensions should add an extension with a mapped content 1`] = `
-<div>
-  <icon
-    tooltip="my-tooltip"
-  />
-</div>
+<icon
+  tooltip="my-tooltip"
+/>
 `;
 
 exports[`react block extensions should add an extension with a quoted attribute 1`] = `
-<div>
-  <icon
-    attr="my attribute"
-  >
-    
-  </icon>
-</div>
+<icon
+  attr="my attribute"
+>
+  
+</icon>
 `;
 
 exports[`react block extensions should add an extension with all types of parameters 1`] = `
-<div>
+<icon
+  attr="default"
+  attr2="my-attr"
+  attr3="my attribute"
+  className="my-class"
+  id="my-id"
+>
+  
+</icon>
+`;
+
+exports[`react block extensions should add an extension with an attribute 1`] = `
+<icon
+  attr="my-attr"
+>
+  
+</icon>
+`;
+
+exports[`react block extensions should add an extension with an id 1`] = `
+<icon
+  id="my-id"
+>
+  
+</icon>
+`;
+
+exports[`react block extensions should work with other markdown 1`] = `
+Array [
+  <h1>
+    heading
+  </h1>,
+  "
+",
+  <icon>
+    
+  </icon>,
+]
+`;
+
+exports[`react inline extensions should add an extension 1`] = `
+<p>
+  <icon />
+</p>
+`;
+
+exports[`react inline extensions should add an extension with a boolean property 1`] = `
+<p>
+  <icon
+    highlight={true}
+  />
+</p>
+`;
+
+exports[`react inline extensions should add an extension with a class 1`] = `
+<p>
+  <icon
+    className="my-class"
+  />
+</p>
+`;
+
+exports[`react inline extensions should add an extension with a lone attribute 1`] = `
+<p>
+  <icon
+    attr=""
+  />
+</p>
+`;
+
+exports[`react inline extensions should add an extension with a lone attribute with a default boolean value 1`] = `
+<p>
+  <icon
+    highlight={true}
+  />
+</p>
+`;
+
+exports[`react inline extensions should add an extension with a lone attribute with a default value 1`] = `
+<p>
+  <icon
+    attr="default"
+  />
+</p>
+`;
+
+exports[`react inline extensions should add an extension with a mapped argument 1`] = `
+<p>
+  <icon
+    icon="my-icon"
+  />
+</p>
+`;
+
+exports[`react inline extensions should add an extension with a mapped content 1`] = `
+<p>
+  <icon
+    tooltip="my-tooltip"
+  />
+</p>
+`;
+
+exports[`react inline extensions should add an extension with a quoted attribute 1`] = `
+<p>
+  <icon
+    attr="my attribute"
+  />
+</p>
+`;
+
+exports[`react inline extensions should add an extension with all types of parameters 1`] = `
+<p>
   <icon
     attr="default"
     attr2="my-attr"
     attr3="my attribute"
     className="my-class"
     id="my-id"
-  >
-    
-  </icon>
-</div>
-`;
-
-exports[`react block extensions should add an extension with an attribute 1`] = `
-<div>
-  <icon
-    attr="my-attr"
-  >
-    
-  </icon>
-</div>
-`;
-
-exports[`react block extensions should add an extension with an id 1`] = `
-<div>
-  <icon
-    id="my-id"
-  >
-    
-  </icon>
-</div>
-`;
-
-exports[`react block extensions should work with other markdown 1`] = `
-<div>
-  <h1>
-    heading
-  </h1>
-  
-
-  <icon>
-    
-  </icon>
-</div>
-`;
-
-exports[`react inline extensions should add an extension 1`] = `
-<div>
-  <p>
-    <icon />
-  </p>
-</div>
-`;
-
-exports[`react inline extensions should add an extension with a boolean property 1`] = `
-<div>
-  <p>
-    <icon
-      highlight={true}
-    />
-  </p>
-</div>
-`;
-
-exports[`react inline extensions should add an extension with a class 1`] = `
-<div>
-  <p>
-    <icon
-      className="my-class"
-    />
-  </p>
-</div>
-`;
-
-exports[`react inline extensions should add an extension with a lone attribute 1`] = `
-<div>
-  <p>
-    <icon
-      attr=""
-    />
-  </p>
-</div>
-`;
-
-exports[`react inline extensions should add an extension with a lone attribute with a default boolean value 1`] = `
-<div>
-  <p>
-    <icon
-      highlight={true}
-    />
-  </p>
-</div>
-`;
-
-exports[`react inline extensions should add an extension with a lone attribute with a default value 1`] = `
-<div>
-  <p>
-    <icon
-      attr="default"
-    />
-  </p>
-</div>
-`;
-
-exports[`react inline extensions should add an extension with a mapped argument 1`] = `
-<div>
-  <p>
-    <icon
-      icon="my-icon"
-    />
-  </p>
-</div>
-`;
-
-exports[`react inline extensions should add an extension with a mapped content 1`] = `
-<div>
-  <p>
-    <icon
-      tooltip="my-tooltip"
-    />
-  </p>
-</div>
-`;
-
-exports[`react inline extensions should add an extension with a quoted attribute 1`] = `
-<div>
-  <p>
-    <icon
-      attr="my attribute"
-    />
-  </p>
-</div>
-`;
-
-exports[`react inline extensions should add an extension with all types of parameters 1`] = `
-<div>
-  <p>
-    <icon
-      attr="default"
-      attr2="my-attr"
-      attr3="my attribute"
-      className="my-class"
-      id="my-id"
-    />
-  </p>
-</div>
+  />
+</p>
 `;
 
 exports[`react inline extensions should add an extension with an attribute 1`] = `
-<div>
-  <p>
-    <icon
-      attr="my-attr"
-    />
-  </p>
-</div>
+<p>
+  <icon
+    attr="my-attr"
+  />
+</p>
 `;
 
 exports[`react inline extensions should add an extension with an id 1`] = `
-<div>
-  <p>
-    <icon
-      id="my-id"
-    />
-  </p>
-</div>
+<p>
+  <icon
+    id="my-id"
+  />
+</p>
 `;
 
 exports[`react inline extensions should work with other markdown 1`] = `
-<div>
+Array [
   <h1>
     heading
-  </h1>
-  
-
+  </h1>,
+  "
+",
   <p>
     <icon />
-  </p>
-</div>
+  </p>,
+]
 `;
