@@ -23,12 +23,12 @@ function inlineExtensionTokenizer(
       argument: match[3] ? match[3] : undefined
     };
 
-    const propertiesString = match[4] ? match[4]::trim() : undefined;
+    const propertiesString = match[4] ? trim(match[4]) : undefined;
 
     debug(`Inline extension \`${element.name}\` found`);
     debug(`Full match: "${match[0]}"`);
 
-    const elementSettings = settings::get(`elements.${element.name}`, {});
+    const elementSettings = get(settings, `elements.${element.name}`, {});
 
     return eat(match[0])(
       commonTokenizer(

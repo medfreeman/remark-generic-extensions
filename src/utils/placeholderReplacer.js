@@ -14,12 +14,12 @@ const replacePlaceholder = (inputString, element, affix) => {
             "(content|argument|prop" +
             affix +
             "(" +
-            Object::keys(element.properties).join("|") +
+            keys(element.properties).join("|") +
             "))" +
             affix
         ),
         (match, s1, s2) => {
-          if (s1::startsWith("prop")) {
+          if (startsWith(s1, "prop")) {
             foundPlaceholders.properties = {
               [s2]: true
             };
@@ -47,7 +47,7 @@ const replacePlaceholdersInObject = (propertiesObject, element, affix) => {
   const newObject = {};
   let foundPlaceholdersInObject = {};
 
-  Object::entries(propertiesObject)::forEach(([key, value]) => {
+  forEach(entries(propertiesObject), ([key, value]) => {
     if (typeof value === "string") {
       const { newValue, foundPlaceholders } = replacePlaceholder(
         value,

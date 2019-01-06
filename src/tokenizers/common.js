@@ -42,7 +42,7 @@ function commonTokenizer(
     }
   }
 
-  debug("Computed properties: " + element.properties::prettify());
+  debug("Computed properties: " + prettify(element.properties));
 
   // Fetch the user provided pseudo hast tree
   const hastInputTree = elementSettings.html || {};
@@ -99,7 +99,7 @@ function commonTokenizer(
   );
 
   // For each property found in markdown
-  Object::entries(element.properties)::forEach(([key, value]) => {
+  forEach(entries(element.properties), ([key, value]) => {
     // If the property was not referenced by a placeholder
     if (!foundPlaceholdersInElement.properties[key]) {
       // Set the corresponding property to the first-level html element
@@ -120,7 +120,7 @@ function commonTokenizer(
   // Assign the first-level properties to the hast node
   hastOutputTree.data.hProperties = newProperties;
 
-  debug("Hast output tree:\n" + hastOutputTree::prettify());
+  debug("Hast output tree:\n" + prettify(hastOutputTree));
 
   // Return the output tree, while eating the original markdown
   return hastOutputTree;

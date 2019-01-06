@@ -14,7 +14,7 @@ const parseHastChildrenTreeRecursive = (
   const outputChildrenArray = [];
   let foundPlaceholdersInTree = {};
 
-  inputChildrenArray::forEach(childElement => {
+  forEach(inputChildrenArray, childElement => {
     // Extract the current level hast properties separated from structure
     const { type, tagName, value, children, properties = {} } = childElement;
 

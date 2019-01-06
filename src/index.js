@@ -9,8 +9,8 @@ import { escapeRegExp } from "./utils/string";
 import { vfileDebug, vfileWarning } from "./utils/eat";
 
 const getLogFunctions = (eat, debugEnabled) => {
-  const warning = eat::vfileWarning;
-  const debug = debugEnabled ? eat::vfileDebug : () => {};
+  const warning = vfileWarning.bind(eat);
+  const debug = debugEnabled ? vfileDebug.bind(eat) : () => {};
   return {
     warning,
     debug
@@ -23,10 +23,10 @@ function remarkGenericExtensions(options = {}) {
   if (optionsValidation.error !== null) {
     console.error(
       "Invalid options provided:\n" +
-        options::prettify() +
+        prettify(options) +
         "\n\n" +
         "returned:\n" +
-        optionsValidation::prettify()
+        prettify(optionsValidation)
     );
     return false;
   }
@@ -39,7 +39,7 @@ function remarkGenericExtensions(options = {}) {
   };
 
   // Escape the user provided placeholder affix for use in regex
-  settings.placeholderAffix = settings.placeholderAffix::escapeRegExp();
+  settings.placeholderAffix = escapeRegExp(settings.placeholderAffix);
 
   const Parser = this.Parser;
 

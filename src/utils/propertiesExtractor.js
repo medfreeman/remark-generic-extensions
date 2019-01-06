@@ -54,7 +54,7 @@ const propertiesExtractor = (propertiesString, propsDefaultValues) => {
 
   return {
     properties,
-    propertiesLeft: propertiesLeft::trim()
+    propertiesLeft: trim(propertiesLeft)
   };
 };
 

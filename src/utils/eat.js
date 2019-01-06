@@ -3,7 +3,7 @@ function vfileWarning(message, ruleId = "") {
 }
 
 function vfileDebug(message) {
-  this::vfileWarning(message, "debug");
+  vfileWarning.bind(this)(message, "debug");
 }
 
 export { vfileWarning, vfileDebug };

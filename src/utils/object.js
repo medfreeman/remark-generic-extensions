@@ -1,8 +1,7 @@
 import entries from "core-js/library/fn/object/entries";
 import keys from "core-js/library/fn/object/keys";
 
-function get(path, def) {
-  let object = this;
+function get(object, path, def) {
   return path
     .split(".")
     .filter(Boolean)
@@ -11,8 +10,8 @@ function get(path, def) {
     : def;
 }
 
-function prettify() {
-  return JSON.stringify(this, undefined, 2);
+function prettify(object) {
+  return JSON.stringify(object, undefined, 2);
 }
 
 export { entries, keys, get, prettify };

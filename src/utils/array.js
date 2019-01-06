@@ -1,3 +1,3 @@
-import forEach from "core-js/library/fn/array/virtual/for-each";
+import forEach from "core-js/library/fn/array/for-each";
 
 export { forEach };
