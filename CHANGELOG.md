@@ -1,6 +1,6 @@
 # 1.4.0 - 2019-01-08
 
-- Added: extension element `replace` option, allowing free transformation outisde of a schema
+- Added: extension element `replace` option, allowing free transformation outside of a schema
 - Updated: all dependencies to their latest versions
 - Fixed: inline extension regex (#59)
 
