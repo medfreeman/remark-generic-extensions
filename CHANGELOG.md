@@ -1,3 +1,9 @@
+# 1.4.0 - 2019-01-08
+
+- Added: extension element `replace` option, allowing free transformation outisde of a schema
+- Updated: all dependencies to their latest versions
+- Fixed: inline extension regex (#59)
+
 # 1.3.0 - 2017-09-19
 
 - Added: support for block extensions!
