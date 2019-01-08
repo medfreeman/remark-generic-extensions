@@ -40,14 +40,16 @@ function commonTokenizer(
 
   debug("Computed properties: " + prettify(element.properties));
 
-  return hastTree(
-    type,
-    element,
-    elementSettings.html,
-    placeholderAffix,
-    warning,
-    debug
-  );
+  return typeof elementSettings.replace === "function"
+    ? elementSettings.replace(type, element, warning, debug)
+    : hastTree(
+        type,
+        element,
+        warning,
+        debug,
+        elementSettings.html,
+        placeholderAffix
+      );
 }
 
 export default commonTokenizer;

@@ -1,5 +1,105 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`console should log a console error message when \`html\` and \`replace\` options are provided 1`] = `
+"Invalid options provided:
+{
+  \\"elements\\": {
+    \\"icon\\": {
+      \\"html\\": {}
+    }
+  }
+}
+
+returned:
+{
+  \\"error\\": {
+    \\"isJoi\\": true,
+    \\"name\\": \\"ValidationError\\",
+    \\"details\\": [
+      {
+        \\"message\\": \\"\\\\\\"html\\\\\\" conflict with forbidden peer \\\\\\"replace\\\\\\"\\",
+        \\"path\\": [
+          \\"elements\\",
+          \\"icon\\",
+          \\"html\\"
+        ],
+        \\"type\\": \\"object.without\\",
+        \\"context\\": {
+          \\"main\\": \\"html\\",
+          \\"mainWithLabel\\": \\"html\\",
+          \\"peer\\": \\"replace\\",
+          \\"peerWithLabel\\": \\"replace\\",
+          \\"key\\": \\"html\\",
+          \\"label\\": \\"html\\"
+        }
+      }
+    ],
+    \\"_object\\": {
+      \\"elements\\": {
+        \\"icon\\": {
+          \\"html\\": {}
+        }
+      }
+    }
+  },
+  \\"value\\": {
+    \\"elements\\": {
+      \\"icon\\": {
+        \\"html\\": {}
+      }
+    }
+  }
+}"
+`;
+
+exports[`console should log a console error message when \`replace\` option is not a function 1`] = `
+"Invalid options provided:
+{
+  \\"elements\\": {
+    \\"icon\\": {
+      \\"replace\\": {}
+    }
+  }
+}
+
+returned:
+{
+  \\"error\\": {
+    \\"isJoi\\": true,
+    \\"name\\": \\"ValidationError\\",
+    \\"details\\": [
+      {
+        \\"message\\": \\"\\\\\\"replace\\\\\\" must be a Function\\",
+        \\"path\\": [
+          \\"elements\\",
+          \\"icon\\",
+          \\"replace\\"
+        ],
+        \\"type\\": \\"function.base\\",
+        \\"context\\": {
+          \\"key\\": \\"replace\\",
+          \\"label\\": \\"replace\\"
+        }
+      }
+    ],
+    \\"_object\\": {
+      \\"elements\\": {
+        \\"icon\\": {
+          \\"replace\\": {}
+        }
+      }
+    }
+  },
+  \\"value\\": {
+    \\"elements\\": {
+      \\"icon\\": {
+        \\"replace\\": {}
+      }
+    }
+  }
+}"
+`;
+
 exports[`console should log a console error message when a children node has a forbidden property 1`] = `
 "Invalid options provided:
 {

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`replace block extension should add an extension 1`] = `<icon>¬|¬</icon>`;
+
+exports[`replace inline extension should add an extension 1`] = `
+<p>
+  <icon>¬|¬</icon>
+</p>
+`;

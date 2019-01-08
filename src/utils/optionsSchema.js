@@ -46,21 +46,24 @@ const schema = joi.object({
   placeholderAffix: joi.string(),
   elements: joi.object(undefined).pattern(
     /\w/,
-    joi.object({
-      propsDefaultValues: joi
-        .object(undefined)
-        .pattern(hastPropertyNameRegex, joi.any()),
-      html: joi.object({
-        tagName: html5TagNameRegex,
-        properties: joi
-          .object({
-            class: joi.any().forbidden(),
-            for: joi.any().forbidden()
-          })
+    joi
+      .object({
+        propsDefaultValues: joi
+          .object(undefined)
           .pattern(hastPropertyNameRegex, joi.any()),
-        children: hastSchema
+        html: joi.object({
+          tagName: html5TagNameRegex,
+          properties: joi
+            .object({
+              class: joi.any().forbidden(),
+              for: joi.any().forbidden()
+            })
+            .pattern(hastPropertyNameRegex, joi.any()),
+          children: hastSchema
+        }),
+        replace: joi.func()
       })
-    })
+      .without("html", "replace")
   )
 });
 

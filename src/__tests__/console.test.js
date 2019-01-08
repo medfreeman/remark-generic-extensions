@@ -23,6 +23,41 @@ describe("console", () => {
     expect(console.error.callCount).toBe(0);
   });
 
+  test("should log a console error message when `replace` option is not a function", () => {
+    transformToHtml("!icon", {
+      elements: {
+        icon: {
+          // eslint-disable-next-line no-unused-vars
+          replace: {}
+        }
+      }
+    });
+
+    expect(console.error.callCount).toBe(1);
+    for (let index = 0; index < console.error.callCount; index++) {
+      const args = console.error.getCall(index).args;
+      expect(args.toString()).toMatchSnapshot();
+    }
+  });
+
+  test("should log a console error message when `html` and `replace` options are provided", () => {
+    transformToHtml("!icon", {
+      elements: {
+        icon: {
+          html: {},
+          // eslint-disable-next-line no-unused-vars
+          replace: function(a, b) {}
+        }
+      }
+    });
+
+    expect(console.error.callCount).toBe(1);
+    for (let index = 0; index < console.error.callCount; index++) {
+      const args = console.error.getCall(index).args;
+      expect(args.toString()).toMatchSnapshot();
+    }
+  });
+
   test("should log a console error message when an invalid schema is provided", () => {
     transformToHtml("!icon", {
       elements: {

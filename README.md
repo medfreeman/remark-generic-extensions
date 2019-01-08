@@ -368,10 +368,22 @@ You can define one or more extensions if needed.
 
       </p></details>
 
-  - html (object, optional) - html element representation used for rendering the extension
+  - html (object, optional, mutually exclusive with `replace`) - html element representation used for rendering the extension
     - tagName (string, optional, defaults to the extension name) - html5 element tag name
     - children ([`Hast`](#hast-arrayobject), optional) - the element children
     - properties ([`HastProperties`](#hastproperties-object), optional) - the element properties
+
+  - replace (function, optional, mutually exclusive with `html`) - function whose return value will be used for rendering the extension
+
+    arguments:
+    - type (enum[string], "inline-extension" OR "block-extension")
+    - element (object)
+      - *extensionName* (string) - same as above
+      - content (string) - the element content
+      - argument (string) - the element argument
+      - properties (object) - A map of computed properties names / values
+    - warning (function(string)) - VFile warning function
+    - debug (function(string)) - VFile debug function
 
 ---
 

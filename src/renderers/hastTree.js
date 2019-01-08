@@ -8,10 +8,10 @@ import parseHastChildrenTreeRecursive from "../utils/hastChildrenTreeParser";
 function hastTree(
   type,
   element,
-  hastInputTree = {},
-  placeholderAffix,
   warning,
-  debug
+  debug,
+  hastInputTree = {},
+  placeholderAffix
 ) {
   // Extract the first-level hast properties separated from structure
   const { tagName, children, properties = {} } = hastInputTree;
