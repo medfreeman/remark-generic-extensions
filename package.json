@@ -85,7 +85,7 @@
     "vue": "^2.6.1",
     "vue-jest": "^3.0.0",
     "vue-server-renderer": "^2.5.17",
-    "vue-template-compiler": "^2.5.17"
+    "vue-template-compiler": "^2.6.1"
   },
   "dependencies": {
     "core-js": "^2.5.1",
