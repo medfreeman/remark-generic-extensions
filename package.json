@@ -55,7 +55,7 @@
     "babel-jest": "^23.6.0",
     "babelify": "^10.0.0",
     "browserify": "^16.0.0",
-    "coveralls": "^3.0.0",
+    "coveralls": "^3.0.3",
     "cross-env": "^5.0.5",
     "del-cli": "^1.1.0",
     "eslint": "^5.0.1",
