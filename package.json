@@ -81,7 +81,7 @@
     "remark-html": "^9.0.0",
     "remark-react": "^5.0.1",
     "sinon": "^7.2.2",
-    "vfile-reporter": "^5.0.0",
+    "vfile-reporter": "^5.1.2",
     "vue": "^2.5.17",
     "vue-jest": "^3.0.0",
     "vue-server-renderer": "^2.5.17",
