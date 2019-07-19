@@ -78,7 +78,7 @@
     "react": "^16.6.1",
     "react-test-renderer": "^16.6.1",
     "remark": "^10.0.0",
-    "remark-html": "^9.0.0",
+    "remark-html": "^10.0.0",
     "remark-react": "^5.0.1",
     "sinon": "^7.2.2",
     "vfile-reporter": "^5.0.0",
